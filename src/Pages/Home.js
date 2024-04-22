@@ -1,5 +1,6 @@
 import React from 'react';
 import Navbar from '../Navbar';
+import Banner from '../Banner';
 
 function Home() {
   const imageStyle = {
@@ -100,21 +101,19 @@ function Home() {
       <br/>
       <br/>
       <br/>
-      <h1 className="center-text">Blazing Fast Development and Integrations</h1>
+      <h1 className="center-text" style={{fontFamily: "PT sans", color:"grey", fontSize: "50px", fontWeight:"bold"}}>Blazing Fast <span style={{color:"#036EFD"}}>Development</span> and  <span style={{color:"#036EFD"}}>Integrations!</span></h1>
+       <h3 className="center-text" style={{fontFamily: "PT sans", fontSize: "20px", fontWeight:"bolder"}}>Toggle the switch now and shift to faster code development.</h3>
       <div>
-        <h2 className="facilities-heading">Facilities</h2>
-
+        <br/>
+       
         <div className="switch-container">
           <label className="switch">
             <input type="checkbox"/>
             <span className="slider round"></span>
           </label>
         </div>
-
-        <div className="container m-10">
-          <div className="child"><img src="./images/vscode.png" alt="Facility 1" style={imageStyle} /></div>
-        
-        </div>
+        <Banner/>
+       
       </div>
     </div>
   )

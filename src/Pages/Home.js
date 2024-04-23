@@ -2,6 +2,8 @@ import React from 'react';
 import Navbar from '../Navbar';
 import Banner from '../Banner';
 import Download from '../HomePageFooter';
+import { v4 as uuidv4 } from 'uuid'; // Corrected import
+
 
 function Home() {
   const imageStyle = {
@@ -9,6 +11,19 @@ function Home() {
     height: "33rem",
     borderRadius: "20px"
   };
+
+  const createNewroom =(e)=>{
+    e.preventDefault();
+    const id = uuidv4(); // Use uuidv4 to generate UUID
+    console.log(id);
+
+    
+
+
+
+
+
+  }
 
   // Inline CSS for component styles
   const styles = `
@@ -151,7 +166,8 @@ function Home() {
                     />
                     <br/>
                     <br/>
-                    <h3 style={{fontFamily: "PT sans", color:"grey", fontSize: "20px", fontWeight:"bold"}}>Don't have an invite code? Create new Room</h3>
+                    <a onClick={createNewroom}href=''> <h3 style={{fontFamily: "PT sans", color:"grey", fontSize: "20px", fontWeight:"bold"}}>Don't have an invite code? Create new Room</h3></a>
+                   
                     </center>
 
                     <br/>

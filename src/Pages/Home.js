@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Navbar from '../Navbar';
 import Banner from '../Banner';
 import Download from '../HomePageFooter';
@@ -12,9 +12,18 @@ function Home() {
     borderRadius: "20px"
   };
 
+const [roomId, setroomID]= useState('');
+const [username , setusername]= useState('');
+console.log(username);
+
+
+
+
+
   const createNewroom =(e)=>{
     e.preventDefault();
     const id = uuidv4(); // Use uuidv4 to generate UUID
+    setroomID(id);
     console.log(id);
 
     
@@ -147,9 +156,10 @@ function Home() {
                         className="inputBox"
                         placeholder="Room ID"
                         style={{borderRadius:"20px", width:"40%", height:"2.7rem",marginBottom:"10px", color:"grey"}}
+                        
 
-                        // onChange={(e) => setRoomId(e.target.value)}
-                        // value={roomId}
+                        onChange={(e) => setroomID(e.target.value)}
+                        value={roomId}
                         // onKeyUp={handleInputEnter}
                     />
                     <br/>
@@ -159,10 +169,10 @@ function Home() {
                         className="inputBox"
                         placeholder="Username"
                         style={{borderRadius:"20px", height:"2.7rem",  width:"40%"}}
-                        // onChange={(e) => setUsername(e.target.value)}
-                        // value={username}
-                        // onKeyUp={handleInputEnter}
-                        // onClick={joinRoom}
+                        onChange={(e)=> setusername(e.target.value)}
+                        value={username}
+                        
+                        
                     />
                     <br/>
                     <br/>

@@ -3,7 +3,8 @@ import React from 'react'
 function Banner() {
   return (
     <div>
-        <img src="./images/banner1.png" style={{width:"1000px", alignContent:"center"}}/>
+        <center> <img src="./images/1.png" class="img-fluid" style={{borderRadius:"20px"}}/></center>
+       
     </div>
   )
 }

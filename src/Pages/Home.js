@@ -101,8 +101,8 @@ function Home() {
       <br/>
       <br/>
       <br/>
-      <h1 className="center-text" style={{fontFamily: "PT sans", color:"grey", fontSize: "50px", fontWeight:"bold"}}>Blazing Fast <span style={{color:"#036EFD"}}>Development</span> and  <span style={{color:"#036EFD"}}>Integrations!</span></h1>
-       <h3 className="center-text" style={{fontFamily: "PT sans", fontSize: "20px", fontWeight:"bolder"}}>Toggle the switch now and shift to faster code development.</h3>
+      <h1 className="center-text" style={{fontFamily: "PT sans", color:"white", fontSize: "50px", fontWeight:"bold"}}>Blazing Fast <span style={{color:"#036EFD"}}>Development</span> and  <span style={{color:"#036EFD"}}>Integrations!</span></h1>
+       <h3 className="center-text" style={{fontFamily: "PT sans", fontSize: "20px",  color:"grey",fontWeight:"bolder"}}>Toggle the switch now and shift to faster code development.</h3>
       <div>
         <br/>
        
@@ -112,7 +112,20 @@ function Home() {
             <span className="slider round"></span>
           </label>
         </div>
+        <br/>
+        
         <Banner/>
+        <br/>
+        <br/>
+ <center>
+ <div style={{backgroundColor:"#1B1C1E", borderRadius:"20px",width:"100%", height:"30rem"}}>
+  <br/>
+
+  <h1>Join a room</h1>
+  
+ </div>
+ </center>
+     
        
       </div>
     </div>

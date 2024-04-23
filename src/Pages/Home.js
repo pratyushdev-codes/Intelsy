@@ -1,6 +1,7 @@
 import React from 'react';
 import Navbar from '../Navbar';
 import Banner from '../Banner';
+import Download from '../HomePageFooter';
 
 function Home() {
   const imageStyle = {
@@ -121,11 +122,61 @@ function Home() {
  <div style={{backgroundColor:"#1B1C1E", borderRadius:"20px",width:"100%", height:"30rem"}}>
   <br/>
 
-  <h1>Join a room</h1>
+  <h1 style={{fontFamily: "PT sans", color:"#036EFD", fontSize: "50px", fontWeight:"bold"}}>Join a room</h1>
+  <h3 style={{fontFamily: "PT sans", color:"white", fontSize: "20px", fontWeight:"bold"}}>Paste Invitation ROOM ID</h3>
+  <br/>
+  <div className="inputGroup">
+    <center>
+                    <input
+                        type="text"
+                        className="inputBox"
+                        placeholder="Room ID"
+                        style={{borderRadius:"20px", width:"40%", height:"2.7rem",marginBottom:"10px", color:"grey"}}
+
+                        // onChange={(e) => setRoomId(e.target.value)}
+                        // value={roomId}
+                        // onKeyUp={handleInputEnter}
+                    />
+                    <br/>
+            
+                    <input
+                        type="text"
+                        className="inputBox"
+                        placeholder="Username"
+                        style={{borderRadius:"20px", height:"2.7rem",  width:"40%"}}
+                        // onChange={(e) => setUsername(e.target.value)}
+                        // value={username}
+                        // onKeyUp={handleInputEnter}
+                        // onClick={joinRoom}
+                    />
+                    <br/>
+                    <br/>
+                    <h3 style={{fontFamily: "PT sans", color:"grey", fontSize: "20px", fontWeight:"bold"}}>Don't have an invite code? Create new Room</h3>
+                    </center>
+
+                    <br/>
+            
+                    <button type="button" class="btn btn-primary" style={{borderRadius:"20px"}}>Join Rooom</button>
+                    </div><br/>
+                    <img src= './images/1.jpeg'class="img-fluid" style={{borderRadius:"20px"}}/ >
+
   
  </div>
+ <br/>
+ <br/>
+ <br/>
+ <br/>
+ <br/>
+ <br/>
+ <br/>
+ <br/>
+ <br/>
+ <br/>
+ <br/>
+ <Download/>
  </center>
-     
+
+  
        
       </div>
     </div>

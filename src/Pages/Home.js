@@ -154,7 +154,7 @@ console.log(username);
                     <input
                         type="text"
                         className="inputBox"
-                        placeholder="Room ID"
+                        placeholder="    Room ID"
                         style={{borderRadius:"20px", width:"40%", height:"2.7rem",marginBottom:"10px", color:"grey"}}
                         
 
@@ -167,7 +167,7 @@ console.log(username);
                     <input
                         type="text"
                         className="inputBox"
-                        placeholder="Username"
+                        placeholder="    Username"
                         style={{borderRadius:"20px", height:"2.7rem",  width:"40%"}}
                         onChange={(e)=> setusername(e.target.value)}
                         value={username}

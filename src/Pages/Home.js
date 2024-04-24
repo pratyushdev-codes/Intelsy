@@ -3,6 +3,7 @@ import Navbar from '../Navbar';
 import Banner from '../Banner';
 import Download from '../HomePageFooter';
 import { v4 as uuidv4 } from 'uuid'; // Corrected import
+import toast from 'react-hot-toast';
 
 
 function Home() {
@@ -25,6 +26,9 @@ console.log(username);
     const id = uuidv4(); // Use uuidv4 to generate UUID
     setroomID(id);
     console.log(id);
+    toast.success("Created a new room");
+
+
 
     
 

@@ -116,6 +116,14 @@ function Home() {
     }
   `;
 
+  const hanleInputEnter=(e)=>{
+    console.log('event', e.code);
+    if(e.code==='Enter'){
+      joinRoom();
+    }
+
+  }
+
   return (
     <div>
       <style>{styles}</style>
@@ -155,6 +163,7 @@ function Home() {
                     style={{borderRadius:"20px", width:"40%", height:"2.7rem",marginBottom:"10px", color:"grey"}}
                     onChange={(e) => setRoomID(e.target.value)}
                     value={roomId}
+                    onKeyUp={hanleInputEnter}
                 />
                 <br/>
                 <input

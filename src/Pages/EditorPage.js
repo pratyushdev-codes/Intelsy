@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Client from '../Components/Client';
 import Editor from '../Components/Editor';
+import Navbar from '../Navbar';
 
 function EditorPage() {
   const [clients, setClients] = useState([
@@ -14,6 +15,8 @@ function EditorPage() {
   ]);
 
   return (
+  
+
     <div className='mainWrap'>
       <div className='aside'>
         <div className='asideInner'>
@@ -36,9 +39,14 @@ function EditorPage() {
             </div>
           </div>
         </div>
-        <button type="button" class="btn btn-primary" className='btn copyBtn' style={{backgroundColor:"#036EFD", borderRadius:"20px", color:"white"}}>Copy Room Id</button>
+        <button type="button" class="btn btn-primary" className='btn copyBtn' style={{
+    backgroundColor: "#036EFD",
+    borderRadius: "20px",
+    color: "white",
+    boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)"
+  }}>Copy Room Id</button>
        
-        <button type="button" class="btn btn-primary" className='btn leaveBtn'  style={{backgroundColor:"#DF6F67", borderRadius:"20px", color:"white"}}>Leave Room</button>
+        <button type="button" class="btn btn-primary" className='btn leaveBtn'  style={{backgroundColor:"#DF6F67", borderRadius:"20px", color:"white",  boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)"}}>Leave Room</button>
       </div>
       <div className='editorWrap'>
 
@@ -46,6 +54,7 @@ function EditorPage() {
 <Editor/>
       </div>
     </div>
+
   );
 }
 

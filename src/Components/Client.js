@@ -1,8 +1,15 @@
 import React from 'react'
+import Avatar from 'react-avatar';
 
-const Client = () => {
+const Client = ({username}) => {
+    console.log('username', username);
   return (
-    <div>Client</div>
+    <div className='client'>
+        <Avatar name={username} size={50}  round="14px"/>
+        <span className='userName'>{username}</span>
+        
+        
+        </div>
   )
 }
 

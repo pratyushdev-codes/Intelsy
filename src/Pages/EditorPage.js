@@ -3,8 +3,8 @@ import Client from '../Components/Client';
 
 function EditorPage() {
   const [clients, setClients] = useState([
-    { socketId: 1, userName: "Pratyush" },
-    { socketId: 2, userName: "Rishit" }
+    { socketId: 1, username: "Pratyush" },
+    { socketId: 2, username: "Rishit" }
   ]);
 
   return (

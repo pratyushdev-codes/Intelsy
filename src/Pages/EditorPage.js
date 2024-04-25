@@ -1,59 +1,37 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import Client from '../Components/Client';
 
 function EditorPage() {
-  const [client, setClient] = useState([{
-    socketId:1, userName: "Pratyush"},
-    {socketId:2, userName:"Rishit" }
-  
-  
+  const [clients, setClients] = useState([
+    { socketId: 1, userName: "Pratyush" },
+    { socketId: 2, userName: "Rishit" }
   ]);
 
   return (
     <div className='mainWrap'>
       <div className='aside'>
-
         <div className='asideInner'>
-
           <div className="logo">
-
             <img
               className='logoImage'
               src="../images/logo.png"
               alt="Logo"
             />
-
-            <h3>Connected Successfully, Start developing
-</h3>
-<div className='clientsList'>
-  {client.map((client)=>(
-    <client/>
-
-  )
-)
-
-  }
-</div>
-
-
-
-
+            <h3>Connected Successfully, Start developing</h3>
+            <div className="clientsList">
+                        {clients.map((client) => (
+                            <Client
+                                key={client.socketId}
+                                username={client.username}
+                            />
+                        ))}
+                    </div>
           </div>
-
-
-
-
         </div>
-
-
-
       </div>
-
-
-
       <div className='editorWrap'>Editor...</div>
-
     </div>
-  )
+  );
 }
 
-export default EditorPage
+export default EditorPage;

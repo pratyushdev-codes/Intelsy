@@ -1,6 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 function EditorPage() {
+  const [client, setClient] = useState([{
+    socketId:1, userName: "Pratyush"},
+    {socketId:2, userName:"Rishit" }
+  
+  
+  ]);
+
   return (
     <div className='mainWrap'>
       <div className='aside'>
@@ -16,7 +23,6 @@ function EditorPage() {
             />
 
             <h3>Connected Successfully, Start developing
-              
 </h3>
 
 

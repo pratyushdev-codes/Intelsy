@@ -179,7 +179,8 @@ function Home() {
                 <a onClick={createNewRoom} href=''> <h3 style={{fontFamily: "PT sans", color:"grey", fontSize: "20px", fontWeight:"bold"}}>Don't have an invite code? Create new Room</h3></a>
               </center>
               <br/>
-              <button type="button" className="btn btn-primary" style={{borderRadius:"20px"}} onClick={joinRoom}>Join Room</button>
+              <center> <button type="button" className="btn btn-primary" style={{borderRadius:"20px", width:"250px",}} onClick={joinRoom}>Join Room</button></center>
+             
             </div>
             <br/>
             <img src='./images/1.jpeg' className="img-fluid" style={{borderRadius:"20px"}}/>

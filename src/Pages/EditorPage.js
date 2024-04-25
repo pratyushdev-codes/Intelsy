@@ -24,6 +24,15 @@ function EditorPage() {
 
             <h3>Connected Successfully, Start developing
 </h3>
+<div className='clientsList'>
+  {client.map((client)=>(
+    <client/>
+
+  )
+)
+
+  }
+</div>
 
 
 

@@ -11,7 +11,17 @@ const {Server} =  require (Socket.io);
 
 const io = new Server(server);
 
+
+io.on('connection',(socket)=>{
+    console.log('socket connected', socket.id);
+});
+
+
+
 const PORT= process.env.port || 5000;
 
-server.listen(PORT);
+server.listen(PORT, ()=> console.log("Listening on Port ${PORT}"));
+
+
+
 

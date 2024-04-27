@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from 'react';
 import toast from 'react-hot-toast';
 import Client from '../Components/Client';
 import Editor from '../Components/Editor';
-import Navbar from '../Navbar';
 import { initSocket } from './Socket';
 import ACTIONS from '../Action';
 import { useLocation , useNavigate, Navigate, useParams} from 'react-router-dom';
@@ -26,11 +25,7 @@ function EditorPage() {
       reactNavigator('/');
 
      }
-
-
-
-
-      // You can emit join action here
+    // You can emit join action here
       socketRef.current.emit(ACTIONS.JOIN, {
         roomId,
         username: location.state?.username

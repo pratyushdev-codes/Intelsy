@@ -8,7 +8,15 @@ const server = http.createServer(app);
 const io = new Server(server);
 const userSocketMap={};
 function getAllConnectedClients(roomId){
-    Array.from(io.socket.adapter.rooms.get(roomId));
+    //Map
+    return  Array.from(io.socket.adapter.rooms.get(roomId) || []).map((socketId)=>{
+        return{
+            socketId,
+            username:userSocketMap[socketId],
+
+        }
+    });
+
 }
 
 

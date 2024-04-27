@@ -10,6 +10,6 @@ io.on('connection', (socket) => {
     console.log('socket connected', socket.id);
 });
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3000;
 
 server.listen(PORT, () => console.log(`Listening on Port ${PORT}`));

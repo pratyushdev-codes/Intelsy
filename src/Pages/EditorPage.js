@@ -31,13 +31,23 @@ function EditorPage() {
     //Listening fir leaving clientns 
     socketRef.current.on(ACTIONS, DISCONNECTED, ({socketId, username})=>{
       toast.success('${username} left the Playground');
+      setClients((prev)=>{
+        return prev.filter(client => client.socketId !== socketId);
+      })
 
     })
   };
 
 
     init();
+    return ()=>{
+      socketRef.current.disconnect();
+      socketRef.current.off(ACTIONS.JOINED);
+      socketRef.current.off(ACTIONS.DISCONNECTED);
+       
+    }
   }, []);
+
 
   const handleErrors = (error) => {
     console.log('socket error', error);

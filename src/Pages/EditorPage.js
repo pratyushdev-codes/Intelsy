@@ -2,52 +2,51 @@ import React, { useEffect, useRef, useState } from 'react';
 import toast from 'react-hot-toast';
 import Client from '../Components/Client';
 import Editor from '../Components/Editor';
-import { initSocket } from './Socket';
-import ACTIONS from '../Action';
-import { useLocation , useNavigate, Navigate, useParams} from 'react-router-dom';
+import { initSocket } from '../Socket';
+import ACTIONS, { DISCONNECTED } from '../Action';
+import { Navigate, useLocation, useNavigate, useParams } from 'react-router-dom';
 
 function EditorPage() {
   const socketRef = useRef(null);
   const location = useLocation();
-  const {roomId} = useParams();
-  
+  const { roomId } = useParams();
   const reactNavigator = useNavigate();
 
+  const [clients, setClients] = useState([]);
   useEffect(() => {
-    const init = async () => {
-      socketRef.current = await initSocket();
-     socketRef.current.on('connect_error', (err)=>handleErrors(err));
-     socketRef.current.on('connect_failed', (err)=>handleErrors(err));
+  const init = async () => {
+    socketRef.current = await initSocket();
+    socketRef.current.on('connect_error', (err) => handleErrors(err));
+    socketRef.current.on('connect_failed', (err) => handleErrors(err));
 
-     function handleErrors(e){
-      console.log('socket error', e);
-      toast.error("Socket Connection Failed, try again later");
-      reactNavigator('/');
+    socketRef.current.on(ACTIONS.JOINED, ({ clients, username, socketId }) => {
+      if (username !== location.state?.username) {
+        toast.success(`${username} joined the Playground`);
+        console.log(`${username} joined`);
+        // Update clients state array if necessary
+      }
+        setClients(clients);
+      }
+    );
+    //Listening fir leaving clientns 
+    socketRef.current.on(ACTIONS, DISCONNECTED, ({socketId, username})=>{
+      toast.success('${username} left the Playground');
 
-     }
-    // You can emit join action here
-      socketRef.current.emit(ACTIONS.JOIN, {
-        roomId,
-        username: location.state?.username
-      });
-    };
+    })
+  };
+
+
     init();
-  }, [location.state?.username]);
+  }, []);
 
-  const [clients, setClients] = useState([
-    { socketId: 1, username: "Pratyush" },
-    { socketId: 2, username: "Rishit" },
-    { socketId: 1, username: "Pratyush" },
-    { socketId: 2, username: "Rishit" },
-    { socketId: 1, username: "Pratyush" },
-    { socketId: 2, username: "Rishit" },
-    { socketId: 1, username: "Pratyush" },
-    { socketId: 2, username: "Rishit" },
-    { socketId: 1, username: "Pratyush" }
-  ]);
+  const handleErrors = (error) => {
+    console.log('socket error', error);
+    toast.error("Socket Connection Failed, try again later");
+    reactNavigator('/')
+  };
 
-  if(!location.state){
-    return <Navigate to="/"/>;
+  if (!location.state) {
+    return <Navigate to="/" />;
   }
 
   return (

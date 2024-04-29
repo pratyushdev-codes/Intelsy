@@ -13,51 +13,61 @@ function EditorPage() {
   const reactNavigator = useNavigate();
 
   const [clients, setClients] = useState([]);
+
   useEffect(() => {
-  const init = async () => {
-    socketRef.current = await initSocket();
-    socketRef.current.on('connect_error', (err) => handleErrors(err));
-    socketRef.current.on('connect_failed', (err) => handleErrors(err));
+    const init = async () => {
+      try {
+        socketRef.current = await initSocket();
+        console.log('Socket initialized:', socketRef.current); // Debugging
 
-    socketRef.current.on(ACTIONS.JOINED, ({ clients, username, socketId }) => {
-      if (username !== location.state?.username) {
-        toast.success(`${username} joined the Playground`);
-        console.log(`${username} joined`);
-        // Update clients state array if necessary
+        socketRef.current.on('connect_error', (err) => handleErrors(err));
+        socketRef.current.on('connect_failed', (err) => handleErrors(err));
+
+        socketRef.current.on(ACTIONS.JOINED, ({ clients, username, socketId }) => {
+          if (username !== location.state?.username) {
+            toast.success(`${username} joined the Playground`);
+            console.log(`${username} joined`);
+            // Update clients state array if necessary
+            setClients(clients);
+          }
+        });
+
+        // Listening for leaving clients
+        socketRef.current.on(ACTIONS.DISCONNECTED, ({ socketId, username }) => {
+          toast.success(`${username} left the Playground`);
+          setClients((prev) => {
+            return prev.filter((client) => client.socketId !== socketId);
+          });
+        });
+      } catch (error) {
+        console.error('Error initializing socket:', error); // Debugging
+        handleErrors(error);
       }
-        setClients(clients);
-      }
-    );
-    //Listening fir leaving clientns 
-    socketRef.current.on(ACTIONS, DISCONNECTED, ({socketId, username})=>{
-      toast.success('${username} left the Playground');
-      setClients((prev)=>{
-        return prev.filter(client => client.socketId !== socketId);
-      })
-
-    })
-  };
-
+    };
 
     init();
-    return ()=>{
-      socketRef.current.disconnect();
-      socketRef.current.off(ACTIONS.JOINED);
-      socketRef.current.off(ACTIONS.DISCONNECTED);
-       
-    }
-  }, []);
 
+    return () => {
+      if (socketRef.current) {
+        socketRef.current.disconnect();
+        socketRef.current.off(ACTIONS.JOINED);
+        socketRef.current.off(ACTIONS.DISCONNECTED);
+      } else {
+        console.log('Socket is not initialized yet.'); // Debugging
+      }
+    };
+  }, []);
 
   const handleErrors = (error) => {
     console.log('socket error', error);
     toast.error("Socket Connection Failed, try again later");
-    reactNavigator('/')
+    reactNavigator('/');
   };
 
   if (!location.state) {
     return <Navigate to="/" />;
   }
+
 
   return (
     <div className='mainWrap'>

@@ -17,6 +17,7 @@ import 'codemirror/addon/edit/closetag';
 
 const Editor = () => {
   const editorRef = useRef(null);
+
   useEffect(() => { 
     async function init() {
       editorRef.current = CodeMirror.fromTextArea(document.getElementById('realtimeEditor'), {
@@ -25,14 +26,19 @@ const Editor = () => {
         theme: '3024-night',
         autoCloseTags: true,
         autoCloseBrackets: true,
+        
       });
     }
     init();
   }, []);
-
+  // editorRef.current.on('change', (instance,changes)=>{
+  //   console.log('changes',changes)
+  //   const {origin}= changes;
+  // })
+editorRef.
   return (
     <textarea id="realtimeEditor">
-      {/* Initial content for the editor */}
+      
     </textarea>
   );
 };

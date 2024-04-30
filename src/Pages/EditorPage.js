@@ -8,35 +8,55 @@ import { Navigate, useLocation, useNavigate, useParams } from 'react-router-dom'
 
 function EditorPage() {
   const socketRef = useRef(null);
+  const codeRef = useRef(null); // Define codeRef
   const location = useLocation();
   const { roomId } = useParams();
   const reactNavigator = useNavigate();
+  const [clients, setClients] = useState([
+    { socketId: 1, username: "Pratyush" },
+  ]);
 
-  const [clients, setClients] = useState([]);
 
   useEffect(() => {
     const init = async () => {
       try {
         socketRef.current = await initSocket();
         console.log('Socket initialized:', socketRef.current); // Debugging
-
         socketRef.current.on('connect_error', (err) => handleErrors(err));
         socketRef.current.on('connect_failed', (err) => handleErrors(err));
 
-        socketRef.current.on(ACTIONS.JOINED, ({ clients, username, socketId }) => {
+
+        //Join
+        socketRef.current.emit(ACTIONS.JOIN, {
+          roomId,
+          username: location.state?.username,
+        });
+
+        // Listening for joined events
+        socketRef.current.on(ACTIONS.JOINED,
+           ({ clients, username, socketId }) => {
           if (username !== location.state?.username) {
             toast.success(`${username} joined the Playground`);
             console.log(`${username} joined`);
             // Update clients state array if necessary
-            setClients(clients);
+           
           }
+          setClients(clients);
+          // Emit SYNC_CODE action with the current code
+          socketRef.current.emit(ACTIONS.SYNC_CODE, {
+            code: codeRef.current, // Use codeRef here
+            socketId,
+          });
         });
 
         // Listening for leaving clients
-        socketRef.current.on(ACTIONS.DISCONNECTED, ({ socketId, username }) => {
+        socketRef.current.on(
+          ACTIONS.DISCONNECTED, 
+          ({ socketId, username }) => {
           toast.success(`${username} left the Playground`);
           setClients((prev) => {
-            return prev.filter((client) => client.socketId !== socketId);
+            return prev.filter(
+              (client) => client.socketId !== socketId);
           });
         });
       } catch (error) {
@@ -57,7 +77,7 @@ function EditorPage() {
         console.log('Socket is not initialized yet.'); // Debugging
       }
     };
-  }, []);
+  }, [roomId, location.state?.username]);
 
   const handleErrors = (error) => {
     console.log('socket error', error);
@@ -81,6 +101,7 @@ function EditorPage() {
             />
             <h3 style={{ color: "grey" }}>
               <span style={{ color: "white", fontWeight: "bold" }}>Your Playground is ready </span><br />
+
               <span style={{ fontSize: "20px" }}>Start developing !</span>
             </h3>
             <br />
@@ -106,7 +127,7 @@ function EditorPage() {
         <button type="button" className='btn leaveBtn' style={{ backgroundColor: "#036EFD", borderRadius: "20px", color: "white" }}>Leave Room</button>
       </div>
       <div className='editorWrap'>
-        <Editor socketRef={socketRef} roomId={roomId} />
+        <Editor socketRef={socketRef} roomId={roomId} codeRef={codeRef} />
       </div>
     </div>
   );

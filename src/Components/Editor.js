@@ -31,6 +31,9 @@ const Editor = ({ socketRef, roomId }) => {
           autoCloseBrackets: true,
         }
       );
+     
+       
+      
 
       editorRef.current.on('change', (instance, changes) => {
         const { origin } = changes;
@@ -39,33 +42,30 @@ const Editor = ({ socketRef, roomId }) => {
           socketRef.current.emit(ACTIONS.CODE_CHANGE, {
             roomId,
             code,
-          });
+        });
         }
-        console.log(code);
+      });
+    };
+    init();
+    // Clean up event listener
+  }, []);
+
+  useEffect(()=>{
+    if(socketRef.current){
+      socketRef.current.on(ACTIONS.CODE_CHANGE, ({ code }) => {
+       
+        if (code !== null) {
+
+          editorRef.current.setValue(code);
+        }
       });
 
-      if (socketRef.current) {
-        socketRef.current.on(ACTIONS.CODE_CHANGE, ({ code }) => {
-          console.log('receiving', code);
-          if (code !== null) {
-            editorRef.current.setValue(code);
-          }
-        });
-      }
-    };
-
-    init();
-
-    // Clean up event listeners
+    }
     return () => {
-      if (editorRef.current) {
-        editorRef.current.off('change');
-      }
-      if (socketRef.current) {
-        socketRef.current.off(ACTIONS.CODE_CHANGE);
-      }
-    };
-  }, [roomId, socketRef]);
+      socketRef.current.off(ACTIONS.CODE_CHANGE);
+  };
+ 
+  }, [socketRef.current]);
 
   return <textarea id="realtimeEditor"></textarea>;
 };

@@ -3,7 +3,7 @@ const app = express();
 const http = require('http');
 const path = require('path');
 const { Server } = require('socket.io');
-const ACTIONS = require('./src/Action');
+const ACTIONS = require('./src/Action')
 
 const server = http.createServer(app);
 const io = new Server(server);
@@ -26,7 +26,7 @@ function getAllConnectedClients(roomId) {
     );
 }
 
-io.on('connection', (socket) => {
+io.on('connection', (socket) => { 
     console.log('socket connected', socket.id);
 
     socket.on(ACTIONS.JOIN, ({ roomId, username }) => {
@@ -39,6 +39,7 @@ io.on('connection', (socket) => {
                 username,
                 socketId: socket.id,
             });
+           
         });
     });
 

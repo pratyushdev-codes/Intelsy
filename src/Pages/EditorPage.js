@@ -106,7 +106,7 @@ function EditorPage() {
         <button type="button" className='btn leaveBtn' style={{ backgroundColor: "#036EFD", borderRadius: "20px", color: "white" }}>Leave Room</button>
       </div>
       <div className='editorWrap'>
-        <Editor />
+        <Editor socketRef={socketRef} roomId={roomId} />
       </div>
     </div>
   );

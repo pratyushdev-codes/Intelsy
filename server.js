@@ -36,6 +36,11 @@ io.on('connection', (socket) => {
         });
     });
 
+    socket.on(ACTIONS.CODE_ONCHANGE, ({roomId, code})=>{
+        io.to(roomId).emit(ACTIONS.CODE_CHANGE, {code});
+
+    });
+
     socket.on('disconnect', () => { // Corrected 'diconnecting' to 'disconnect'
         const rooms = [...socket.rooms];
         rooms.forEach((roomId) => { // Corrected syntax for forEach

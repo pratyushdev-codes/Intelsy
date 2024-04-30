@@ -34,10 +34,19 @@ const Editor = ({socketRef, roomId}) => {
         console.log('changes',changes)
         const {origin}= changes;
         const code = instance.getValue();
-        if(origin!= 'setValue'){
+        if(origin!=='setValue'){
+           console.log("Wokring", code);
               socketRef.current.emit(ACTIONS.CODE_CHANGE,{
-                roomId
+                roomId,
+                code,
+  
               });
+        }
+        console.log(code);
+      });
+      socketRef.current.on(ACTIONS.CODE_CHANGE,({code})=>{
+        if(code!=null){
+          editorRef.current.setValue(code);
         }
       })
     }
@@ -47,7 +56,7 @@ const Editor = ({socketRef, roomId}) => {
 
   return (
     <textarea id="realtimeEditor">
-       <Editor socketRef={socketRef.current} roomId={roomId}/>
+       return <textarea id="realtimeEditor"></textarea>;
     </textarea>
   );
 };

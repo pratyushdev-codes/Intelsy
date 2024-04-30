@@ -55,11 +55,11 @@ const Editor = ({socketRef, roomId}) => {
   }, []);
 
 
-  return (
-    <textarea id="realtimeEditor">
+
+    
        return <textarea id="realtimeEditor"></textarea>;
-    </textarea>
-  );
+
+
 };
 
 export default Editor;

@@ -57,7 +57,7 @@ function EditorPage() {
         console.log('Socket is not initialized yet.'); // Debugging
       }
     };
-  }, [roomId, location.state, reactNavigator]);
+  }, []);
 
   const handleErrors = (error) => {
     console.log('socket error', error);

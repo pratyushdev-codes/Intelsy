@@ -35,7 +35,7 @@ const Editor = ({socketRef, roomId}) => {
         const {origin}= changes;
         const code = instance.getValue();
         if(origin!=='setValue'){
-           console.log("Wokring", code);
+   
               socketRef.current.emit(ACTIONS.CODE_CHANGE,{
                 roomId,
                 code,
@@ -45,6 +45,7 @@ const Editor = ({socketRef, roomId}) => {
         console.log(code);
       });
       socketRef.current.on(ACTIONS.CODE_CHANGE,({code})=>{
+        console.log('recieveing', code);
         if(code!=null){
           editorRef.current.setValue(code);
         }

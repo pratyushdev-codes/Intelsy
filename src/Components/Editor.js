@@ -14,8 +14,10 @@ import 'codemirror/theme/xq-dark.css';
 import 'codemirror/theme/3024-night.css';
 import 'codemirror/addon/edit/closebrackets';
 import 'codemirror/addon/edit/closetag';
+import { Socket } from 'socket.io-client';
+import ACTIONS from '../Action';
 
-const Editor = () => {
+const Editor = ({socketRef, roomId}) => {
   const editorRef = useRef(null);
 
   useEffect(() => { 
@@ -28,17 +30,24 @@ const Editor = () => {
         autoCloseBrackets: true,
         
       });
+      editorRef.current.on('change', (instance,changes)=>{
+        console.log('changes',changes)
+        const {origin}= changes;
+        const code = instance.getValue();
+        if(origin!= 'setValue'){
+              socketRef.current.emit(ACTIONS.CODE_CHANGE,{
+                roomId
+              });
+        }
+      })
     }
     init();
   }, []);
-  // editorRef.current.on('change', (instance,changes)=>{
-  //   console.log('changes',changes)
-  //   const {origin}= changes;
-  // })
-editorRef.
+
+
   return (
     <textarea id="realtimeEditor">
-      
+       <Editor socketRef={socketRef.current} roomId={roomId}/>
     </textarea>
   );
 };

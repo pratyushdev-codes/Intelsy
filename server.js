@@ -38,19 +38,17 @@ io.on('connection', (socket) => {
 
     socket.on(ACTIONS.CODE_ONCHANGE, ({roomId, code})=>{
         io.to(roomId).emit(ACTIONS.CODE_CHANGE, {code});
-
     });
 
-    socket.on('disconnect', () => { // Corrected 'diconnecting' to 'disconnect'
-        const rooms = [...socket.rooms];
-        rooms.forEach((roomId) => { // Corrected syntax for forEach
-            socket.in(roomId).emit(ACTIONS.DISCONNECTED, { // Corrected syntax for emit
+    socket.on('disconnect', () => {
+        socket.rooms.forEach((roomId) => {
+            socket.to(roomId).emit(ACTIONS.DISCONNECTED, {
                 socketId: socket.id,
-                username: userSocketMap[socket.id] // Corrected semicolon to comma
+                username: userSocketMap[socket.id]
             });
         });
-        delete userSocketMap[socket.id]; // Corrected syntax for deleting property
-        socket.leaveAll(); // Corrected syntax for leaving all rooms
+        delete userSocketMap[socket.id];
+        socket.leaveAll();
     });
 });
 

@@ -15,6 +15,7 @@ import 'codemirror/theme/3024-night.css';
 import 'codemirror/addon/edit/closebrackets';
 import 'codemirror/addon/edit/closetag';
 import ACTIONS from '../Action';
+import AccessibilityBar from './AccessibilityBar';
 
 const Editor = ({ socketRef, roomId }) => {
   const editorRef = useRef(null);
@@ -48,24 +49,25 @@ const Editor = ({ socketRef, roomId }) => {
     };
     init();
     // Clean up event listener
-  }, []);
+  }, [roomId, socketRef]);
 
-  useEffect(()=>{
-    if(socketRef.current){
+  useEffect(() => {
+    if (socketRef.current) {
       socketRef.current.on(ACTIONS.CODE_CHANGE, ({ code }) => {
-       
         if (code !== null) {
-
           editorRef.current.setValue(code);
         }
       });
-
     }
+  
     return () => {
-      socketRef.current.off(ACTIONS.CODE_CHANGE);
-  };
- 
+      if (socketRef.current) {
+        socketRef.current.off(ACTIONS.CODE_CHANGE);
+      }
+    };
   }, [socketRef.current]);
+ 
+
 
   return <textarea id="realtimeEditor"></textarea>;
 };

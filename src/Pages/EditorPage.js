@@ -5,6 +5,9 @@ import Editor from '../Components/Editor';
 import { initSocket } from '../Socket';
 import ACTIONS from '../Action';
 import { Navigate, useLocation, useNavigate, useParams } from 'react-router-dom';
+import AccessibilityBar from '../Components/AccessibilityBar';
+import Navbar from '../Navbar';
+
 
 function EditorPage() {
   const socketRef = useRef(null);
@@ -13,7 +16,7 @@ function EditorPage() {
   const { roomId } = useParams();
   const reactNavigator = useNavigate();
   const [clients, setClients] = useState([
-    { socketId: 1, username: "Pratyush" },
+    { socketId: 1, username: "Intelsy AI" },
   ]);
 
 
@@ -90,7 +93,12 @@ function EditorPage() {
   }
 
   return (
+    <>
+    <AccessibilityBar/>
+  
     <div className='mainWrap'>
+      
+
       <div className='aside'>
         <div className='asideInner'>
           <div className="logo">
@@ -105,7 +113,7 @@ function EditorPage() {
               <span style={{ fontSize: "20px" }}>Start developing !</span>
             </h3>
             <br />
-            <h3 style={{ color: "#036EFD", fontSize: "22px", fontWeight: "bold" }}>Playground Players</h3>
+            <h3 style={{ color: "#036EFD", fontSize: "22px", fontWeight: "bold" }}>Playground Players </h3>
             <div className="clientsList">
               {clients.map((client) => (
                 <Client
@@ -124,12 +132,16 @@ function EditorPage() {
           boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)"
         }}>Copy Room Id</button>
 
+
+
         <button type="button" className='btn leaveBtn' style={{ backgroundColor: "#036EFD", borderRadius: "20px", color: "white" }}>Leave Room</button>
       </div>
       <div className='editorWrap'>
+       
         <Editor socketRef={socketRef} roomId={roomId} codeRef={codeRef} />
       </div>
     </div>
+    </>
   );
 }
 

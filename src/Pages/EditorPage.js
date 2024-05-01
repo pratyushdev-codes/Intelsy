@@ -94,13 +94,15 @@ function EditorPage() {
 
   return (
     <>
-    <AccessibilityBar/>
-  
+
     <div className='mainWrap'>
-      
+   
+ 
 
       <div className='aside'>
+      
         <div className='asideInner'>
+      
           <div className="logo">
             <img
               className='logoImage'
@@ -137,7 +139,10 @@ function EditorPage() {
         <button type="button" className='btn leaveBtn' style={{ backgroundColor: "#036EFD", borderRadius: "20px", color: "white" }}>Leave Room</button>
       </div>
       <div className='editorWrap'>
-       
+     
+      <div className='topBar'>
+        hello
+      </div>
         <Editor socketRef={socketRef} roomId={roomId} codeRef={codeRef} />
       </div>
     </div>

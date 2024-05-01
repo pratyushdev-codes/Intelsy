@@ -99,6 +99,15 @@ footer a:hover {
   grid-template-columns: 300px 1fr;
 }
 
+.topBar{
+  background:white;
+  padding: 16px;
+  display: flex;
+  flex-direction: row;
+  height: 5vh
+  
+}
+
 .aside {
   background:#212121;
   padding: 16px;
@@ -163,10 +172,17 @@ footer a:hover {
 .editorWrap {
   background-color: black;
 
+
 }
 
 
 .CodeMirror cm-s-dracula{
   background-color: black;
+
+
+}
+
+.realtimeEditor{
+  margin-top: 100rem;
 
 }

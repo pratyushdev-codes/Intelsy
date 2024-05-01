@@ -2,8 +2,8 @@ import React from 'react';
 
 const AccessibilityBar = () => {
   return (
-    <div style={{ zIndex: 9999 , marginTop:"1rem"}}>
-      <nav className="navbar navbar-expand-lg bg-body-tertiary" style={{borderRadius:"30px", width:"50vh", height:"7vh"}}>
+    <div style={{ zIndex: 9999, marginTop: "1rem", display: "flex", justifyContent: "center" }}>
+       <nav className="navbar navbar-expand-lg bg-body-tertiary" style={{ borderRadius: "30px", width: "50vh", height: "7vh", boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)" }}>
         <div className="container-fluid">
           <a className="navbar-brand" href="#" style={{color: "#036EFD", fontSize: "20px", fontWeight: "bold" }}>Accessibility <span style={{color:"#EC7A6F"}}>Bar</span></a>
           &nbsp;  &nbsp;  &nbsp;
@@ -13,15 +13,15 @@ const AccessibilityBar = () => {
 
 
             <li className="nav-item">
-                <a className="nav-link"><img src="./images/camera2.png"  style={{width:"45px", height:"40px"}}/></a>
+                <a className="nav-link"><img src="https://iili.io/JgM3x0x.png"  style={{width:"45px", height:"40px"}}/></a>
               </li>
               <li className="nav-item">
-                <a className="nav-link " aria-current="page" ><img src="../images/pen1.png"  style={{width:"45px", height:"40px"}}></img></a>
+                <a className="nav-link " aria-current="page" ><img src="https://iili.io/JgM3TJV.md.png"  style={{width:"45px", height:"40px"}}></img></a>
               </li>
              &nbsp;
               
               <li className="nav-item">
-                <a className="nav-link"><img src="../images/eraser2.png"  style={{width:"40px", height:"40px"}}/></a>
+                <a className="nav-link"><img src="https://iili.io/JgM3zUQ.png"  style={{width:"40px", height:"40px"}}/></a>
               </li>
              
               

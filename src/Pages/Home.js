@@ -130,7 +130,7 @@ function Home() {
       <style>{styles}</style>
       
       <Navbar/>
-      <AccessibilityBar/>
+      {/* <AccessibilityBar/> */}
       <br/>
       <br/>
       <br/>

@@ -4,7 +4,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './Pages/Home';
 import EditorPage from './Pages/EditorPage';
 import { Toaster } from 'react-hot-toast';
-
+import AccessibilityBar from './Components/AccessibilityBar';// Import your AccessibilityTab component
 
 function App() {
   return (
@@ -23,15 +23,24 @@ function App() {
       </div>
 
       <BrowserRouter>
-      {/* Render Navbar component here */}
         <Routes>
           <Route path='/' element={<Home />} />
-          <Route path='/editor/:roomId' element={<EditorPage />} />
+          <Route path='/editor/:roomId' element={<EditorPageWithAccessibilityTab />} />
         </Routes>
       </BrowserRouter>
 
     </>
   );
 }
+
+// Define a new component that includes EditorPage and AccessibilityTab
+const EditorPageWithAccessibilityTab = () => {
+  return (
+    <>
+      <EditorPage />
+      <AccessibilityBar  />
+    </>
+  );
+};
 
 export default App;

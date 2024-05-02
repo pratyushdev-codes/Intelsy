@@ -29,7 +29,7 @@ function AiAPI() {
     <div style={{ backgroundColor: "#0D1117" , height:"80vh", borderRadius:"20px"}}>
       <form
         onSubmit={generateAnswer}
-        className="w-full md:w-2/3 mx-auto text-center rounded bg-gray-50 py-2"
+        className="w-full md:w-2/3 mx-auto text-center bg-gray-50 py-2"
       >
 <textarea
   required
@@ -42,9 +42,11 @@ function AiAPI() {
     color: "#036EFD",
     fontSize: "19px",
     width: "90%",
+    borderRadius: "50px", // Adding border radius
     boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)" // Adding box shadow
   }}
 ></textarea>
+
 
 
         <button
@@ -62,7 +64,7 @@ function AiAPI() {
           {loading ? "Generating..." : "Generate Answer"}
         </button>
       </form>
-      <div className="w-full md:w-2/3 mx-auto text-left rounded bg-gray-50 my-1" style={{backgroundColor:"#036EFD", height:"50%",width:"90%", borderRadius:"40px"}}>
+      <div className="w-full md:w-2/3 mx-auto text-left  bg-gray-50 my-1" style={{backgroundColor:"#036EFD", height:"50%",width:"90%", borderRadius:"20px"}}>
         <ReactMarkdown className="p-3">{answer}</ReactMarkdown>
       </div>
     </div>

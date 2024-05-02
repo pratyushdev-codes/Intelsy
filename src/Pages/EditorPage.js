@@ -96,7 +96,12 @@ function EditorPage() {
     <>
 
     <div className='mainWrap'>
-   
+    <div className='rightAside'>
+        hello this is AI Chat Bot asdhnjksah
+      </div>
+      <div className='bottomCenter'>
+        Hello this is compiler
+      </div>
  
 
       <div className='aside'>
@@ -139,9 +144,13 @@ function EditorPage() {
         <button type="button" className='btn leaveBtn' style={{ backgroundColor: "#036EFD", borderRadius: "20px", color: "white" }}>Leave Room</button>
       </div>
       <div className='editorWrap'>
-     
       <div className='topBar'>
-        hello
+          <AccessibilityBar />
+        </div>
+     
+   
+      <div className='bottomCenter'>
+        Hello this is compiler
       </div>
         <Editor socketRef={socketRef} roomId={roomId} codeRef={codeRef} />
       </div>

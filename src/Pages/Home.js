@@ -5,7 +5,8 @@ import Download from '../HomePageFooter';
 import { v4 as uuidv4 } from 'uuid'; // Corrected import
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom'; // Corrected import
-import AccessibilityBar from '../Components/AccessibilityBar';
+import AiAPI from '../Components/aiAPI';
+
 
 function Home() {
   const navigate = useNavigate(); // Corrected useNavigate declaration
@@ -193,14 +194,18 @@ function Home() {
           <br/>
           <br/>
           <br/>
+        
           <br/>
           <br/>
           <br/>
           <br/>
           <br/>
           <br/>
+
+       
           <Download/>
         </center>
+   <AiAPI/>
       </div>
     </div>
   );

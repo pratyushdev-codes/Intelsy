@@ -7,6 +7,7 @@ import ACTIONS from '../Action';
 import { Navigate, useLocation, useNavigate, useParams } from 'react-router-dom';
 import AccessibilityBar from '../Components/AccessibilityBar';
 import Navbar from '../Navbar';
+import AiAPI from '../Components/aiAPI';
 
 
 function EditorPage() {
@@ -105,7 +106,7 @@ function EditorPage() {
 
             </h3>
             <div className='aisearchSpace'>
-
+              <AiAPI/>
             </div>
         </div>
       </div>

@@ -26,28 +26,43 @@ function AiAPI() {
   }
 
   return (
-    <div style={{backgroundColor:"#0D1117"}}>
+    <div style={{ backgroundColor: "#0D1117" , height:"80vh", borderRadius:"20px"}}>
       <form
         onSubmit={generateAnswer}
-        className="w-full md:w-2/3 m-auto text-center rounded bg-gray-50 py-2"
+        className="w-full md:w-2/3 mx-auto text-center rounded bg-gray-50 py-2"
       >
-        
-        <textarea
-          required
-          className="border rounded w-11/12 my-2 min-h-fit p-3"
-          value={question}
-          onChange={(e) => setQuestion(e.target.value)}
-          placeholder="Ask anything"
-        ></textarea>
+<textarea
+  required
+  className="border rounded w-11/12 my-2 p-3"
+  value={question}
+  onChange={(e) => setQuestion(e.target.value)}
+  placeholder="Ask anything."
+  style={{
+    fontFamily: "PT sans",
+    color: "#036EFD",
+    fontSize: "19px",
+    width: "90%",
+    boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)" // Adding box shadow
+  }}
+></textarea>
+
+
         <button
           type="submit"
-          className="bg-blue-300 p-3 rounded-md hover:bg-blue-400 transition-all duration-300"
+          className="btn btn-glow mx-2"
+          style={{
+            borderRadius: "20px",
+            backgroundColor: "#EFF3F6",
+            color: "#808080",
+            fontWeight: "bold",
+            width: "90%",
+          }}
           disabled={loading}
         >
           {loading ? "Generating..." : "Generate Answer"}
         </button>
       </form>
-      <div className="w-full md:w-2/3 m-auto text-center rounded bg-gray-50 my-1">
+      <div className="w-full md:w-2/3 mx-auto text-left rounded bg-gray-50 my-1" style={{backgroundColor:"#036EFD", height:"50%",width:"90%", borderRadius:"40px"}}>
         <ReactMarkdown className="p-3">{answer}</ReactMarkdown>
       </div>
     </div>

@@ -112,15 +112,34 @@ footer a:hover {
 }
 
 .rightAside {
-  background:#000000;
+  background:#212121;
   padding: 16px;
   color: #fff;
+  width: 35vh;
   position: fixed; /* or use position: absolute; */
   top: 0; /* Adjust top positioning if needed */
   right: 0; /* Positioning the div to the right */
   height: 100vh; /* Take up remaining vertical space */
   border-bottom-left-radius: 20px; /* Adjust border-radius for the left side */
   border-top-left-radius: 20px; /* Adjust border-radius for the left side */
+}
+
+
+.rightasideInner{
+  flex: 1;
+}
+
+
+.aisearchSpace{
+  
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  background-color:#1B1C1E;
+  border-radius: 20px;
+  height: 70vh;
+
 }
 
 .bottomCenter {

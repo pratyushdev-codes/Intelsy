@@ -16,7 +16,7 @@ function EditorPage() {
   const { roomId } = useParams();
   const reactNavigator = useNavigate();
   const [clients, setClients] = useState([
-    { socketId: 1, username: "Intelsy AI" },
+    
   ]);
 
 
@@ -56,7 +56,7 @@ function EditorPage() {
         socketRef.current.on(
           ACTIONS.DISCONNECTED, 
           ({ socketId, username }) => {
-          toast.success(`${username} left the Playground`);
+          toast.error(`${username} left the Playground`);
           setClients((prev) => {
             return prev.filter(
               (client) => client.socketId !== socketId);
@@ -97,7 +97,17 @@ function EditorPage() {
 
     <div className='mainWrap'>
     <div className='rightAside'>
-        hello this is AI Chat Bot asdhnjksah
+        <div className='rightasideInner'>
+        <h3 style={{ color: "grey" }}>
+              <span style={{ color: "white", fontWeight: "bold" }}>Intelsy <span style={{ color: "#036EFD"}} >AI</span> </span><br />
+
+              <span style={{ fontSize: "20px" }}>Transform your coding experience. </span>
+
+            </h3>
+            <div className='aisearchSpace'>
+
+            </div>
+        </div>
       </div>
       <div className='bottomCenter'>
         Hello this is compiler

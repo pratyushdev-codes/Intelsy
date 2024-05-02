@@ -105,9 +105,9 @@ function EditorPage() {
               <span style={{ fontSize: "20px" }}>Transform your coding experience. </span>
 
             </h3>
-            <div className='aisearchSpace'>
+          
               <AiAPI/>
-            </div>
+            
         </div>
       </div>
       <div className='bottomCenter'>

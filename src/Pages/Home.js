@@ -5,7 +5,7 @@ import Download from '../HomePageFooter';
 import { v4 as uuidv4 } from 'uuid'; // Corrected import
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom'; // Corrected import
-import AiAPI from '../Components/aiAPI';
+
 
 
 function Home() {
@@ -205,7 +205,7 @@ function Home() {
        
           <Download/>
         </center>
-   <AiAPI/>
+
       </div>
     </div>
   );

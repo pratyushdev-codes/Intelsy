@@ -26,6 +26,7 @@ class Container extends React.Component {
     render() {
         return (
             <div className="container" style={{ zIndex: 99999 }}> {/* Set highest possible z-index */}
+                <button className="close-button" onClick={this.props.onClose} style={{backgroundColor:"black"}}>❌</button> {/* Close button */}
                 <div className="tools-section">
                     <div className="color-picker-container">
                         Select Brush Color : &nbsp; 

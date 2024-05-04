@@ -8,6 +8,7 @@ import { Navigate, useLocation, useNavigate, useParams } from 'react-router-dom'
 import AccessibilityBar from '../Components/AccessibilityBar';
 import Navbar from '../Navbar';
 import AiAPI from '../Components/aiAPI';
+import Container from '../Components/Container/Container';
 
 
 function EditorPage() {
@@ -162,6 +163,7 @@ function EditorPage() {
    
       <div className='bottomCenter'>
         Hello this is compiler
+        <Container/>
       </div>
         <Editor socketRef={socketRef} roomId={roomId} codeRef={codeRef} />
       </div>

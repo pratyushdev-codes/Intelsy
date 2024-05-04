@@ -1,4 +1,5 @@
 import React from 'react'
+import Container from '../Components/Container/Container'
 
 function Download() {
     const HeadingStyle={
@@ -14,6 +15,8 @@ function Download() {
    
     
         <button type="button" class="btn btn-light" style={{backgroundColor:"white", borderRadius:"20px", width:"14rem", fontWeight:"bold"}}>Download Now</button>
+
+
         <br/>
         <br/>
         <br/>

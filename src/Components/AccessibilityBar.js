@@ -1,6 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
+import Container from './Container/Container';
 
 const AccessibilityBar = () => {
+  const [isEditorOpen, setIsEditorOpen] = useState(false);
+
+  const openEditor = () => {
+    setIsEditorOpen(true);
+  };
+
+  const closeEditor = () => {
+    setIsEditorOpen(false);
+  };
+
   return (
     <div style={{ zIndex: 9999, marginTop: "1rem", display: "flex", justifyContent: "center" }}>
        <nav className="navbar navbar-expand-lg bg-body-tertiary" style={{ borderRadius: "30px", width: "50vh", height: "7vh", boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)" }}>
@@ -21,7 +32,7 @@ const AccessibilityBar = () => {
              &nbsp;
               
               <li className="nav-item">
-                <a className="nav-link"><img src="https://iili.io/JgM3zUQ.png"  style={{width:"40px", height:"40px"}}/></a>
+                <a className="nav-link"><img src="https://iili.io/JgM3zUQ.png" onClick={openEditor} style={{width:"40px", height:"40px"}}/></a>
               </li>
              
               
@@ -30,6 +41,7 @@ const AccessibilityBar = () => {
           </div>
         </div>
       </nav>
+      {isEditorOpen && <Container onClose={closeEditor} />}
     </div>
   );
 }

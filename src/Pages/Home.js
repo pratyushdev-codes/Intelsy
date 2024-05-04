@@ -5,6 +5,7 @@ import Download from '../HomePageFooter';
 import { v4 as uuidv4 } from 'uuid'; // Corrected import
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom'; // Corrected import
+import Container from '../Components/Container/Container';
 
 
 
@@ -202,7 +203,7 @@ function Home() {
           <br/>
           <br/>
 
-       
+        
           <Download/>
         </center>
 

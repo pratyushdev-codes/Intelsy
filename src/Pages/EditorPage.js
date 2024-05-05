@@ -6,21 +6,27 @@ import { initSocket } from '../Socket';
 import ACTIONS from '../Action';
 import { Navigate, useLocation, useNavigate, useParams } from 'react-router-dom';
 import AccessibilityBar from '../Components/AccessibilityBar';
-import Navbar from '../Navbar';
 import AiAPI from '../Components/aiAPI';
 import Container from '../Components/Container/Container';
-
+import html2canvas from 'html2canvas'; // Import html2canvas
 
 function EditorPage() {
+  const [editorScreenshot, setEditorScreenshot] = useState(null); // State to store screenshot data URL
+  const editorRef = useRef(null); // Define editorRef
   const socketRef = useRef(null);
   const codeRef = useRef(null); // Define codeRef
   const location = useLocation();
   const { roomId } = useParams();
   const reactNavigator = useNavigate();
-  const [clients, setClients] = useState([
-    
-  ]);
-
+  const [clients, setClients] = useState([]);
+  
+  // Function to take a screenshot of the editor component
+  const snapShot = () => {
+    html2canvas(editorRef.current).then(canvas => {
+      // Set the screenshot data URL to the state
+      setEditorScreenshot(canvas.toDataURL());
+    });
+  };
 
   useEffect(() => {
     const init = async () => {
@@ -38,13 +44,11 @@ function EditorPage() {
         });
 
         // Listening for joined events
-        socketRef.current.on(ACTIONS.JOINED,
-           ({ clients, username, socketId }) => {
+        socketRef.current.on(ACTIONS.JOINED, ({ clients, username, socketId }) => {
           if (username !== location.state?.username) {
             toast.success(`${username} joined the Playground`);
             console.log(`${username} joined`);
             // Update clients state array if necessary
-           
           }
           setClients(clients);
           // Emit SYNC_CODE action with the current code
@@ -55,13 +59,10 @@ function EditorPage() {
         });
 
         // Listening for leaving clients
-        socketRef.current.on(
-          ACTIONS.DISCONNECTED, 
-          ({ socketId, username }) => {
+        socketRef.current.on(ACTIONS.DISCONNECTED, ({ socketId, username }) => {
           toast.error(`${username} left the Playground`);
-          setClients((prev) => {
-            return prev.filter(
-              (client) => client.socketId !== socketId);
+          setClients(prev => {
+            return prev.filter(client => client.socketId !== socketId);
           });
         });
       } catch (error) {
@@ -84,9 +85,9 @@ function EditorPage() {
     };
   }, [roomId, location.state?.username]);
 
-  const handleErrors = (error) => {
+  const handleErrors = error => {
     console.log('socket error', error);
-    toast.error("Socket Connection Failed, try again later");
+    toast.error('Socket Connection Failed, try again later');
     reactNavigator('/');
   };
 
@@ -96,78 +97,73 @@ function EditorPage() {
 
   return (
     <>
-
-    <div className='mainWrap'>
-    <div className='rightAside'>
-        <div className='rightasideInner'>
-        <h3 style={{ color: "grey" }}>
-              <span style={{ color: "white", fontWeight: "bold" }}>Intelsy <span style={{ color: "#036EFD"}} >AI</span> </span><br />
-
-              <span style={{ fontSize: "20px" }}>Transform your coding experience. </span>
-
+      <div className='mainWrap'>
+        <div className='rightAside'>
+          <div className='rightasideInner'>
+            <h3 style={{ color: 'grey' }}>
+              <span style={{ color: 'white', fontWeight: 'bold' }}>
+                Intelsy <span style={{ color: '#036EFD' }}>AI</span>
+              </span>
+              <br />
+              <span style={{ fontSize: '20px' }}>
+                Transform your coding experience.
+              </span>
             </h3>
-          
-              <AiAPI/>
-            
-        </div>
-      </div>
-      <div className='bottomCenter'>
-        Hello this is compiler
-      </div>
- 
-
-      <div className='aside'>
-      
-        <div className='asideInner'>
-      
-          <div className="logo">
-            <img
-              className='logoImage'
-              src="../images/logo.png"
-              alt="Logo"
-            />
-            <h3 style={{ color: "grey" }}>
-              <span style={{ color: "white", fontWeight: "bold" }}>Your Playground is ready </span><br />
-
-              <span style={{ fontSize: "20px" }}>Start developing !</span>
-            </h3>
-            <br />
-            <h3 style={{ color: "#036EFD", fontSize: "22px", fontWeight: "bold" }}>Playground Players </h3>
-            <div className="clientsList">
-              {clients.map((client) => (
-                <Client
-                  key={client.socketId}
-                  username={client.username}
-                />
-              ))}
-            </div>
+            <AiAPI />
           </div>
         </div>
-        <button type="button" className='btn copyBtn' style={{
-          background: "rgb(157,86,224)",
-          background: "radial-gradient(circle, rgba(157,86,224,1) 0%, rgba(253,130,85,1) 100%)",
-          borderRadius: "20px",
-          color: "white",
-          boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)"
-        }}>Copy Room Id</button>
+        <div className='bottomCenter'>Hello this is compiler</div>
 
+        <div className='aside'>
+          <div className='asideInner'>
+            <div className='logo'>
+              <img
+                className='logoImage'
+                src="../images/logo.png"
+                alt="Logo"
+              />
+              <h3 style={{ color: 'grey' }}>
+                <span style={{ color: 'white', fontWeight: 'bold' }}>
+                  Your Playground is ready
+                </span>
+                <br />
+                <span style={{ fontSize: '20px' }}>Start developing !</span>
+              </h3>
+              <br />
+              <h3 style={{ color: '#036EFD', fontSize: '22px', fontWeight: 'bold' }}>
+                Playground Players
+              </h3>
+              <div className="clientsList">
+                {clients.map((client) => (
+                  <Client
+                    key={client.socketId}
+                    username={client.username}
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
+          <button type="button" className='btn copyBtn' style={{
+            background: "rgb(157,86,224)",
+            background: "radial-gradient(circle, rgba(157,86,224,1) 0%, rgba(253,130,85,1) 100%)",
+            borderRadius: "20px",
+            color: "white",
+            boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)"
+          }}>Copy Room Id</button>
 
-
-        <button type="button" className='btn leaveBtn' style={{ backgroundColor: "#036EFD", borderRadius: "20px", color: "white" }}>Leave Room</button>
-      </div>
-      <div className='editorWrap'>
-      <div className='topBar'>
-          <AccessibilityBar />
+          <button type="button" className='btn leaveBtn' style={{ backgroundColor: "#036EFD", borderRadius: "20px", color: "white" }}>Leave Room</button>
         </div>
-     
-   
-      <div className='bottomCenter'>
-        Hello this is compiler
-        <Container/>
+        <div className='editorWrap'>
+          <div className='topBar'>
+            <AccessibilityBar takeScreenshot={snapShot} />
+          </div>
+          <div className='bottomCenter'>
+            Hello this is compiler
+            <Container />
+          </div>
+          <Editor socketRef={socketRef} roomId={roomId} codeRef={codeRef} ref={editorRef} />
+        </div>
       </div>
-        <Editor socketRef={socketRef} roomId={roomId} codeRef={codeRef} />
-      </div>
-    </div>
     </>
   );
 }

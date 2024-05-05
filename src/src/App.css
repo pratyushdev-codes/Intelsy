@@ -154,7 +154,7 @@ footer a:hover {
 }
 .CodeMirror {
   min-height: calc(100vh - 20px);
-  font-size: 17px;
+  font-size: 10px;
   line-height: 1.6;
   padding-top: 20px;
 }
@@ -166,4 +166,5 @@ footer a:hover {
 
 .CodeMirror cm-s-dracula{
   background-color: black;
+  font-size: 17px;
 }

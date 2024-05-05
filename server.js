@@ -29,6 +29,11 @@ function getAllConnectedClients(roomId) {
 io.on('connection', (socket) => { 
     console.log('socket connected', socket.id);
 
+
+    socket.on('canvas-data', (data) => {
+        io.emit('canvas-data', data); // Emit to all connected clients
+    });
+
     socket.on(ACTIONS.JOIN, ({ roomId, username }) => {
         userSocketMap[socket.id] = username;
         socket.join(roomId);
@@ -39,6 +44,7 @@ io.on('connection', (socket) => {
                 username,
                 socketId: socket.id,
             });
+        
            
         });
     });

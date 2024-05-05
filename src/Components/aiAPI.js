@@ -33,19 +33,20 @@ function AiAPI() {
       >
 <textarea
   required
-  className="border rounded w-11/12 my-2 p-3"
   value={question}
   onChange={(e) => setQuestion(e.target.value)}
-  placeholder="Ask anything."
+  placeholder="  Ask anything. "
   style={{
+    width: "90%",
+    height:"15vh",
+    borderRadius: "20px", // Adding border radius
+    boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)", // Adding box shadow
+    fontSize: "18px", // Adjust the font size here
     fontFamily: "PT sans",
     color: "#036EFD",
-    fontSize: "19px",
-    width: "90%",
-    borderRadius: "50px", // Adding border radius
-    boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)" // Adding box shadow
   }}
 ></textarea>
+
 
 
 

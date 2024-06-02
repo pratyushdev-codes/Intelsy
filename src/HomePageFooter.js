@@ -1,4 +1,5 @@
 import React from 'react'
+import ReactPlayer from 'react-player'
 
 function Download() {
     const HeadingStyle={
@@ -14,15 +15,20 @@ function Download() {
    
     
         <button type="button" class="btn btn-light" style={{backgroundColor:"white", borderRadius:"20px", width:"14rem", fontWeight:"bold"}}>Download Now</button>
-        <br/>
-        <br/>
-        <br/>
+     
+
       
-       
-
-
-
-
+        <div className="video-wrapper">
+          <ReactPlayer
+            url='./images/3.mp4'
+            playing={true}
+            loop={true}
+            controls={false}
+            width="100%"
+            height="100%"
+            style={{ borderRadius: '20px' }}
+          />
+        </div>
 
 
     </div>

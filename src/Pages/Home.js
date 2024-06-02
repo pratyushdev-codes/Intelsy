@@ -2,12 +2,11 @@ import React, { useState } from 'react';
 import Navbar from '../Navbar';
 import Banner from '../Banner';
 import Download from '../HomePageFooter';
+import ReactPlayer from 'react-player'; // Corrected import
 import { v4 as uuidv4 } from 'uuid'; // Corrected import
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom'; // Corrected import
 import Container from '../Components/Container/Container';
-
-
 
 function Home() {
   const navigate = useNavigate(); // Corrected useNavigate declaration
@@ -34,7 +33,7 @@ function Home() {
       }
     });
   };
-  
+
   // Inline CSS for component styles
   const styles = `
     .center-text {
@@ -117,96 +116,182 @@ function Home() {
     .slider.round:before {
       border-radius: 50%;
     }
-  `;
 
-  const handleInputEnter=(e)=>{
-    console.log('event', e.code);
-    if(e.code==='Enter'){
-      joinRoom();
+    .responsive-video {
+      position: relative;
+      padding-top: 56.25%; /* 16:9 Aspect Ratio */
+      height: 0;
+      overflow: hidden;
+      max-width: 100%;
+      background: #000;
+      border-radius: 20px;
+      margin-top: 20px;
     }
 
-  }
+    .responsive-video iframe, .responsive-video video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .video-container {
+      position: relative;
+      width: 100%;
+      max-width: 100%;
+      background: #000;
+      border-radius: 20px;
+      overflow: hidden;
+    }
+
+    .video-text {
+      position: absolute;
+      top:  37%;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      color: white;
+      padding: 20px;
+      z-index: 1;
+    }
+
+    .video-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1;
+    }
+
+    .video-wrapper {
+      position: relative;
+      padding-top: 56.25%; /* 16:9 Aspect Ratio */
+      height: 0;
+      overflow: hidden;
+      max-width: 100%;
+      border-radius: 20px;
+      background: #000;
+    }
+
+    .video-wrapper iframe, .video-wrapper video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+    }
+  `;
+
+  const handleInputEnter = (e) => {
+    console.log('event', e.code);
+    if (e.code === 'Enter') {
+      joinRoom();
+    }
+  };
 
   return (
     <div>
       <style>{styles}</style>
-      
-      <Navbar/>
-      {/* <AccessibilityBar/> */}
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <h1 className="center-text" style={{fontFamily: "PT sans", color:"white", fontSize: "50px", fontWeight:"bold"}}>Blazing Fast <span style={{color:"#036EFD"}}>Development</span> and  <span style={{color:"#036EFD"}}>Integrations!</span></h1>
-       <h3 className="center-text" style={{fontFamily: "PT sans", fontSize: "20px",  color:"grey",fontWeight:"bolder"}}>Toggle the switch now and shift to faster code development.</h3>
-      <div>
-        <br/>
-       
-        <div className="switch-container">
-          <label className="switch">
-            <input type="checkbox"/>
-            <span className="slider round"></span>
-          </label>
+      <Navbar />
+      <div className="video-container">
+        <div className="video-text">
+          <h1 className="center-text" style={{ fontFamily: "PT sans", color: "white", fontSize: "50px", fontWeight: "bold" }}>
+            Blazing Fast <span style={{ color: "#036EFD" }}>Development</span> and <span style={{ color: "#036EFD" }}>Integrations!</span>
+          </h1>
+          <h3 className="center-text" style={{ fontFamily: "PT sans", fontSize: "20px", color: "grey", fontWeight: "bolder" }}>
+            Shift to faster code development.
+          </h3>
         </div>
-        <br/>
-        
-        <Banner/>
-        <br/>
-        <br/>
+        <div className="video-wrapper">
+          <ReactPlayer
+            url='./images/1.mp4'
+            playing={true}
+            loop={true}
+            controls={false}
+            width="100%"
+            height="100%"
+            style={{ borderRadius: '20px' }}
+          />
+        </div>
+      </div>
+      <div>
+       
+      <span><center></center></span>
+  
+        {/* <Banner /> */}
+        <br />
+        <br />
         <center>
-          <div style={{backgroundColor:"#1B1C1E", borderRadius:"20px",width:"100%", height:"30rem"}}>
-            <br/>
-            <h1 style={{ fontFamily: "PT sans", color: "#036EFD", fontSize: "50px", fontWeight: "bold" }} onClick={joinRoom}>Join a room</h1>
-            <h3 style={{fontFamily: "PT sans", color:"white", fontSize: "20px", fontWeight:"bold"}}>Paste Invitation ROOM ID</h3>
-            <br/>
+          <div style={{ backgroundColor: "#1B1C1E", borderRadius: "20px", width: "100%", height: "30rem" }}>
+            <br />
+            <h1 style={{ fontFamily: "PT sans", color: "#036EFD", fontSize: "50px", fontWeight: "bold" }} onClick={joinRoom}>
+              Join a room
+            </h1>
+            <h3 style={{ fontFamily: "PT sans", color: "white", fontSize: "20px", fontWeight: "bold" }}>
+              Paste Invitation ROOM ID
+            </h3>
+            <br />
             <div className="inputGroup">
               <center>
                 <input
-                    type="text"
-                    className="inputBox"
-                    placeholder="    Room ID"
-                    style={{borderRadius:"20px", width:"40%", height:"2.7rem",marginBottom:"10px", color:"grey"}}
-                    onChange={(e) => setRoomID(e.target.value)}
-                    value={roomId}
-                    onKeyUp={handleInputEnter}
+                  type="text"
+                  className="inputBox"
+                  placeholder="    Room ID"
+                  style={{ borderRadius: "20px", width: "40%", height: "2.7rem", marginBottom: "10px", color: "grey" }}
+                  onChange={(e) => setRoomID(e.target.value)}
+                  value={roomId}
+                  onKeyUp={handleInputEnter}
                 />
-                <br/>
+                <br />
                 <input
-                    type="text"
-                    className="inputBox"
-                    placeholder="    Username"
-                    style={{borderRadius:"20px", height:"2.7rem",  width:"40%"}}
-                    onChange={(e)=> setUsername(e.target.value)}
-                    value={username}
+                  type="text"
+                  className="inputBox"
+                  placeholder="    Username"
+                  style={{ borderRadius: "20px", height: "2.7rem", width: "40%" }}
+                  onChange={(e) => setUsername(e.target.value)}
+                  value={username}
                 />
-                <br/>
-                <br/>
-                <a onClick={createNewRoom} href=''> <h3 style={{fontFamily: "PT sans", color:"grey", fontSize: "20px", fontWeight:"bold"}}>Don't have an invite code? Create new Room</h3></a>
+                <br />
+                <br />
+                <a onClick={createNewRoom} href="">
+                  <h3 style={{ fontFamily: "PT sans", color: "grey", fontSize: "20px", fontWeight: "bold" }}>
+                    Don't have an invite code? Create new Room
+                  </h3>
+                </a>
               </center>
-              <br/>
-              <center> <button type="button" className="btn btn-primary" style={{borderRadius:"20px", width:"250px",}} onClick={joinRoom}>Join Room</button></center>
-             
+              <br />
+              <center>
+                <button
+                  type="button"
+                  className="btn btn-primary"
+                  style={{ borderRadius: "20px", width: "250px" }}
+                  onClick={joinRoom}
+                >
+                  Join Room
+                </button>
+              </center>
             </div>
-            <br/>
-            <img src='./images/1.jpeg' className="img-fluid" style={{borderRadius:"20px"}}/>
+            <br />
+            <img src='./images/1.jpeg' className="img-fluid" style={{ borderRadius: "20px" }} />
           </div>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-        
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-
-        
-          <Download/>
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <Download />
         </center>
-
       </div>
     </div>
   );

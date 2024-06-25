@@ -2,20 +2,20 @@ import React, { useState } from 'react';
 import Navbar from '../Navbar';
 import Banner from '../Banner';
 import Download from '../HomePageFooter';
-import ReactPlayer from 'react-player'; // Corrected import
-import { v4 as uuidv4 } from 'uuid'; // Corrected import
+import ReactPlayer from 'react-player'; 
+import { v4 as uuidv4 } from 'uuid'; 
 import toast from 'react-hot-toast';
-import { useNavigate } from 'react-router-dom'; // Corrected import
+import { useNavigate } from 'react-router-dom'; 
 import Container from '../Components/Container/Container';
 
 function Home() {
-  const navigate = useNavigate(); // Corrected useNavigate declaration
+  const navigate = useNavigate(); 
   const [roomId, setRoomID] = useState('');
   const [username, setUsername] = useState('');
 
   const createNewRoom = (e) => {
     e.preventDefault();
-    const id = uuidv4(); // Use uuidv4 to generate UUID
+    const id = uuidv4(); 
     setRoomID(id);
     console.log(id);
     toast.success("Created a new room");
@@ -202,7 +202,7 @@ function Home() {
           <h1 className="center-text" style={{ fontFamily: "PT sans", color: "white", fontSize: "50px", fontWeight: "bold" }}>
             Blazing Fast <span style={{ color: "#036EFD" }}>Development</span> and <span style={{ color: "#036EFD" }}>Integrations!</span>
           </h1>
-          <h3 className="center-text" style={{ fontFamily: "PT sans", fontSize: "20px", color: "grey", fontWeight: "bolder" }}>
+          <h3 className="center-text" style={{ fontFamily: "PT sans", fontSize: "20px", color: "white", fontWeight: "bolder" }}>
             Shift to faster code development.
           </h3>
         </div>

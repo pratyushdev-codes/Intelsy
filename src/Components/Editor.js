@@ -30,6 +30,10 @@ const Editor = ({ socketRef, roomId }) => {
           theme: '3024-night',
           autoCloseTags: true,
           autoCloseBrackets: true,
+          lineWrapping: true, // Enable line wrapping
+          viewportMargin: Infinity, // Ensure editor adapts to content height
+          extraKeys: { 'Ctrl-Space': 'autocomplete' }, // Example: Enable autocomplete
+
         }
       );
      

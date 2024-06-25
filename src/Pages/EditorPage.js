@@ -8,19 +8,19 @@ import { Navigate, useLocation, useNavigate, useParams } from 'react-router-dom'
 import AccessibilityBar from '../Components/AccessibilityBar';
 import AiAPI from '../Components/aiAPI';
 import Container from '../Components/Container/Container';
-import html2canvas from 'html2canvas'; // Import html2canvas
+import html2canvas from 'html2canvas'; 
 
 function EditorPage() {
-  const [editorScreenshot, setEditorScreenshot] = useState(null); // State to store screenshot data URL
-  const editorRef = useRef(null); // Define editorRef
+  const [editorScreenshot, setEditorScreenshot] = useState(null); 
+  const editorRef = useRef(null); 
   const socketRef = useRef(null);
-  const codeRef = useRef(null); // Define codeRef
+  const codeRef = useRef(null);
   const location = useLocation();
   const { roomId } = useParams();
   const reactNavigator = useNavigate();
   const [clients, setClients] = useState([]);
   
-  // Function to take a screenshot of the editor component
+ 
   const snapShot = () => {
     html2canvas(editorRef.current).then(canvas => {
       // Set the screenshot data URL to the state
@@ -32,7 +32,7 @@ function EditorPage() {
     const init = async () => {
       try {
         socketRef.current = await initSocket();
-        console.log('Socket initialized:', socketRef.current); // Debugging
+        console.log('Socket initialized:', socketRef.current); 
         socketRef.current.on('connect_error', (err) => handleErrors(err));
         socketRef.current.on('connect_failed', (err) => handleErrors(err));
 
@@ -66,7 +66,7 @@ function EditorPage() {
           });
         });
       } catch (error) {
-        console.error('Error initializing socket:', error); // Debugging
+        console.error('Error initializing socket:', error); 
         handleErrors(error);
       }
     };
@@ -76,11 +76,11 @@ function EditorPage() {
     return () => {
       if (socketRef.current) {
         socketRef.current.disconnect();
-        console.log('Socket disconnected'); // Debugging
+        console.log('Socket disconnected'); 
         socketRef.current.off(ACTIONS.JOINED);
         socketRef.current.off(ACTIONS.DISCONNECTED);
       } else {
-        console.log('Socket is not initialized yet.'); // Debugging
+        console.log('Socket is not initialized yet.'); 
       }
     };
   }, [roomId, location.state?.username]);
@@ -97,18 +97,21 @@ function EditorPage() {
 
   return (
     <>
-      <div className='mainWrap'>
-        <div className='rightAside'>
-          <div className='rightasideInner'>
-            <h3 style={{ color: 'grey' }}>
-              <span style={{ color: 'white', fontWeight: 'bold' }}>
-                Intelsy <span style={{ color: '#036EFD' }}>AI</span>
-              </span>
-              <br />
-              <span style={{ fontSize: '20px' }}>
-                Transform your coding experience.
-              </span>
-            </h3>
+     <div className='mainWrap'>
+  <div className='rightAside'>
+    <div className='rightasideInner'>
+      <h3 style={{ color: 'grey' }}>
+        <span style={{ color: 'white', fontWeight: 'bold' }}>
+          Intelsy <span style={{ color: '#036EFD', display: 'inline-flex', alignItems: 'center' }}>
+            AI
+            &nbsp;<img src="../images/Ai.gif" alt="AI" style={{ verticalAlign: "right", height:"25px" }} />
+          </span>
+        </span>
+        <br />
+        <span style={{ fontSize: '20px' }}>
+          Transform your coding experience.
+        </span>
+      </h3>
             <AiAPI />
           </div>
         </div>

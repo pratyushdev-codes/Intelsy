@@ -184,6 +184,78 @@ function Home() {
       height: 100%;
       z-index: 0;
     }
+
+    .gradient-text {
+      background: linear-gradient(
+        to right,
+        #E98856 20%,
+        #AA6FB3 30%,
+       #8278CF 70%,
+       #DF6B6A 80%
+      );
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-fill-color: transparent;
+      background-size: 500% auto;
+      animation: textShine 5s ease-in-out infinite alternate;
+    }
+
+    @keyframes textShine {
+      0% {
+        background-position: 0% 50%;
+      }
+      100% {
+        background-position: 100% 50%;
+      }
+    }
+
+    /* Media Queries for responsiveness */
+    @media (max-width: 768px) {
+      .video-text {
+        top: 30%;
+        padding: 10px;
+      }
+
+      .center-text {
+        font-size: 1.2rem;
+      }
+
+      .inputBox {
+        width: 80%;
+      }
+
+      .btn {
+        width: 200px;
+      }
+
+      .video-wrapper {
+        border-radius: 10px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .video-text {
+        top: 20%;
+        padding: 5px;
+      }
+
+      .center-text {
+        font-size: 1rem;
+      }
+
+      .inputBox {
+        width: 90%;
+      }
+
+      .btn {
+        width: 150px;
+      }
+
+      .video-wrapper {
+        border-radius: 5px;
+      }
+    }
   `;
 
   const handleInputEnter = (e) => {
@@ -199,16 +271,16 @@ function Home() {
       <Navbar />
       <div className="video-container">
         <div className="video-text">
-          <h1 className="center-text" style={{ fontFamily: "PT sans", color: "white", fontSize: "50px", fontWeight: "bold" }}>
-            Blazing Fast <span style={{ color: "#036EFD" }}>Development</span> and <span style={{ color: "#036EFD" }}>Integrations!</span>
+          <h1 className="center-text gradient-text" style={{ fontFamily: "PT sans", fontSize: "60px", fontWeight: "bold" }}>
+            Blazing Fast Development and Integrations!
           </h1>
-          <h3 className="center-text" style={{ fontFamily: "PT sans", fontSize: "20px", color: "white", fontWeight: "bolder" }}>
+          <h3 className="center-text" style={{ fontFamily: "PT sans", fontSize: "26px", color: "rgba(242, 243, 243, 0.5)", fontWeight: "bolder" }}>
             Shift to faster code development.
           </h3>
         </div>
         <div className="video-wrapper">
           <ReactPlayer
-            url='./images/1.mp4'
+            url='./images/intro.webm'
             playing={true}
             loop={true}
             controls={false}

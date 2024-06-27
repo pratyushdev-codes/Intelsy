@@ -26,24 +26,26 @@ const AccessibilityBar = () => {
   };
 
   return (
-    <div id="capture" style={{ zIndex: -100, marginTop: "1rem", display: "flex", justifyContent: "center" }}>
-      <nav className="navbar navbar-expand-lg" style={{ borderRadius: "30px", width: "50vh", height: "7vh", boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)", backgroundColor: "rgba(255, 255, 255, 0.2)" }}>
+    <div id="capture" style={{ zIndex: "100", marginTop: "1rem", display: "flex", justifyContent: "center" }}>
+      <nav className="navbar navbar-expand-lg" style={{ borderRadius: "30px", height: "7vh", boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)", backgroundColor: "rgba(255, 255, 255, 0.2)" }}>
         <div className="container-fluid">
           <a className="navbar-brand" href="#" style={{ color: "#036EFD", fontSize: "20px", fontWeight: "bold" }}><i className="fa-brands fa-gripfire"></i> &nbsp; Accessibility <span style={{ color: "#EC7A6F" }}>Bar</span></a>
        
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-              <li className="nav-item my-2">
+              <li className="nav-item mx-2">
                 <a className="nav-link"><i className="fa-solid  fa-camera-retro" onClick={snapShot} style={{ color: "#808080", scale: "1.5" }} ></i></a>
               </li>
               
-              <li className="nav-item my-2">
+         
+              <li className="nav-item mx-2">
                 <a className="nav-link"><i className="fa-solid  fa-eraser" style={{ color: "#808080", scale: "1.5" }} ></i></a>
               </li>
-          
-              <li className="nav-item my-2">
+
+              <li className="nav-item mx-2">
                 <a className="nav-link"><i className="fa-solid fa-pen-to-square" style={{ color: "#808080", scale: "1.5" }} onClick={openEditor} ></i></a>
               </li>
+               
             </ul>
           </div>
         </div>

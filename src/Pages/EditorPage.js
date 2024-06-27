@@ -163,7 +163,7 @@ function EditorPage() {
           {/* This is the main Complier div */}
           <div className='bottomCenter' style={{
     zIndex: "999",
-    backgroundColor: "#212121",
+    backgroundColor: "#1B1C1E",
     borderTopLeftRadius: '20px',
     borderTopRightRadius: "20px",
     display: 'flex',
@@ -186,7 +186,7 @@ function EditorPage() {
                 type="button"
                
                 data-bs-toggle="dropdown"
-                style={{ borderRadius: "20px", borderColor: "grey", borderStyle: "solid",backgroundColor:"#212121",color:"#036EFD" }}
+                style={{ borderRadius: "20px", borderColor: "darkgrey", borderStyle: "dotted",backgroundColor:"#212121",color:"#036EFD" }}
                 aria-expanded="false">
             Choose Language
         </button>
@@ -200,21 +200,21 @@ function EditorPage() {
     {/* Run button */}
     <button type="button" className="btn btn-secondary mx-2"
             style={{ borderRadius: "20px", borderColor: "white" , backgroundColor:"#5D636B"}}>
-        <i className="fa-solid fa-play"></i> &nbsp; Run
+        <i className="fa-solid fa-play" style={{color:"#EC7A6F"}}></i> &nbsp; Run
     </button>
 
 
     {/* donwload code button */}
     <button type="button" className="btn btn-secondary"
-            style={{ borderRadius: "20px", borderColor: "white" }}>
-        <i class="fa-solid fa-download"></i>  &nbsp;Download Code
+            style={{ borderRadius: "20px", borderColor: "white" , backgroundColor:"#5D636B"}}>
+        <i class="fa-solid fa-download" style={{color:"#EC7A6F"}}></i>  &nbsp;Download Code
     </button>
 </div>
 
     {/* codeOutput div */}
     <div className='codeOutput' style={{
         padding: "10px",
-        backgroundColor: "#036EFD",
+        backgroundColor: "#0F1117",
         width: "90%",
         borderRadius:"10px",
         height:"80vh"

@@ -163,51 +163,61 @@ function EditorPage() {
           {/* This is the main Complier div */}
           <div className='bottomCenter' style={{
     zIndex: "999",
-    backgroundColor: "#1B1C1E",
+    backgroundColor: "#212121",
     borderTopLeftRadius: '20px',
     borderTopRightRadius: "20px",
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    padding: '10px'
+  
 }}>
     {/* First red codeOutput div */}
     <div className='codeOutput' style={{
-        padding: "10px",
-        display:'flex',
-        width: '90%',
-        marginBottom: '5px'
-    }}>
-
-      {/* Language selector dropdown */}
-      
-      
-      <div class="dropdown">
-      <button className="btn btn-secondary dropdown-toggle"
-        type="button"
-        data-bs-toggle="dropdown"
-        style={{  borderRadius: "20px", borderColor: "white" }}
-        aria-expanded="false">
-      Choose Language
-    </button>
-    <ul class="dropdown-menu">
-      <li><a class="dropdown-item" href="#">Action</a></li>
-      <li><a class="dropdown-item" href="#">Another action</a></li>
-      <li><a class="dropdown-item" href="#">Something else here</a></li>
-    </ul>
-  </div>   
-  
-  {/* Run button  */}
-  
-  <button type="button" class="btn btn-secondary" style={{borderRadius:"20px", borderColor:"white"}}>Primary</button>
+    padding: "10px",
+    display: 'flex',
+    alignItems: 'center', // Align items (buttons) vertically centered
+    justifyContent: 'center', // Distribute items (buttons) evenly
+    width: '90%',
+    marginBottom: '5px'
+}}>
+    {/* Language selector dropdown */}
+    <div className="dropdown">
+        <button className="btn btn-secondary mx-2 dropdown-toggle"
+                type="button"
+               
+                data-bs-toggle="dropdown"
+                style={{ borderRadius: "20px", borderColor: "grey", borderStyle: "solid",backgroundColor:"#212121",color:"#036EFD" }}
+                aria-expanded="false">
+            Choose Language
+        </button>
+        <ul className="dropdown-menu">
+            <li><a className="dropdown-item" href="#">Java</a></li>
+            <li><a className="dropdown-item" href="#">Python</a></li>
+            <li><a className="dropdown-item" href="#">C++</a></li>
+        </ul>
     </div>
 
-    {/* Second red codeOutput div */}
+    {/* Run button */}
+    <button type="button" className="btn btn-secondary mx-2"
+            style={{ borderRadius: "20px", borderColor: "white" , backgroundColor:"#5D636B"}}>
+        <i className="fa-solid fa-play"></i> &nbsp; Run
+    </button>
+
+
+    {/* donwload code button */}
+    <button type="button" className="btn btn-secondary"
+            style={{ borderRadius: "20px", borderColor: "white" }}>
+        <i class="fa-solid fa-download"></i>  &nbsp;Download Code
+    </button>
+</div>
+
+    {/* codeOutput div */}
     <div className='codeOutput' style={{
         padding: "10px",
-        backgroundColor: "blueviolet",
+        backgroundColor: "#036EFD",
         width: "90%",
-        marginBottom: '5px'
+        borderRadius:"10px",
+        height:"80vh"
     }}></div>
 
 

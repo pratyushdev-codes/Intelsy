@@ -7,7 +7,7 @@ import ACTIONS from '../Action';
 import { Navigate, useLocation, useNavigate, useParams } from 'react-router-dom';
 import AccessibilityBar from '../Components/AccessibilityBar';
 import AiAPI from '../Components/aiAPI';
-import Container from '../Components/Container/Container';
+
 import html2canvas from 'html2canvas'; 
 
 function EditorPage() {
@@ -160,9 +160,9 @@ function EditorPage() {
           <div className='topBar'>
             <AccessibilityBar takeScreenshot={snapShot} />
           </div>
-          <div className='bottomCenter'>
+          <div className='bottomCenter' style={{zIndex:"999", backgroundColor:"#1B1C1E"}}>
             Hello this is compiler
-            <Container />
+   
           </div>
           <Editor socketRef={socketRef} roomId={roomId} codeRef={codeRef} ref={editorRef} />
         </div>

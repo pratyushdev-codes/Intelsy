@@ -77,7 +77,7 @@ function AiAPI() {
           required
           value={question}
           onChange={(e) => setQuestion(e.target.value)}
-          placeholder="  Ask anything. "
+          placeholder="> Ask anything. "
           className="textarea"
         ></textarea>
 
@@ -87,7 +87,8 @@ function AiAPI() {
           disabled={loading}
           style={{height:"40px"}}
         >
-          {loading ? "Generating..." : "Generate Answer"}
+         {loading ? "Generating..." : <><i className="fa-solid fa-poo-storm"></i> &nbsp;Generate Answer</>}
+
         </button>
       </form>
       <div className="w-full md:w-2/3 mx-auto text-left bg-gray-50 my-1" style={{ backgroundColor: "#0E1117", maxHeight: "50%", width: "90%", borderRadius: "20px", overflowY: "auto" }}>

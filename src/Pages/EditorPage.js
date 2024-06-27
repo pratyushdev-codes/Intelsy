@@ -218,7 +218,12 @@ function EditorPage() {
         width: "90%",
         borderRadius:"10px",
         height:"80vh"
-    }}></div>
+    }}><p><img src='../images/next.png' style={{scale:"0.5"}}/> </p>
+
+
+
+      
+    </div>
 
 
 </div>

@@ -23,7 +23,7 @@ const Editor = ({ socketRef, roomId }) => {
 
   useEffect(() => {
     console.log(code);
-  }, [code]);
+  }, [code], {state:{code:code}});
 
   useEffect(() => {
     const init = () => {
@@ -45,7 +45,7 @@ const Editor = ({ socketRef, roomId }) => {
         const { origin } = changes;
         const newCode = instance.getValue();
         setCode(newCode); // Update the state with the new code
-        if (origin !== 'setValue' && socketRef.current) { // Ensure socketRef.current is not null
+        if (origin !== 'setValue' && socketRef.current) {
           socketRef.current.emit(ACTIONS.CODE_CHANGE, {
             roomId,
             code: newCode,
@@ -54,6 +54,7 @@ const Editor = ({ socketRef, roomId }) => {
       });
     };
     init();
+
     // Clean up event listener
     return () => {
       if (editorRef.current) {
@@ -70,7 +71,7 @@ const Editor = ({ socketRef, roomId }) => {
         }
       });
     }
-  
+
     return () => {
       if (socketRef.current) {
         socketRef.current.off(ACTIONS.CODE_CHANGE);

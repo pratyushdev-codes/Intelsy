@@ -162,13 +162,13 @@ footer a:hover {
 
 
 .aside {
-  background:#212121;
+  background:#171717;
   padding: 16px;
   color: #fff;
   display: flex;
   flex-direction: column;
     height: 100vh;/* Take up remaining vertical space */
-    border-bottom-right-radius: 20px;
+    /* border-bottom-right-radius: 20px; */
     border-top-right-radius: 20px;
 }
 .asideInner {
@@ -180,7 +180,7 @@ footer a:hover {
   align-items: center;
   flex-wrap: wrap;
   gap: 20px;
-  background-color:#1B1C1E;
+  background-color:#212121;
   border-radius: 20px;
   height: 50vh;
   

@@ -160,11 +160,59 @@ function EditorPage() {
           <div className='topBar'>
             <AccessibilityBar takeScreenshot={snapShot} />
           </div>
-          <div className='bottomCenter' style={{zIndex:"999", backgroundColor:"#1B1C1E", borderTopLeftRadius:'20px',borderTopRightRadius:"20px"}}>
-            
-            <div className='codeOutput'></div>
-   
-          </div>
+          {/* This is the main Complier div */}
+          <div className='bottomCenter' style={{
+    zIndex: "999",
+    backgroundColor: "#1B1C1E",
+    borderTopLeftRadius: '20px',
+    borderTopRightRadius: "20px",
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    padding: '10px'
+}}>
+    {/* First red codeOutput div */}
+    <div className='codeOutput' style={{
+        padding: "10px",
+        display:'flex',
+        width: '90%',
+        marginBottom: '5px'
+    }}>
+
+      {/* Language selector dropdown */}
+      
+      
+      <div class="dropdown">
+      <button className="btn btn-secondary dropdown-toggle"
+        type="button"
+        data-bs-toggle="dropdown"
+        style={{  borderRadius: "20px", borderColor: "white" }}
+        aria-expanded="false">
+      Choose Language
+    </button>
+    <ul class="dropdown-menu">
+      <li><a class="dropdown-item" href="#">Action</a></li>
+      <li><a class="dropdown-item" href="#">Another action</a></li>
+      <li><a class="dropdown-item" href="#">Something else here</a></li>
+    </ul>
+  </div>   
+  
+  {/* Run button  */}
+  
+  <button type="button" class="btn btn-secondary" style={{borderRadius:"20px", borderColor:"white"}}>Primary</button>
+    </div>
+
+    {/* Second red codeOutput div */}
+    <div className='codeOutput' style={{
+        padding: "10px",
+        backgroundColor: "blueviolet",
+        width: "90%",
+        marginBottom: '5px'
+    }}></div>
+
+
+</div>
+
           <Editor socketRef={socketRef} roomId={roomId} codeRef={codeRef} ref={editorRef} />
         </div>
       </div>

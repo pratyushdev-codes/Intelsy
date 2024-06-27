@@ -17,13 +17,8 @@ import 'codemirror/addon/edit/closetag';
 import ACTIONS from '../Action';
 import AccessibilityBar from './AccessibilityBar';
 
-const Editor = ({ socketRef, roomId }) => {
-  const [code, setCode] = useState('');
+const Editor = ({ socketRef, roomId, setCode }) => {
   const editorRef = useRef(null);
-
-  useEffect(() => {
-    console.log(code);
-  }, [code], {state:{code:code}});
 
   useEffect(() => {
     const init = () => {
@@ -44,7 +39,7 @@ const Editor = ({ socketRef, roomId }) => {
       editorRef.current.on('change', (instance, changes) => {
         const { origin } = changes;
         const newCode = instance.getValue();
-        setCode(newCode); // Update the state with the new code
+        setCode(newCode); // Update the state in EditorPage component
         if (origin !== 'setValue' && socketRef.current) {
           socketRef.current.emit(ACTIONS.CODE_CHANGE, {
             roomId,
@@ -61,7 +56,7 @@ const Editor = ({ socketRef, roomId }) => {
         editorRef.current.toTextArea(); // Cleanup CodeMirror instance
       }
     };
-  }, [roomId, socketRef]);
+  }, [roomId, socketRef, setCode]);
 
   useEffect(() => {
     if (socketRef.current) {

@@ -9,7 +9,8 @@ import AccessibilityBar from '../Components/AccessibilityBar';
 import AiAPI from '../Components/aiAPI';
 import html2canvas from 'html2canvas';
 
-function EditorPage() {
+
+function EditorPage({Code}) {
   const [editorScreenshot, setEditorScreenshot] = useState(null);
   const editorRef = useRef(null);
   const socketRef = useRef(null);
@@ -21,7 +22,7 @@ function EditorPage() {
   const [code, setCode] = useState(''); // Move code state to EditorPage
 
   const submitCode = () => {
-    console.log(location.state);
+    console.log(code);
     
   };
 
@@ -50,7 +51,7 @@ function EditorPage() {
           }
           setClients(clients);
           socketRef.current.emit(ACTIONS.SYNC_CODE, {
-            code: codeRef.current,
+            code: code, // Pass current code to sync with new joiners
             socketId,
           });
         });

@@ -152,60 +152,71 @@ function EditorPage({Code}) {
             <AccessibilityBar takeScreenshot={snapShot} />
           </div>
           <div className='bottomCenter' style={{
-            zIndex: "999",
-            backgroundColor: "#171717",
-            borderTopLeftRadius: '10px',
-            borderTopRightRadius: "10px",
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-          }}>
-            <div className='codeOutput' style={{
-              padding: "10px",
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              width: '90%',
-              marginBottom: '5px'
-            }}>
-              <div className="dropdown">
-                <button className="btn btn-secondary mx-2 dropdown-toggle"
-                  type="button"
-                  data-bs-toggle="dropdown"
-                  style={{
-                    borderRadius: "20px",
-                    boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",
-                    borderColor: "darkgrey",
-                    borderStyle: "dotted",
-                    backgroundColor: "#1B1C1E",
-                    color: "#036EFD"
-                  }}
-                  aria-expanded="false">
-                  Choose Language
-                </button>
-                <ul className="dropdown-menu">
-                  <li onClick={() => { setLanguage("java"); }}>
-                    <a className="dropdown-item" href="#">Java</a>
-                  </li>
-                  <li onClick={() => { setLanguage("python"); }}>
-                    <a className="dropdown-item" href="#">Python</a>
-                  </li>
-                  <li onClick={() => { setLanguage("cpp"); }}>
-                    <a className="dropdown-item" href="#">C++</a>
-                  </li>
-                </ul>
-              </div>
+  zIndex: "999",
+  backgroundColor: "#171717",
+  borderTopLeftRadius: '10px',
+  borderTopRightRadius: "10px",
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+}}>
+  <div className='codeOutput' style={{
+    padding: "10px",
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: '90%',
+    marginBottom: '5px'
+  }}>
+    <div className="dropdown">
+      <button className="btn btn-secondary mx-2 dropdown-toggle"
+        type="button"
+        data-bs-toggle="dropdown"
+        style={{
+          borderRadius: "20px",
+          boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",
+          borderColor: "darkgrey",
+          borderStyle: "dotted",
+          backgroundColor: "#1B1C1E",
+          color: "#036EFD"
+        }}
+        aria-expanded="false">
+        Choose Language
+      </button>
+      <ul className="dropdown-menu">
+        <li onClick={() => { setLanguage("java"); }}>
+          <a className="dropdown-item" href="#">Java</a>
+        </li>
+        <li onClick={() => { setLanguage("python"); }}>
+          <a className="dropdown-item" href="#">Python</a>
+        </li>
+        <li onClick={() => { setLanguage("cpp"); }}>
+          <a className="dropdown-item" href="#">C++</a>
+        </li>
+      </ul>
+    </div>
 
-              <button type="button" id="submit" onClick={submitCode} className="btn btn-secondary mx-2"
-                style={{ borderRadius: "20px", borderColor: "white", boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)", backgroundColor: "#090300" }}>
-                <i className="fa-solid fa-play" style={{ color: "#EC7A6F" }}></i> &nbsp; Run
-              </button>
+    <button type="button" id="submit" onClick={submitCode} className="btn btn-secondary mx-2"
+      style={{ borderRadius: "20px", borderColor: "white", backgroundColor: "#090300" }}>
+      <i className="fa-solid fa-play" style={{ color: "#EC7A6F" }}></i> &nbsp; Run
+    </button>
 
-              <button type="button" className="btn btn-secondary"
-                style={{ borderRadius: "20px", borderColor: "white", backgroundColor: "#090300" }}>
-                <i className="fa-solid fa-download" style={{ color: "#EC7A6F" }}></i>  &nbsp;Download Code
-              </button>
-            </div>
+    <button type="button" className="btn btn-secondary mx-2"
+      style={{ borderRadius: "20px", borderColor: "white", backgroundColor: "#090300" }}>
+      <i className="fa-solid fa-download" style={{ color: "#EC7A6F" }}></i>  &nbsp;Download Code
+    </button>
+
+    <button type="button" className="btn btn-secondary mx-2"
+      style={{ borderRadius: "20px", borderColor: "white", backgroundColor: "#090300" }}>
+      <i className="fa-solid fa-copy" style={{ color: "#EC7A6F" }}></i>  &nbsp;Copy 
+    </button>
+  </div>
+
+
+
+         
+ 
+          
 
             <div className='codeOutput' style={{
               padding: "10px",

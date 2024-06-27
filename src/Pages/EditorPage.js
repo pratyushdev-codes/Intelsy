@@ -160,8 +160,9 @@ function EditorPage() {
           <div className='topBar'>
             <AccessibilityBar takeScreenshot={snapShot} />
           </div>
-          <div className='bottomCenter' style={{zIndex:"999", backgroundColor:"#1B1C1E"}}>
-            Hello this is compiler
+          <div className='bottomCenter' style={{zIndex:"999", backgroundColor:"#1B1C1E", borderTopLeftRadius:'20px',borderTopRightRadius:"20px"}}>
+            
+            <div className='codeOutput'></div>
    
           </div>
           <Editor socketRef={socketRef} roomId={roomId} codeRef={codeRef} ref={editorRef} />

@@ -271,7 +271,7 @@ function Home() {
       <Navbar />
       <div className="video-container">
         <div className="video-text">
-          <h1 className="center-text gradient-text" style={{ fontFamily: "PT sans", fontSize: "60px", fontWeight: "bold" }}>
+          <h1 className="center-text gradient-text" style={{ fontFamily: "PT sans",color: "rgba(242, 243, 243, 0.9)", fontSize: "60px", fontWeight: "bold" }}>
             Blazing Fast Development and Integrations!
           </h1>
           <h3 className="center-text" style={{ fontFamily: "PT sans", fontSize: "26px", color: "rgba(242, 243, 243, 0.5)", fontWeight: "bolder" }}>
@@ -279,7 +279,8 @@ function Home() {
           </h3>
         </div>
         <div className="video-wrapper">
-          <ReactPlayer
+        <video src="./images/intro.webm" loop autoPlay muted className="h-[300px] " ></video>
+          {/* <ReactPlayer autoPlay muted
             url='./images/intro.webm'
             playing={true}
             loop={true}
@@ -287,7 +288,7 @@ function Home() {
             width="100%"
             height="100%"
             style={{ borderRadius: '20px' }}
-          />
+          /> */}
         </div>
       </div>
       <div>

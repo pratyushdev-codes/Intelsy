@@ -19,7 +19,8 @@ function Download() {
 
       
         <div className="video-wrapper">
-          <ReactPlayer
+        <video src="./images/3.mp4" loop autoPlay muted  ></video>
+          {/* <ReactPlayer
             url='./images/3.mp4'
             playing={true}
             loop={true}
@@ -27,7 +28,7 @@ function Download() {
             width="100%"
             height="100%"
             style={{ borderRadius: '20px' }}
-          />
+          /> */}
         </div>
 
 

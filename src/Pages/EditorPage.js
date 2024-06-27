@@ -98,7 +98,7 @@ function EditorPage() {
   return (
     <>
      <div className='mainWrap'>
-  <div className='rightAside'>
+  <div className='rightAside' style={{zIndex:"+1"}}>
     <div className='rightasideInner'>
       <h3 style={{ color: 'grey' }}>
         <span style={{ color: 'white', fontWeight: 'bold' }}>
@@ -156,7 +156,7 @@ function EditorPage() {
 
           <button type="button" className='btn leaveBtn' style={{ backgroundColor: "#036EFD", borderRadius: "20px", color: "white" }}>Leave Room</button>
         </div>
-        <div className='editorWrap'>
+        <div className='editorWrap' >
           <div className='topBar'>
             <AccessibilityBar takeScreenshot={snapShot} />
           </div>

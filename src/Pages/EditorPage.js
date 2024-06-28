@@ -125,7 +125,7 @@ function EditorPage({Code}) {
               </h3>
               <br />
               <h3 style={{ color: '#036EFD', fontSize: '22px', fontWeight: 'bold' }}>
-                Playground Players &nbsp; <span style={{ fontSize: "17px", color: "#808080" }}><i className="fa-solid fa-arrow-right-to-bracket"></i></span>
+                Playground Players &nbsp; <img src='/images/user.png' style={{width:"21px", height:"21px"}}/>
               </h3>
               <div className="clientsList">
                 {clients.map((client) => (

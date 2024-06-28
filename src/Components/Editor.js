@@ -11,6 +11,7 @@ import 'codemirror/mode/rust/rust'; // Add Rust mode
 import 'codemirror/mode/ruby/ruby'; // Add Ruby mode
 import 'codemirror/mode/dart/dart'; // Add Dart mode
 import 'codemirror/theme/xq-dark.css';
+import 'codemirror/theme/tomorrow-night-bright.css';
 import 'codemirror/theme/3024-night.css';
 import 'codemirror/addon/edit/closebrackets';
 import 'codemirror/addon/edit/closetag';
@@ -27,7 +28,7 @@ const Editor = ({ socketRef, roomId, setCode }) => {
         {
           mode: 'javascript',
           lineNumbers: true,
-          theme: '3024-night',
+          theme: 'tomorrow-night-bright',
           autoCloseTags: true,
           autoCloseBrackets: true,
           lineWrapping: true, // Enable line wrapping

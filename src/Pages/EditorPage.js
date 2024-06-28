@@ -8,9 +8,9 @@ import { Navigate, useLocation, useNavigate, useParams } from 'react-router-dom'
 import AccessibilityBar from '../Components/AccessibilityBar';
 import AiAPI from '../Components/aiAPI';
 import html2canvas from 'html2canvas';
+const axios = require("axios");
 
-
-function EditorPage({Code}) {
+function EditorPage({ Code }) {
   const [editorScreenshot, setEditorScreenshot] = useState(null);
   const editorRef = useRef(null);
   const socketRef = useRef(null);
@@ -19,34 +19,49 @@ function EditorPage({Code}) {
   const { roomId } = useParams();
   const reactNavigator = useNavigate();
   const [clients, setClients] = useState([]);
-  const [code, setCode] = useState(''); // Move code state to EditorPage
+  const [code, setCode] = useState('');
+  const [language, setLanguage] = useState('python'); // Default to python
 
-  const submitCode = () => {
-    console.log(code);
+  async function runCode(code, language) {
+    console.log(code, language);
+  
+    try {
+      const answer = await fetch(
+        "https://8o6uazb6t5.execute-api.us-east-1.amazonaws.com/Production",
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          method: "POST",
+          body: JSON.stringify({
+            code: code,
+            language: language,
+          }),
+        }
+      );
+  
+      if (!answer.ok) {
+        throw new Error(`HTTP error! Status: ${answer.status}`);
+      }
+  
+      const response = await answer.json(); // Properly parse JSON response
+      console.log("API Response:", response);
+      
+      // Handle response data as needed
+      return response;
+    } catch (error) {
+      console.error("Error fetching from API:", error.message);
+      return { error: error.message }; // Return an error object or handle as needed
+    }
+  }
+  
 
-  fetch("https://bb2hbzmgj4.execute-api.us-east-1.amazonaws.com/Production/",{
-    headers:{
-     "Content-type":"application/json",
-    },
-    method:"POST",
-    body:JSON.stringify({
-     code:"#include <iostream>\nint main() {\n std::cout << \"Hello from C++!\" << std::endl;\n return 0;\n}",
-     language:"cpp",
-    })
- })
-    
-  };
 
-  const [language, setLanguage] = useState('');
   const snapShot = () => {
-    html2canvas(editorRef.current).then(canvas => {
+    html2canvas(editorRef.current).then((canvas) => {
       setEditorScreenshot(canvas.toDataURL());
     });
   };
-
-
- 
-  
 
   useEffect(() => {
     const init = async () => {
@@ -66,15 +81,15 @@ function EditorPage({Code}) {
           }
           setClients(clients);
           socketRef.current.emit(ACTIONS.SYNC_CODE, {
-            code: code, // Pass current code to sync with new joiners
+            code: code,
             socketId,
           });
         });
 
         socketRef.current.on(ACTIONS.DISCONNECTED, ({ socketId, username }) => {
           toast.error(`${username} left the Playground`);
-          setClients(prev => {
-            return prev.filter(client => client.socketId !== socketId);
+          setClients((prev) => {
+            return prev.filter((client) => client.socketId !== socketId);
           });
         });
       } catch (error) {
@@ -93,7 +108,7 @@ function EditorPage({Code}) {
     };
   }, [roomId, location.state?.username]);
 
-  const handleErrors = error => {
+  const handleErrors = (error) => {
     toast.error('Socket Connection Failed, try again later');
     reactNavigator('/');
   };
@@ -140,7 +155,7 @@ function EditorPage({Code}) {
               </h3>
               <br />
               <h3 style={{ color: '#036EFD', fontSize: '22px', fontWeight: 'bold' }}>
-                Playground Players &nbsp; <img src='/images/user.png' style={{width:"21px", height:"21px"}}/>
+                Playground Players &nbsp; <img src='/images/user.png' style={{ width: "21px", height: "21px" }} />
               </h3>
               <div className="clientsList">
                 {clients.map((client) => (
@@ -167,71 +182,79 @@ function EditorPage({Code}) {
             <AccessibilityBar takeScreenshot={snapShot} />
           </div>
           <div className='bottomCenter' style={{
-  zIndex: "999",
-  backgroundColor: "#171717",
-  borderTopLeftRadius: '10px',
-  borderTopRightRadius: "10px",
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-}}>
-  <div className='codeOutput' style={{
-    padding: "10px",
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    width: '90%',
-    marginBottom: '5px'
-  }}>
-    <div className="dropdown">
-      <button className="btn btn-secondary mx-2 dropdown-toggle"
-        type="button"
-        data-bs-toggle="dropdown"
-        style={{
-          borderRadius: "20px",
-          boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",
-          borderColor: "darkgrey",
-          borderStyle: "dotted",
-          backgroundColor: "#090300",
-          color: "#036EFD"
-        }}
-        aria-expanded="false">
-        Select Language
-      </button>
-      <ul className="dropdown-menu">
-        <li onClick={() => { setLanguage("java"); }}>
-          <a className="dropdown-item" href="#">Java</a>
-        </li>
-        <li onClick={() => { setLanguage("python"); }}>
-          <a className="dropdown-item" href="#">Python</a>
-        </li>
-        <li onClick={() => { setLanguage("cpp"); }}>
-          <a className="dropdown-item" href="#">C++</a>
-        </li>
-      </ul>
-    </div>
+            zIndex: "999",
+            backgroundColor: "#171717",
+            borderTopLeftRadius: '10px',
+            borderTopRightRadius: "10px",
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+          }}>
+            <div className='codeOutput' style={{
+              padding: "10px",
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              width: '90%',
+              marginBottom: '5px'
+            }}>
+              <div className="dropdown">
+                <button className="btn btn-secondary mx-2 dropdown-toggle"
+                  type="button"
+                  data-bs-toggle="dropdown"
+                  style={{
+                    borderRadius: "20px",
+                    boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",
+                    borderColor: "darkgrey",
+                    borderStyle: "dotted",
+                    backgroundColor: "#090300",
+                    color: "#036EFD"
+                  }}>
+                  Select Language
+                </button>
+                <ul className="dropdown-menu">
+                  <li onClick={() => { setLanguage("java"); }}>
+                    <a className="dropdown-item" href="#">Java</a>
+                  </li>
+                  <li onClick={() => { setLanguage("python"); }}>
+                    <a className="dropdown-item" href="#">Python</a>
+                  </li>
+                  <li onClick={() => { setLanguage("cpp"); }}>
+                    <a className="dropdown-item" href="#">C++</a>
+                  </li>
+                </ul>
+              </div>
 
-    <button type="button" id="submit" onClick={submitCode} className="btn btn-secondary mx-2"
-      style={{ borderRadius: "20px", borderColor: "white", backgroundColor: "#090300" }}>
-      <i className="fa-solid fa-play" style={{ color: "#EC7A6F" }}></i> &nbsp; Run
-    </button>
+              <button type="button" id="submit" onClick={runCode} className="btn btn-secondary mx-2"
+  style={{ borderRadius: "20px", borderColor: "white", backgroundColor: "#090300", color: "#036EFD" }}>
+  <i className="fa-solid fa-play" style={{ color: "#EC7A6F" }}></i> &nbsp; Run
+</button>
 
-    <button type="button" className="btn btn-secondary mx-2"
-      style={{ borderRadius: "20px", borderColor: "white", backgroundColor: "#090300" }}>
-      <i className="fa-solid fa-download" style={{ color: "#EC7A6F" }}></i>  &nbsp;Download Code
-    </button>
+<button type="button" className="btn btn-secondary mx-1"
+  style={{ borderRadius: "20px", borderColor: "white", backgroundColor: "#090300", color: "#036EFD" }}>
+  <i className="fa-solid fa-copy" style={{ color: "#EC7A6F" }}></i>  &nbsp;Copy
+</button>
 
-    <button type="button" className="btn btn-secondary mx-2"
-      style={{ borderRadius: "20px", borderColor: "white", backgroundColor: "#090300" }}>
-      <i className="fa-solid fa-copy" style={{ color: "#EC7A6F" }}></i>  &nbsp;Copy 
-    </button>
-  </div>
+<button type="button" className="btn btn-secondary mx-1"
+  style={{ borderRadius: "20px", borderColor: "white", backgroundColor: "#090300", color: "#036EFD" }}>
+  <i className="fa-solid fa-circle-half-stroke" style={{ color: "#EC7A6F" }}></i>
+  <span className='mx-2' style={{ color: "#036EFD" }}>Assist </span>
+</button>
+
+<button type="button" className="btn btn-secondary mx-1"
+  style={{ borderRadius: "20px", borderColor: "white", backgroundColor: "#090300", color: "#036EFD" }}>
+  <i className="fa-solid fa-lightbulb" style={{ color: "#EC7A6F" }}></i>
+  <span className='mx-2' style={{ color: "#036EFD" }}>Explain</span>
+</button>
+
+<button type="button" className="btn btn-secondary mx-1"
+  style={{ borderRadius: "20px", borderColor: "white", backgroundColor: "#090300", color: "#036EFD" }}>
+  <i className="fa-solid fa-download" style={{ color: "#EC7A6F" }}></i>  &nbsp;Download Code
+</button>
 
 
 
-         
- 
-          
+            </div>
 
             <div className='codeOutput' style={{
               padding: "10px",
@@ -239,7 +262,8 @@ function EditorPage({Code}) {
               width: "90%",
               borderRadius: "10px",
               height: "80vh"
-            }}><p><img src='../images/next.png' style={{ scale: "0.5" }} /> Hello World </p>
+            }}>
+              <p><img src='../images/next.png' style={{ scale: "0.5" }} /> Hello World </p>
             </div>
           </div>
 

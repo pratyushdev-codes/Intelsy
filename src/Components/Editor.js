@@ -10,6 +10,7 @@ import 'codemirror/mode/python/python'; // Add Python mode
 import 'codemirror/mode/rust/rust'; // Add Rust mode
 import 'codemirror/mode/ruby/ruby'; // Add Ruby mode
 import 'codemirror/mode/dart/dart'; // Add Dart mode
+
 import 'codemirror/theme/xq-dark.css';
 import 'codemirror/theme/tomorrow-night-bright.css';
 import 'codemirror/theme/3024-night.css';
@@ -17,6 +18,20 @@ import 'codemirror/addon/edit/closebrackets';
 import 'codemirror/addon/edit/closetag';
 import ACTIONS from '../Action';
 import AccessibilityBar from './AccessibilityBar';
+
+
+//Autocomplete Addons --> codemirror
+
+import 'codemirror/addon/hint/show-hint.css';
+import 'codemirror/addon/hint/show-hint';
+import 'codemirror/addon/hint/css-hint';
+import 'codemirror/addon/hint/anyword-hint';
+import 'codemirror/addon/hint/javascript-hint';
+import 'codemirror/addon/hint/html-hint';
+import 'codemirror/addon/hint/xml-hint';
+import 'codemirror/addon/hint/sql-hint';
+
+
 
 const Editor = ({ socketRef, roomId, setCode }) => {
   const editorRef = useRef(null);
@@ -33,7 +48,7 @@ const Editor = ({ socketRef, roomId, setCode }) => {
           autoCloseBrackets: true,
           lineWrapping: true, // Enable line wrapping
           viewportMargin: Infinity, // Ensure editor adapts to content height
-          extraKeys: { 'Ctrl-Space': 'autocomplete' }, // Example: Enable autocomplete
+          extraKeys: { 'Ctrl-Space': 'autocomplete' }
         }
       );
 

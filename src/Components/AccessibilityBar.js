@@ -27,7 +27,7 @@ const AccessibilityBar = () => {
 
   return (
     <div id="capture" style={{ zIndex: "100", marginTop: "1rem", display: "flex", justifyContent: "center" }}>
-      <nav className="navbar navbar-expand-lg" style={{ borderRadius: "30px", height: "7vh", boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)", backgroundColor: "rgba(255, 255, 255, 0.2)" }}>
+      <nav className="navbar navbar-expand-lg" style={{ borderRadius: "30px", height: "7vh", boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.12)", backgroundColor: "rgba(255, 255, 255, 0.2)" }}>
         <div className="container-fluid">
           <a className="navbar-brand" href="#" style={{ color: "#036EFD", fontSize: "20px", fontWeight: "bold" }}><i className="fa-brands fa-gripfire"></i> &nbsp; Accessibility <span style={{ color: "#EC7A6F" }}>Bar</span></a>
        

@@ -177,11 +177,11 @@ function EditorPage({Code}) {
           boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",
           borderColor: "darkgrey",
           borderStyle: "dotted",
-          backgroundColor: "#1B1C1E",
+          backgroundColor: "#090300",
           color: "#036EFD"
         }}
         aria-expanded="false">
-        Choose Language
+        Select Language
       </button>
       <ul className="dropdown-menu">
         <li onClick={() => { setLanguage("java"); }}>

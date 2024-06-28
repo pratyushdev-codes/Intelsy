@@ -23,6 +23,17 @@ function EditorPage({Code}) {
 
   const submitCode = () => {
     console.log(code);
+
+  fetch("https://bb2hbzmgj4.execute-api.us-east-1.amazonaws.com/Production/",{
+    headers:{
+     "Content-type":"application/json",
+    },
+    method:"POST",
+    body:JSON.stringify({
+     code:"#include <iostream>\nint main() {\n std::cout << \"Hello from C++!\" << std::endl;\n return 0;\n}",
+     language:"cpp",
+    })
+ })
     
   };
 
@@ -32,6 +43,10 @@ function EditorPage({Code}) {
       setEditorScreenshot(canvas.toDataURL());
     });
   };
+
+
+ 
+  
 
   useEffect(() => {
     const init = async () => {

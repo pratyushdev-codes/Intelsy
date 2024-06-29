@@ -8,9 +8,14 @@ import { Navigate, useLocation, useNavigate, useParams } from 'react-router-dom'
 import AccessibilityBar from '../Components/AccessibilityBar';
 import AiAPI from '../Components/aiAPI';
 import html2canvas from 'html2canvas';
-const axios = require("axios");
+import axios from 'axios';
+import ReactMarkdown from 'react-markdown'; // Import ReactMarkdown for rendering markdown content
 
-function EditorPage({ Code }) {
+// Loading image URL
+const loadingImage = '../images/loading.gif'; // Replace with your actual loading image URL
+const loadingImageassist='../images/loading.gif'
+
+function EditorPage() {
   const [editorScreenshot, setEditorScreenshot] = useState(null);
   const editorRef = useRef(null);
   const socketRef = useRef(null);
@@ -22,6 +27,10 @@ function EditorPage({ Code }) {
   const [code, setCode] = useState('');
   const [language, setLanguage] = useState('Select Language');
   const [output, setOutput] = useState(null);
+  const [loading, setLoading] = useState(false); // New state for loading indicator
+  const [assistloading, setAssistloading]=useState(false); //New state for assist loading inficator
+  const [assistAnswer, setAssistAnswer] = useState(""); // State to hold the assist answer
+  const [explainAnswer, setExplainAnswer] = useState(""); // State to hold the explain answer
 
   useEffect(() => {
     const init = async () => {
@@ -73,47 +82,68 @@ function EditorPage({ Code }) {
     reactNavigator('/');
   };
 
-  useEffect(() => {
-    if (code && language) {
-      runCode(code, language);
+  const runCode = async () => {
+    if (!code || language === 'Select Language') {
+      toast.error('Please select a language and enter code to run.');
+      return;
     }
-  }, [code, language]);
 
-  async function runCode(code, language) {
-    console.log(code, language);
-  
+    setLoading(true); // Start loading indicator
+
     try {
-      const answer = await fetch(
+      const response = await axios.post(
         "https://gcdx1arns0.execute-api.us-east-1.amazonaws.com/production",
+        {
+          code: code,
+          language: language,
+        },
         {
           headers: {
             "Content-Type": "application/json",
           },
-          method: "POST",
-          body: JSON.stringify({
-            code: code,
-            language: language,
-          }),
         }
       );
-  
-      if (!answer.ok) {
-        throw new Error(`HTTP error! Status: ${answer.status}`);
-      }
-  
-      const response = await answer.json();
-      console.log("API Response:", response);
-      setOutput(response);
+
+      setOutput(response.data);
     } catch (error) {
       console.error("Error fetching from API:", error.message);
       setOutput({ error: error.message });
+    } finally {
+      setLoading(false); // Stop loading indicator
     }
-  }
+  };
 
   const snapShot = () => {
     html2canvas(editorRef.current).then((canvas) => {
       setEditorScreenshot(canvas.toDataURL());
     });
+  };
+
+  // Function to generate assist answer
+const generateAssist = async (code) => {
+  setAssistloading(true);
+  try {
+    const assistresponse = await axios.post(
+      "https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=AIzaSyAc7yWVfIu85Q68ryHsnIjR6CwzrJt25cw",
+      {
+        contents: [{ parts: [{ text: "Please assist me in this code, is there any error in the provided code and if there is a error how should I resolve it?, keep your response short and to the point only"+JSON.stringify(code) }] }]
+      }
+    );
+    setAssistAnswer(JSON.stringify(assistresponse.data.candidates[0].content.parts[0].text));
+  } catch (error) {
+    console.error("Error fetching assist from API:", error.message);
+    setAssistAnswer("Sorry, something went wrong. Please try again!");
+  }
+  setAssistloading(false);
+};
+
+  
+
+  // Function to generate explain answer (placeholder implementation)
+  const generateExplain = async () => {
+    setLoading(true);
+    // Placeholder: Implement explain functionality here
+    setLoading(false);
   };
 
   if (!location.state) {
@@ -126,12 +156,33 @@ function EditorPage({ Code }) {
         <div className='rightAside' style={{ zIndex: "+1" }}>
           <div className='rightasideInner'>
             <h3 style={{ color: 'grey' }}>
-              <span style={{ color: 'white', fontWeight: 'bold' }}>
-                Intelsy <span style={{ color: '#036EFD', display: 'inline-flex', alignItems: 'center' }}>
-                  AI
-                  &nbsp;<img src="../images/Ai.gif" alt="AI" style={{ verticalAlign: "right", height: "25px" }} />
-                </span>
-              </span>
+            <span style={{ color: 'white', fontWeight: 'bold' }}>
+  Intelsy 
+  <span style={{ color: '#036EFD', display: 'inline-flex', alignItems: 'center' }}>
+    AI &nbsp; 
+    <i 
+      className="fa-brands fa-slack" 
+      style={{ 
+        animation: 'rotate 12s linear infinite' 
+      }}
+    ></i>
+    {/* &nbsp;<img src="../images/Ai.gif" alt="AI" style={{ verticalAlign: "right", height: "25px" }} /> */}
+  </span>
+
+  <style>
+    {`
+      @keyframes rotate {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+    `}
+  </style>
+</span>
+
               <br />
               <span style={{ fontSize: '20px' }}>
                 Transform your coding experience.
@@ -201,59 +252,149 @@ function EditorPage({ Code }) {
               width: '90%',
               marginBottom: '5px'
             }}>
- <div className="dropdown">
-  <button
-    className="btn btn-secondary mx-2 dropdown-toggle"
-    type="button"
-    data-bs-toggle="dropdown"
-    style={{
-      borderRadius: "20px",
-      boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",
-      borderColor: "darkgrey",
-      borderStyle: "dotted",
-      backgroundColor: "#090300",
-      color: "#036EFD",
-    }}
-  >
-    {language}
-  </button>
-  <ul className="dropdown-menu">
-    <li onClick={() => setLanguage("java")}>
-      Java
-    </li>
-    <li onClick={() => setLanguage("python")}>
-      Python
-    </li>
-    <li onClick={() => setLanguage("cpp")}>
-      C++
-    </li>
-  </ul>
-</div>
-              <button type="button" id="submit" onClick={() => runCode(code, language)} className="btn btn-secondary mx-2"
-                style={{ borderRadius: "20px", borderColor: "white", backgroundColor: "#090300", color: "#036EFD" }}>
-                <i className="fa-solid fa-play" style={{ color: "#EC7A6F" }}></i> &nbsp; Run
-              </button>
+              <div className="dropdown">
+                <button
+                  className="btn btn-secondary mx-2 dropdown-toggle"
+                  type="button"
+                  data-bs-toggle="dropdown"
+                  style={{
+                    borderRadius: "20px",
+                    boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",
+                    borderColor: "darkgrey",
+                    backgroundColor: "#090300",
+                    color: "#036EFD",
+                  }}
+                >
+                  <i className="fa-solid fa-circle-chevron-down" style={{ color: "#EC7A6F" }}></i> &nbsp;
+                  {language}
+                </button>
+                <ul className="dropdown-menu">
+                  <li onClick={() => setLanguage("java")}>
+                    Java
+                  </li>
+                  <li onClick={() => setLanguage("python")}>
+                    Python
+                  </li>
+                  <li onClick={() => setLanguage("cpp")}>
+                    C++
+                  </li>
+                </ul>
+              </div>
+              {!loading && (
+                <button type="button" id="submit" onClick={runCode} className="btn btn-secondary mx-2"
+                  style={{ display: 'flex', alignItems: 'center', borderRadius: "20px", borderColor: "white", backgroundColor: "#090300", color: "#036EFD" }}>
+                  <i className="fa-solid fa-play" style={{ color: "#EC7A6F", marginRight: '5px' }}></i> &nbsp; Run
+                </button>
+              )}
+              {loading && (
+                <button type="button" className="btn btn-secondary mx-2"
+                  style={{ borderRadius: "20px", borderColor: "white", backgroundColor: "#090300", color: "#036EFD" }}>
+                  <img src={loadingImage} alt="Loading..." style={{ height: '25px' }} />
+                </button>
+              )}
 
               <button type="button" className="btn btn-secondary mx-1"
                 style={{ borderRadius: "20px", borderColor: "white", backgroundColor: "#090300", color: "#036EFD" }}>
                 <i className="fa-solid fa-copy" style={{ color: "#EC7A6F" }}></i>  &nbsp;Copy
               </button>
 
-              <button type="button" className="btn btn-secondary mx-1"
-                style={{ borderRadius: "20px", borderColor: "white", backgroundColor: "#090300", color: "#036EFD" }}>
-                <i className="fa-solid fa-circle-half-stroke" style={{ color: "#EC7A6F" }}></i>
-                <span className='mx-2' style={{ color: "#036EFD" }}>Assist </span>
-              </button>
+              {/* Assist Dropdown */}
+              <div>
+                {!assistloading && (
+
+              
+  <button
+    type="button"
+    className="btn btn-secondary mx-1 dropdown-toggle"
+    style={{
+      borderRadius: "20px",
+      borderColor: "white",
+      backgroundColor: "#090300",
+      color: "#036EFD",
+    }}
+    id="assistDropdown"
+    data-bs-toggle="dropdown"
+    aria-expanded="false"
+    onClick={() => generateAssist(code)}
+  >
+    <i className="fa-solid fa-circle-half-stroke" style={{ color: "#EC7A6F" }}></i>
+    <span className="mx-1" style={{ color: "#036EFD" }}>
+      Assist
+    </span>
+  </button>
+    )} 
+
+    {assistloading &&(
+  <button
+    type="button"
+    className="btn btn-secondary mx-1 dropdown-toggle"
+    style={{
+      borderRadius: "20px",
+      borderColor: "white",
+      backgroundColor: "#090300",
+      color: "#036EFD",
+    }}
+    id="assistDropdown"
+    data-bs-toggle="dropdown"
+    aria-expanded="false"
+    onClick={() => generateAssist(code)}
+  >
+    <i className="fa-solid fa-circle-half-stroke" style={{ color: "#EC7A6F" }}></i>
+    <span className="mx-1" style={{ color: "#036EFD" }}>
+    <img src={loadingImageassist} alt="Loading..." style={{ height: '25px' }} />
+    </span>
+  </button>
+    )} 
+
+
+
+    
+  <ul
+    className="dropdown-menu"
+    aria-labelledby="assistDropdown"
+    style={{
+      maxHeight: "200px", // Set max height for scrolling
+      overflowY: "auto",  // Enable vertical scrolling
+    }}
+  >
+    <li style={{ whiteSpace: "pre-wrap" }}> {/* Preserve whitespace for code formatting */}
+      {assistAnswer}
+    </li>
+  </ul>
+</div>
+
+
+              {/* Explain Dropdown */}
+              <div>
+                <button
+                  type="button"
+                  className="btn btn-secondary mx-1 dropdown-toggle"
+                  style={{
+                    borderRadius: "20px",
+                    borderColor: "white",
+                    backgroundColor: "#090300",
+                    color: "#036EFD",
+                  }}
+                  id="explainDropdown"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                  onClick={() => generateExplain()} // Call generateExplain function on click
+                >
+                  <i className="fa-solid fa-lightbulb" style={{ color: "#EC7A6F" }}></i>
+                  <span className="mx-2" style={{ color: "#036EFD" }}>
+                    Explain
+                  </span>
+                </button>
+                <ul className="dropdown-menu" aria-labelledby="explainDropdown">
+                  <li>
+                    <ReactMarkdown className="p-3">{explainAnswer}</ReactMarkdown>
+                  </li>
+                </ul>
+              </div>
 
               <button type="button" className="btn btn-secondary mx-1"
                 style={{ borderRadius: "20px", borderColor: "white", backgroundColor: "#090300", color: "#036EFD" }}>
-                <i className="fa-solid fa-lightbulb" style={{ color: "#EC7A6F" }}></i>
-                <span className='mx-2' style={{ color: "#036EFD" }}>Explain</span>
-              </button>
-
-              <button type="button" className="btn btn-secondary mx-1"
-                style={{ borderRadius: "20px", borderColor: "white", backgroundColor: "#090300", color: "#036EFD" }}>
-                <i className="fa-solid fa-download" style={{ color: "#EC7A6F" }}></i>  &nbsp;Download Code
+                <i className="fa-solid fa-download" style={{ color: "#EC7A6F" }}></i>  &nbsp;Download 
               </button>
             </div>
 
@@ -268,8 +409,7 @@ function EditorPage({ Code }) {
               {output ? (
                 <pre style={{ color: '#FFF' }}>{JSON.stringify(output, null, 2)}</pre>
               ) : (
-                <p style={{ color: '#FFF' }}>&gt;</p>
-
+                <p style={{ color: '#FFF' }}> <i className="fa-solid fa-terminal" style={{ color: "white" }}></i></p>
               )}
             </div>
           </div>

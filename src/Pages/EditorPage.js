@@ -88,9 +88,9 @@ function EditorPage() {
       toast.error('Please select a language and enter code to run.');
       return;
     }
-
-    setLoading(true); // Start loading indicator
-
+  
+    setLoading(true);
+  
     try {
       const response = await axios.post(
         "https://gcdx1arns0.execute-api.us-east-1.amazonaws.com/production",
@@ -104,17 +104,19 @@ function EditorPage() {
           },
         }
       );
-
-      setOutput(response.data);
-      toast.success("Intelsy Compiler : Output Generated")
+  
+      // Extract and format the output
+      const formattedOutput = response.data.body.trim().replace(/\\n/g, '\n').replace(/(^"|"$)/g, '');
+      setOutput(formattedOutput);
+      toast.success("Intelsy Compiler: Output Generated");
     } catch (error) {
       console.error("Error fetching from API:", error.message);
       setOutput({ error: error.message });
     } finally {
-      setLoading(false); // Stop loading indicator
+      setLoading(false);
     }
   };
-
+  
   const snapShot = () => {
     html2canvas(editorRef.current).then((canvas) => {
       setEditorScreenshot(canvas.toDataURL());
@@ -537,11 +539,17 @@ onClick={() => generateExplain(code)}// Call generateExplain function on click
               height: "80vh",
               overflow: 'auto'
             }}>
-              {output ? (
-                <pre style={{ color: '#FFF' }}>{JSON.stringify(output, null, 2)}</pre>
-              ) : (
-                <p style={{ color: '#FFF' }}> <i className="fa-solid fa-terminal" style={{ color: "white" }}></i></p>
-              )}
+{output ? (
+  <pre style={{ color: '#FFF', display: 'inline-block' }}>
+    <i className="fa-solid fa-terminal" style={{ color: "white", animation: "blink 1s infinite" }}></i>&nbsp;
+    {JSON.stringify(output, null, 2)}
+  </pre>
+) : (
+  <p style={{ color: '#FFF' }}>
+    <i className="fa-solid fa-terminal" style={{ color: "white", animation: "blink 1s infinite" }}></i>&nbsp;
+  </p>
+)}
+
             </div>
           </div>
 

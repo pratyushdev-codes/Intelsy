@@ -20,48 +20,8 @@ function EditorPage({ Code }) {
   const reactNavigator = useNavigate();
   const [clients, setClients] = useState([]);
   const [code, setCode] = useState('');
-  const [language, setLanguage] = useState('python'); // Default to python
-
-  async function runCode(code, language) {
-    console.log(code, language);
-  
-    try {
-      const answer = await fetch(
-        "https://8o6uazb6t5.execute-api.us-east-1.amazonaws.com/Production",
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-          method: "POST",
-          body: JSON.stringify({
-            code: code,
-            language: language,
-          }),
-        }
-      );
-  
-      if (!answer.ok) {
-        throw new Error(`HTTP error! Status: ${answer.status}`);
-      }
-  
-      const response = await answer.json(); // Properly parse JSON response
-      console.log("API Response:", response);
-      
-      // Handle response data as needed
-      return response;
-    } catch (error) {
-      console.error("Error fetching from API:", error.message);
-      return { error: error.message }; // Return an error object or handle as needed
-    }
-  }
-  
-
-
-  const snapShot = () => {
-    html2canvas(editorRef.current).then((canvas) => {
-      setEditorScreenshot(canvas.toDataURL());
-    });
-  };
+  const [language, setLanguage] = useState('Select Language');
+  const [output, setOutput] = useState(null);
 
   useEffect(() => {
     const init = async () => {
@@ -113,6 +73,49 @@ function EditorPage({ Code }) {
     reactNavigator('/');
   };
 
+  useEffect(() => {
+    if (code && language) {
+      runCode(code, language);
+    }
+  }, [code, language]);
+
+  async function runCode(code, language) {
+    console.log(code, language);
+  
+    try {
+      const answer = await fetch(
+        "https://gcdx1arns0.execute-api.us-east-1.amazonaws.com/production",
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          method: "POST",
+          body: JSON.stringify({
+            code: code,
+            language: language,
+          }),
+        }
+      );
+  
+      if (!answer.ok) {
+        throw new Error(`HTTP error! Status: ${answer.status}`);
+      }
+  
+      const response = await answer.json();
+      console.log("API Response:", response);
+      setOutput(response);
+    } catch (error) {
+      console.error("Error fetching from API:", error.message);
+      setOutput({ error: error.message });
+    }
+  }
+
+  const snapShot = () => {
+    html2canvas(editorRef.current).then((canvas) => {
+      setEditorScreenshot(canvas.toDataURL());
+    });
+  };
+
   if (!location.state) {
     return <Navigate to="/" />;
   }
@@ -151,7 +154,7 @@ function EditorPage({ Code }) {
                   Your Playground is ready
                 </span>
                 <br />
-                <span style={{ fontSize: '20px' }}>Start developing !</span>
+                <span style={{ fontSize: '20px' }}>Start developing!</span>
               </h3>
               <br />
               <h3 style={{ color: '#036EFD', fontSize: '22px', fontWeight: 'bold' }}>
@@ -198,62 +201,60 @@ function EditorPage({ Code }) {
               width: '90%',
               marginBottom: '5px'
             }}>
-              <div className="dropdown">
-                <button className="btn btn-secondary mx-2 dropdown-toggle"
-                  type="button"
-                  data-bs-toggle="dropdown"
-                  style={{
-                    borderRadius: "20px",
-                    boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",
-                    borderColor: "darkgrey",
-                    borderStyle: "dotted",
-                    backgroundColor: "#090300",
-                    color: "#036EFD"
-                  }}>
-                  Select Language
-                </button>
-                <ul className="dropdown-menu">
-                  <li onClick={() => { setLanguage("java"); }}>
-                    <a className="dropdown-item" href="#">Java</a>
-                  </li>
-                  <li onClick={() => { setLanguage("python"); }}>
-                    <a className="dropdown-item" href="#">Python</a>
-                  </li>
-                  <li onClick={() => { setLanguage("cpp"); }}>
-                    <a className="dropdown-item" href="#">C++</a>
-                  </li>
-                </ul>
-              </div>
+ <div className="dropdown">
+  <button
+    className="btn btn-secondary mx-2 dropdown-toggle"
+    type="button"
+    data-bs-toggle="dropdown"
+    style={{
+      borderRadius: "20px",
+      boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",
+      borderColor: "darkgrey",
+      borderStyle: "dotted",
+      backgroundColor: "#090300",
+      color: "#036EFD",
+    }}
+  >
+    {language}
+  </button>
+  <ul className="dropdown-menu">
+    <li onClick={() => setLanguage("java")}>
+      Java
+    </li>
+    <li onClick={() => setLanguage("python")}>
+      Python
+    </li>
+    <li onClick={() => setLanguage("cpp")}>
+      C++
+    </li>
+  </ul>
+</div>
+              <button type="button" id="submit" onClick={() => runCode(code, language)} className="btn btn-secondary mx-2"
+                style={{ borderRadius: "20px", borderColor: "white", backgroundColor: "#090300", color: "#036EFD" }}>
+                <i className="fa-solid fa-play" style={{ color: "#EC7A6F" }}></i> &nbsp; Run
+              </button>
 
-              <button type="button" id="submit" onClick={runCode} className="btn btn-secondary mx-2"
-  style={{ borderRadius: "20px", borderColor: "white", backgroundColor: "#090300", color: "#036EFD" }}>
-  <i className="fa-solid fa-play" style={{ color: "#EC7A6F" }}></i> &nbsp; Run
-</button>
+              <button type="button" className="btn btn-secondary mx-1"
+                style={{ borderRadius: "20px", borderColor: "white", backgroundColor: "#090300", color: "#036EFD" }}>
+                <i className="fa-solid fa-copy" style={{ color: "#EC7A6F" }}></i>  &nbsp;Copy
+              </button>
 
-<button type="button" className="btn btn-secondary mx-1"
-  style={{ borderRadius: "20px", borderColor: "white", backgroundColor: "#090300", color: "#036EFD" }}>
-  <i className="fa-solid fa-copy" style={{ color: "#EC7A6F" }}></i>  &nbsp;Copy
-</button>
+              <button type="button" className="btn btn-secondary mx-1"
+                style={{ borderRadius: "20px", borderColor: "white", backgroundColor: "#090300", color: "#036EFD" }}>
+                <i className="fa-solid fa-circle-half-stroke" style={{ color: "#EC7A6F" }}></i>
+                <span className='mx-2' style={{ color: "#036EFD" }}>Assist </span>
+              </button>
 
-<button type="button" className="btn btn-secondary mx-1"
-  style={{ borderRadius: "20px", borderColor: "white", backgroundColor: "#090300", color: "#036EFD" }}>
-  <i className="fa-solid fa-circle-half-stroke" style={{ color: "#EC7A6F" }}></i>
-  <span className='mx-2' style={{ color: "#036EFD" }}>Assist </span>
-</button>
+              <button type="button" className="btn btn-secondary mx-1"
+                style={{ borderRadius: "20px", borderColor: "white", backgroundColor: "#090300", color: "#036EFD" }}>
+                <i className="fa-solid fa-lightbulb" style={{ color: "#EC7A6F" }}></i>
+                <span className='mx-2' style={{ color: "#036EFD" }}>Explain</span>
+              </button>
 
-<button type="button" className="btn btn-secondary mx-1"
-  style={{ borderRadius: "20px", borderColor: "white", backgroundColor: "#090300", color: "#036EFD" }}>
-  <i className="fa-solid fa-lightbulb" style={{ color: "#EC7A6F" }}></i>
-  <span className='mx-2' style={{ color: "#036EFD" }}>Explain</span>
-</button>
-
-<button type="button" className="btn btn-secondary mx-1"
-  style={{ borderRadius: "20px", borderColor: "white", backgroundColor: "#090300", color: "#036EFD" }}>
-  <i className="fa-solid fa-download" style={{ color: "#EC7A6F" }}></i>  &nbsp;Download Code
-</button>
-
-
-
+              <button type="button" className="btn btn-secondary mx-1"
+                style={{ borderRadius: "20px", borderColor: "white", backgroundColor: "#090300", color: "#036EFD" }}>
+                <i className="fa-solid fa-download" style={{ color: "#EC7A6F" }}></i>  &nbsp;Download Code
+              </button>
             </div>
 
             <div className='codeOutput' style={{
@@ -261,9 +262,15 @@ function EditorPage({ Code }) {
               backgroundColor: "#0F1117",
               width: "90%",
               borderRadius: "10px",
-              height: "80vh"
+              height: "80vh",
+              overflow: 'auto'
             }}>
-              <p><img src='../images/next.png' style={{ scale: "0.5" }} /> Hello World </p>
+              {output ? (
+                <pre style={{ color: '#FFF' }}>{JSON.stringify(output, null, 2)}</pre>
+              ) : (
+                <p style={{ color: '#FFF' }}>&gt;</p>
+
+              )}
             </div>
           </div>
 

@@ -31,7 +31,8 @@ function EditorPage() {
   const [assistloading, setAssistloading]=useState(false); //New state for assist loading inficator
   const [assistAnswer, setAssistAnswer] = useState(""); // State to hold the assist answer
   const [explainAnswer, setExplainAnswer] = useState(""); // State to hold the explain answer
-
+  const [explainloading ,  setExplainloading]=  useState(false);
+  const [copyloading ,  setCopyloading]= useState(false); //loading state for copy button
   useEffect(() => {
     const init = async () => {
       try {
@@ -105,6 +106,7 @@ function EditorPage() {
       );
 
       setOutput(response.data);
+      toast.success("Intelsy Compiler : Output Generated")
     } catch (error) {
       console.error("Error fetching from API:", error.message);
       setOutput({ error: error.message });
@@ -118,6 +120,56 @@ function EditorPage() {
       setEditorScreenshot(canvas.toDataURL());
     });
   };
+//function to copy the code to clipboard
+
+const copyCodeToClipboard = () => {
+  setCopyloading(true);
+  if (code) {
+    navigator.clipboard.writeText(code).then(() => {
+      toast.success(' Code copied to clipboard!');
+    setCopyloading(false)
+    }).catch((err) => {
+      console.error('Failed to copy code:', err);
+      toast.error('❌ Failed to copy code.');
+    });
+  } else {
+    toast.error('No code to copy!');
+  }
+};
+
+//function to donwload the code 
+const downloadCode = () => {
+  if (!code || language === 'Select Language') {
+    toast.error('Please select a language and enter code to download.');
+    return;
+  }
+
+  let filename = 'main';
+  switch (language) {
+    case 'python':
+      filename += '.py';
+      break;
+    case 'java':
+      filename += '.java';
+      break;
+    case 'cpp':
+      filename += '.cpp';
+      break;
+    default:
+      filename += '.txt';
+  }
+
+  const blob = new Blob([code], { type: 'text/plain' });
+  const link = document.createElement('a');
+  link.href = URL.createObjectURL(blob);
+  link.download = filename;
+  link.click();
+  URL.revokeObjectURL(link.href);
+
+  toast.success(`✅ Code downloaded as ${filename}`);
+};
+
+
 
   // Function to generate assist answer
 const generateAssist = async (code) => {
@@ -130,8 +182,10 @@ const generateAssist = async (code) => {
       }
     );
     setAssistAnswer(JSON.stringify(assistresponse.data.candidates[0].content.parts[0].text));
+    toast.success("✨ Your code assistant is here with helpful tips!")
   } catch (error) {
     console.error("Error fetching assist from API:", error.message);
+    toast.error("Intelsy AI couldn't generate response")
     setAssistAnswer("Sorry, something went wrong. Please try again!");
   }
   setAssistloading(false);
@@ -140,10 +194,29 @@ const generateAssist = async (code) => {
   
 
   // Function to generate explain answer (placeholder implementation)
-  const generateExplain = async () => {
-    setLoading(true);
-    // Placeholder: Implement explain functionality here
-    setLoading(false);
+  const generateExplain = async (code) => {
+    setExplainloading(true);
+
+    try{
+      const explainresponse = await axios.post(
+        "https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=AIzaSyAc7yWVfIu85Q68ryHsnIjR6CwzrJt25cw",
+        {
+          contents: [{ parts: [{ text: "Explain me the code that I have provided you"+JSON.stringify(code) }] }]
+        }
+      );
+      setExplainAnswer(JSON.stringify(explainresponse.data.candidates[0].content.parts[0].text));
+      toast.success("💭 Here's an explanation for your code!")
+    }catch(error){
+      console.error("Error fetching explain from API:", error.message);
+      toast.error("Intelsy AI couldn't generate response")
+
+      setExplainAnswer("Sorry, something went wrong. Please try again!");
+    }
+
+
+
+ 
+    setExplainloading(false);
   };
 
   if (!location.state) {
@@ -259,7 +332,7 @@ const generateAssist = async (code) => {
                   data-bs-toggle="dropdown"
                   style={{
                     borderRadius: "20px",
-                    boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",
+                  
                     borderColor: "darkgrey",
                     backgroundColor: "#090300",
                     color: "#036EFD",
@@ -283,7 +356,7 @@ const generateAssist = async (code) => {
               {!loading && (
                 <button type="button" id="submit" onClick={runCode} className="btn btn-secondary mx-2"
                   style={{ display: 'flex', alignItems: 'center', borderRadius: "20px", borderColor: "white", backgroundColor: "#090300", color: "#036EFD" }}>
-                  <i className="fa-solid fa-play" style={{ color: "#EC7A6F", marginRight: '5px' }}></i> &nbsp; Run
+                  <i className="fa-solid fa-play mx-1" style={{ color: "#EC7A6F", marginRight: '5px' }}></i> &nbsp; Run
                 </button>
               )}
               {loading && (
@@ -293,10 +366,35 @@ const generateAssist = async (code) => {
                 </button>
               )}
 
-              <button type="button" className="btn btn-secondary mx-1"
-                style={{ borderRadius: "20px", borderColor: "white", backgroundColor: "#090300", color: "#036EFD" }}>
-                <i className="fa-solid fa-copy" style={{ color: "#EC7A6F" }}></i>  &nbsp;Copy
-              </button>
+{!copyloading &&(
+  <button
+  type="button"
+  className="btn btn-secondary mx-1"
+  style={{ borderRadius: "20px", borderColor: "white", backgroundColor: "#090300", color: "#036EFD" }}
+  onClick={copyCodeToClipboard}
+>
+  <i className="fa-solid fa-copy" style={{ color: "#EC7A6F" }}></i> &nbsp;Copy
+</button>
+
+)}
+
+
+{copyloading &&(
+  <button
+  type="button"
+  className="btn btn-secondary mx-1"
+  style={{ borderRadius: "20px", borderColor: "white", backgroundColor: "#090300", color: "#036EFD" }}
+  onClick={copyCodeToClipboard}
+>
+<img src={loadingImageassist} alt="Loading..." style={{ height: '25px' }} />
+</button>
+
+)}
+
+
+
+
+{(copyloading)}
 
               {/* Assist Dropdown */}
               <div>
@@ -317,7 +415,7 @@ const generateAssist = async (code) => {
     aria-expanded="false"
     onClick={() => generateAssist(code)}
   >
-    <i className="fa-solid fa-circle-half-stroke" style={{ color: "#EC7A6F" }}></i>
+    <i className="fa-solid fa-circle-half-stroke" style={{ color: "#EC7A6F" }}></i> &nbsp;
     <span className="mx-1" style={{ color: "#036EFD" }}>
       Assist
     </span>
@@ -366,6 +464,7 @@ const generateAssist = async (code) => {
 
               {/* Explain Dropdown */}
               <div>
+              {!explainloading && (
                 <button
                   type="button"
                   className="btn btn-secondary mx-1 dropdown-toggle"
@@ -378,24 +477,56 @@ const generateAssist = async (code) => {
                   id="explainDropdown"
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
-                  onClick={() => generateExplain()} // Call generateExplain function on click
+                  onClick={() => generateExplain(code)}// Call generateExplain function on click
                 >
                   <i className="fa-solid fa-lightbulb" style={{ color: "#EC7A6F" }}></i>
                   <span className="mx-2" style={{ color: "#036EFD" }}>
                     Explain
                   </span>
                 </button>
+                   )}
+
+{explainloading && (
+
+<button
+type="button"
+className="btn btn-secondary mx-1 dropdown-toggle"
+style={{
+  borderRadius: "20px",
+  borderColor: "white",
+  backgroundColor: "#090300",
+  color: "#036EFD",
+}}
+id="explainDropdown"
+data-bs-toggle="dropdown"
+aria-expanded="false"
+onClick={() => generateExplain(code)}// Call generateExplain function on click
+>
+<i className="fa-solid fa-lightbulb" style={{ color: "#EC7A6F" }}></i>
+<span className="mx-2" style={{ color: "#036EFD" }}>
+<img src={loadingImageassist} alt="Loading..." style={{ height: '25px' }} />
+</span>
+</button>
+
+
+)}
+
                 <ul className="dropdown-menu" aria-labelledby="explainDropdown">
                   <li>
                     <ReactMarkdown className="p-3">{explainAnswer}</ReactMarkdown>
                   </li>
                 </ul>
               </div>
+             
+              <button
+  type="button"
+  className="btn btn-secondary mx-1"
+  style={{ borderRadius: "20px", borderColor: "white", backgroundColor: "#090300", color: "#036EFD" }}
+  onClick={downloadCode}
+>
+  <i className="fa-solid fa-download" style={{ color: "#EC7A6F" }}></i> &nbsp;Download
+</button>
 
-              <button type="button" className="btn btn-secondary mx-1"
-                style={{ borderRadius: "20px", borderColor: "white", backgroundColor: "#090300", color: "#036EFD" }}>
-                <i className="fa-solid fa-download" style={{ color: "#EC7A6F" }}></i>  &nbsp;Download 
-              </button>
             </div>
 
             <div className='codeOutput' style={{

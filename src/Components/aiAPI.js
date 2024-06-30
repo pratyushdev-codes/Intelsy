@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import ReactMarkdown from "react-markdown";
+import toast from "react-hot-toast";
 
 function AiAPI() {
   const [question, setQuestion] = useState("");
@@ -14,10 +15,11 @@ function AiAPI() {
       const response = await axios.post(
         "https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=AIzaSyAc7yWVfIu85Q68ryHsnIjR6CwzrJt25cw",
         {
-          contents: [{ parts: [{ text: question }] }],
+          contents: [{ parts: [{ text:question }] }],
         }
       );
       setAnswer(response.data.candidates[0].content.parts[0].text);
+      toast.success("Intelsy AI : Answer Generated")
     } catch (error) {
       console.log(error);
       setAnswer("Sorry, something went wrong. Please try again!");

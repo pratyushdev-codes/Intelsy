@@ -11,6 +11,7 @@ import html2canvas from 'html2canvas';
 import axios from 'axios';
 import ReactMarkdown from 'react-markdown'; // Import ReactMarkdown for rendering markdown content
 
+
 // Loading image URL
 const loadingImage = '../images/loading.gif'; // Replace with your actual loading image URL
 const loadingImageassist='../images/loading.gif'
@@ -33,6 +34,7 @@ function EditorPage() {
   const [explainAnswer, setExplainAnswer] = useState(""); // State to hold the explain answer
   const [explainloading ,  setExplainloading]=  useState(false);
   const [copyloading ,  setCopyloading]= useState(false); //loading state for copy button
+  const [rceloading, setreceLoding]= useState(false);
   useEffect(() => {
     const init = async () => {
       try {
@@ -84,12 +86,17 @@ function EditorPage() {
   };
 
   const runCode = async () => {
+    setLoading(true);
+    toast.loading('RCE engine is working...');
+    setreceLoding(true);
+
     if (!code || language === 'Select Language') {
       toast.error('Please select a language and enter code to run.');
       return;
     }
   
     setLoading(true);
+ 
   
     try {
       const response = await axios.post(
@@ -108,12 +115,19 @@ function EditorPage() {
       // Extract and format the output
       const formattedOutput = response.data.body.trim().replace(/\\n/g, '\n').replace(/(^"|"$)/g, '');
       setOutput(formattedOutput);
+    
+      setreceLoding(false);
+      toast.dismiss();
       toast.success("Intelsy Compiler: Output Generated");
+    
     } catch (error) {
       console.error("Error fetching from API:", error.message);
+      toast.error("RCE couldn't generate output");
       setOutput({ error: error.message });
     } finally {
       setLoading(false);
+      
+     
     }
   };
   
@@ -355,6 +369,7 @@ const generateAssist = async (code) => {
                   </li>
                 </ul>
               </div>
+              
               {!loading && (
                 <button type="button" id="submit" onClick={runCode} className="btn btn-secondary mx-2"
                   style={{ display: 'flex', alignItems: 'center', borderRadius: "20px", borderColor: "white", backgroundColor: "#090300", color: "#036EFD" }}>

@@ -218,6 +218,6 @@ footer a:hover {
   line-height: 1.6;
   padding-top: 20px;
   height: auto;
-
+  ::-webkit-scrollbar {display:none;}
  
 }

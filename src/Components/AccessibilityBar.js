@@ -29,7 +29,7 @@ const AccessibilityBar = () => {
         <div className="container-fluid">
           <a className="navbar-brand" style={{ color: "#036EFD", fontSize: "20px", fontWeight: "bold" }}>
             <i className="fa-brands fa-gripfire"></i> &nbsp; 
-            <span style={{ background: 'linear-gradient(-100deg, #036EFD, #EC7A6F)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
+            <span style={{ background: 'linear-gradient(-100deg, #036EFD, #EC7A6F, #EC7A6F )', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
               Accessibility Bar
             </span>
           </a>

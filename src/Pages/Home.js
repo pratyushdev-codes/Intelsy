@@ -9,6 +9,7 @@ import { useNavigate } from 'react-router-dom';
 import Features from '../Features';
 
 
+
 function Home() {
   const navigate = useNavigate(); 
   const [roomId, setRoomID] = useState('');
@@ -300,7 +301,7 @@ function Home() {
         <br />
         <br />
         <center>
-          <div style={{ backgroundColor: "#1B1C1E", borderRadius: "20px", width: "100%", height: "30rem" }}>
+          <div style={{ backgroundColor: "#1B1C1E", backgroundImage: "url('/images/grad1.png')",borderRadius: "20px", width: "100%", height: "30rem" }}>
             <br />
             <h1 style={{ fontFamily: "PT sans", color: "#036EFD", fontSize: "50px", fontWeight: "bold" }} onClick={joinRoom}>
               Join a room
@@ -349,9 +350,139 @@ function Home() {
                 </button>
               </center>
             </div>
-   <Features/>
+            <br/>
+            <br/>
+   {/* <Features/> */}
+   <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+      {/* First row of cards */}
+      <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '20px',marginBottom: '20px' }}>
+        <div className="card" style={{ width: '18rem', backgroundColor: '#1B1C1F',  color:"EC7A6F", backgroundImage: "url('/images/grad1.png')", borderRadius: '20px', color: 'white', marginBottom: '20px' }}>
+          <div className="card-body">
+            <h5 className="card-title"><i className="fa-solid fa-server" style={{ color: '#EC7A6F' }}></i></h5>
+            <p className="card-subtitle mb-2 " style={{ color: 'grey',fontWeight:"bolder" }}>Remote Code Execution Engine</p>
+            <p className="card-text" style={{color:"EC7A6F"}}>Execute your code remotely using RCE Engine powered by AWS.</p>
+          </div>
+        </div>
+
+        <div className="card" style={{ width: '18rem', backgroundColor: '#1B1C1F', borderRadius: '20px', color: '#036EFD', marginBottom: '20px' }}>
+          <div className="card-body">
+            <h5 className="card-title"><i className="fa-solid fa-terminal" style={{ color: '#EC7A6F' }}></i></h5>
+            <p className="card-subtitle mb-2 " style={{ color: 'grey' ,fontWeight:"bolder"  }}>Terminal</p>
+            <p className="card-text">Run and know the output of the program.</p>
+          </div>
+        </div>
+
+        <div className="card" style={{ width: '18rem', backgroundColor: '#1B1C1F', borderRadius: '20px', color: '#036EFD', marginBottom: '20px' }}>
+          <div className="card-body">
+            <h5 className="card-title"><i className="fa-solid fa-code" style={{ color: '#EC7A6F' }}></i></h5>
+            <p className="card-subtitle mb-2 " style={{ color: 'grey' ,fontWeight:"bolder" }}>Code Editor</p>
+            <p className="card-text">Interactive code editor and playground with themes.</p>
+          </div>
+        </div>
+      </div>
+
+      {/* Second row of cards */}
+      <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '20px', marginBottom: '20px' }}>
+        <div className="card" style={{ width: '18rem', backgroundColor: '#1B1C1F', borderRadius: '20px', color: '#036EFD', marginBottom: '20px' }}>
+          <div className="card-body">
+            <h5 className="card-title"><i className="fa-solid fa-users" style={{ color: '#EC7A6F' }}></i></h5>
+            <p className="card-subtitle mb-2 " style={{ color: 'grey' ,fontWeight:"bolder" }}>Collaborate</p>
+            <p className="card-text">Collaborate with your team, friends, peers, or engineering teams for project code with auto sync functionality.</p>
+          </div>
+        </div>
+
+        <div className="card" style={{ width: '18rem', backgroundColor: '#1B1C1F', borderRadius: '20px', color: '#036EFD', marginBottom: '20px' }}>
+          <div className="card-body">
+            <h5 className="card-title"><i className="fa-solid fa-chalkboard-user" style={{ color: '#EC7A6F' }}></i></h5>
+            <p className="card-subtitle mb-2 " style={{ color: 'grey',fontWeight:"bolder"  }}>Whiteboard</p>
+            <p className="card-text">Collaborative Canvas whiteboard for tech planning and strategy with auto sync functionality.</p>
+          </div>
+        </div>
+
+        <div className="card" style={{ width: '18rem', backgroundColor: '#1B1C1F', borderRadius: '20px', color: '#036EFD', marginBottom: '20px' }}>
+          <div className="card-body">
+            <h5 className="card-title"><i className="fa-solid fa-cloud-arrow-down" style={{ color: '#EC7A6F' }}></i></h5>
+            <p className="card-subtitle mb-2 " style={{ color: 'grey',fontWeight:"bolder"  }}>Download Code</p>
+            <p className="card-text">Download your language-specific code.</p>
+          </div>
+        </div>
+      </div>
+
+      {/* Third row of cards */}
+      <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '20px', marginBottom: '20px' }}>
+        <div className="card" style={{ width: '18rem', backgroundColor: '#1B1C1F', borderRadius: '20px', color: '#036EFD', marginBottom: '20px' }}>
+          <div className="card-body">
+            <h5 className="card-title"><i className="fa-brands fa-slack" style={{ color: '#EC7A6F' }}></i></h5>
+            <p className="card-subtitle mb-2 " style={{ color: 'grey',fontWeight:"bolder"  }}>AI Chatbot</p>
+            <p className="card-text">AI Chatbot to help you out during bugs, meetings, and code reviews.</p>
+          </div>
+        </div>
+
+        <div className="card" style={{ width: '18rem', backgroundColor: '#1B1C1F', borderRadius: '20px', color: '#036EFD', marginBottom: '20px' }}>
+          <div className="card-body">
+            <h5 className="card-title"><i className="fa-solid fa-camera-retro" ></i></h5>
+            <p className="card-subtitle mb-2 " style={{ color: 'grey',fontWeight:"bolder"  }}>Screenshot</p>
+            <p className="card-text">Instantly click a snap of your code.</p>
+          </div>
+        </div>
+
+        <div className="card" style={{ width: '18rem', backgroundColor: '#1B1C1F', borderRadius: '20px', color: '#036EFD', marginBottom: '20px' }}>
+          <div className="card-body">
+            <h5 className="card-title"><i className="fa-solid fa-handshake-angle" style={{ color: '#EC7A6F' }}></i></h5>
+            <p className="card-subtitle mb-2 " style={{ color: 'grey' ,fontWeight:"bolder" }}>AI Code Assistant</p>
+            <p className="card-text">AI Code assistant that assists you while coding complex projects.</p>
+          </div>
+        </div>
+        
+        {/* Fouth row */}
+        
+        <div className="card" style={{ width: '18rem', backgroundColor: '#1B1C1F', borderRadius: '20px', color: '#036EFD', marginBottom: '20px' }}>
+          <div className="card-body">
+            <h5 className="card-title"><i className="fa-brands fa-gripfire" style={{ color: '#EC7A6F' }}></i></h5>
+            <p className="card-subtitle mb-2 " style={{ color: 'grey' ,fontWeight:"bolder" }}>AI Code Assistant</p>
+            <p className="card-text">AI Code assistant that assists you while coding complex projects.</p>
+          </div>
+        </div>
+
+
+        <div className="card" style={{ width: '18rem', backgroundColor: '#1B1C1F', borderRadius: '20px', color: '#036EFD', marginBottom: '20px' }}>
+          <div className="card-body">
+            <h5 className="card-title"><i className="fa-solid fa-copy" style={{ color: '#EC7A6F' }}></i></h5>
+            <p className="card-subtitle mb-2 " style={{ color: 'grey' ,fontWeight:"bolder" }}>Copy Code</p>
+            <p className="card-text">Copy your code directly to your clipboard.</p>
+          </div>
+        </div>
+
+        {/* <div className="card" style={{ width: '18rem', backgroundColor: '#1B1C1F', borderRadius: '20px', color: '#036EFD', marginBottom: '20px' }}>
+          <div className="card-body">
+            <h5 className="card-title"><i className="fa-brands fa-gripfire" style={{ color: '#EC7A6F' }}></i></h5>
+            <p className="card-subtitle mb-2 " style={{ color: 'grey' }}>AI Code Assistant</p>
+            <p className="card-text">AI Code assistant that assists you while coding complex projects.</p>
+          </div>
+        </div> */}
+
+        <div className="card" style={{ width: '18rem', backgroundColor: '#1B1C1F', borderRadius: '20px', color: '#036EFD', marginBottom: '20px' }}>
+          <div className="card-body">
+            <h5 className="card-title"><i className="fa-solid fa-lightbulb" style={{ color: '#EC7A6F' }}></i></h5>
+            <p className="card-subtitle mb-2 " style={{ color: 'grey',fontWeight:"bolder"  }}>AI Code Explain</p>
+            <p className="card-text">Helps you understand difficult code.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <br/>
+    <br/>
+    <br/><br/>
+    <br/><br/><br/><br/><br/><br/>
+
+
+
+   {/*  */}
             <br />
-            <img src='./images/1.jpeg' className="img-fluid" style={{ borderRadius: "20px" }} />
+            {/* <img src='./images/1.jpeg' className="img-fluid" style={{ borderRadius: "20px" }} /> */}
           </div>
           <br />
           <br />
@@ -365,7 +496,7 @@ function Home() {
           <br />
           <br />
           <br />
-          <Download />
+          {/* <Download /> */}
         </center>
       </div>
     </div>

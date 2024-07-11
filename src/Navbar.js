@@ -30,7 +30,8 @@ function Navbar() {
             <button className="btn btn-glow mx-2" style={{ borderRadius:"20px", backgroundColor:"#EFF3F6", color:"#808080", fontWeight:"bold"}}>Download Now</button>
 
             
-             <button className="btn btn-primary mx-2" style={{ borderRadius:"20px", backgroundColor:"#036EFD", fontWeight:"bold" }}>Contact Us</button> 
+            <a href="https://github.com/pratyushdev-codes" target="_blank" rel="noopener noreferrer" className="btn btn-primary mx-2" style={{ borderRadius: "20px", backgroundColor: "#036EFD", fontWeight: "bold" }}>Contact Us</a>
+
       
             </div>
           </div>

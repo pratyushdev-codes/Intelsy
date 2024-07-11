@@ -179,13 +179,16 @@ function Home() {
 
     .video-wrapper {
       position: relative;
-      padding-top: 56.25%; /* 16:9 Aspect Ratio */
+      padding-top: 45.25%; /* 16:9 Aspect Ratio */
       height: 0;
       overflow: hidden;
       max-width: 100%;
       border-radius: 20px;
       background: #000;
     }
+
+
+
 
     .video-wrapper iframe, .video-wrapper video {
       position: absolute;
@@ -308,10 +311,10 @@ function Home() {
   
         {/* <Banner /> */}
         
-       
+       <br/>
         <br />
         <center>
-          <div style={{ backgroundColor: "#1B1C1E", backgroundImage: "url('/images/grad1.png')",borderRadius: "20px", width: "100%", height: "30rem" }}>
+          <div style={{ backgroundColor: "#1B1C1E", backgroundImage: "url('/images/grad1.png')",borderRadius: "40px", width: "100%", height: "30rem" }}>
             <br />
             <h1 style={{ fontFamily: "PT sans", color: "#036EFD", fontSize: "50px", fontWeight: "bold" }} onClick={joinRoom}>
               Join a room
@@ -370,7 +373,7 @@ function Home() {
       <div className="card-body">
         <h5 className="card-title"><i className="fa-solid fa-server" style={{ color: '#EC7A6F' }}></i></h5>
         <p className="card-subtitle mb-2" style={{ color: 'grey', fontWeight: 'bolder' }}>Remote Code Execution Engine</p>
-        <p className="card-text" style={{ color: '#036EFD' }}>Execute your code remotely using RCE Engine powered by AWS.</p>
+        <p className="card-text" style={{ color: '#036EFD', fontWeight:"500" }}>Execute your code remotely using RCE Engine powered by AWS.</p>
       </div>
     </div>
 
@@ -378,7 +381,7 @@ function Home() {
       <div className="card-body">
         <h5 className="card-title"><i className="fa-solid fa-terminal" style={{ color: '#EC7A6F' }}></i></h5>
         <p className="card-subtitle mb-2" style={{ color: 'grey', fontWeight: 'bolder' }}>Terminal</p>
-        <p className="card-text">Run and know the output of the program.</p>
+        <p className="card-text" style={{ color: '#036EFD', fontWeight:"500" }}>Run and know the output of the program.</p>
       </div>
     </div>
 
@@ -386,7 +389,7 @@ function Home() {
       <div className="card-body">
         <h5 className="card-title"><i className="fa-solid fa-code" style={{ color: '#EC7A6F' }}></i></h5>
         <p className="card-subtitle mb-2" style={{ color: 'grey', fontWeight: 'bolder' }}>Code Editor</p>
-        <p className="card-text">Interactive code editor and playground with themes.</p>
+        <p className="card-text" style={{ color: '#036EFD', fontWeight:"500" }}>Interactive code editor and playground with themes.</p>
       </div>
     </div>
   </div>
@@ -397,7 +400,7 @@ function Home() {
       <div className="card-body">
         <h5 className="card-title"><i className="fa-solid fa-users" style={{ color: '#EC7A6F' }}></i></h5>
         <p className="card-subtitle mb-2" style={{ color: 'grey', fontWeight: 'bolder' }}>Collaborate</p>
-        <p className="card-text">Collaborate with your team, friends, peers, or engineering teams for project code with auto sync functionality.</p>
+        <p className="card-text" style={{ color: '#036EFD', fontWeight:"500" }}>Collaborate with your team, friends, peers, or engineering teams for project code with auto sync functionality.</p>
       </div>
     </div>
 
@@ -405,7 +408,7 @@ function Home() {
       <div className="card-body">
         <h5 className="card-title"><i className="fa-solid fa-chalkboard-user" style={{ color: '#EC7A6F' }}></i></h5>
         <p className="card-subtitle mb-2" style={{ color: 'grey', fontWeight: 'bolder' }}>Whiteboard</p>
-        <p className="card-text">Collaborative Canvas whiteboard for tech planning and strategy with auto sync functionality.</p>
+        <p className="card-text" style={{ color: '#036EFD', fontWeight:"500" }}>Collaborative Canvas whiteboard for tech planning and strategy with auto sync functionality.</p>
       </div>
     </div>
 
@@ -413,7 +416,7 @@ function Home() {
       <div className="card-body">
         <h5 className="card-title"><i className="fa-solid fa-cloud-arrow-down" style={{ color: '#EC7A6F' }}></i></h5>
         <p className="card-subtitle mb-2" style={{ color: 'grey', fontWeight: 'bolder' }}>Download Code</p>
-        <p className="card-text">Download your language-specific code.</p>
+        <p className="card-text" style={{ color: '#036EFD', fontWeight:"500" }}>Download your language-specific code.</p>
       </div>
     </div>
   </div>
@@ -424,7 +427,7 @@ function Home() {
       <div className="card-body">
         <h5 className="card-title"><i className="fa-brands fa-slack" style={{ color: '#EC7A6F' }}></i></h5>
         <p className="card-subtitle mb-2" style={{ color: 'grey', fontWeight: 'bolder' }}>AI Chatbot</p>
-        <p className="card-text">AI Chatbot to help you out during bugs, meetings, and code reviews.</p>
+        <p className="card-text" style={{ color: '#036EFD', fontWeight:"500" }}>AI Chatbot to help you out during bugs, meetings, and code reviews.</p>
       </div>
     </div>
 
@@ -432,7 +435,7 @@ function Home() {
       <div className="card-body">
         <h5 className="card-title"><i className="fa-solid fa-camera-retro" style={{ color: '#EC7A6F' }}></i></h5>
         <p className="card-subtitle mb-2" style={{ color: 'grey', fontWeight: 'bolder' }}>Screenshot</p>
-        <p className="card-text">Instantly click a snap of your code.</p>
+        <p className="card-text" style={{ color: '#036EFD', fontWeight:"500" }}>Instantly click a snap of your code.</p>
       </div>
     </div>
 
@@ -440,7 +443,7 @@ function Home() {
       <div className="card-body">
         <h5 className="card-title"><i className="fa-solid fa-handshake-angle" style={{ color: '#EC7A6F' }}></i></h5>
         <p className="card-subtitle mb-2" style={{ color: 'grey', fontWeight: 'bolder' }}>AI Code Assistant</p>
-        <p className="card-text">AI Code assistant that assists you while coding complex projects.</p>
+        <p className="card-text" style={{ color: '#036EFD', fontWeight:"500" }}>AI Code assistant that assists you while coding complex projects.</p>
       </div>
     </div>
   </div>
@@ -451,7 +454,7 @@ function Home() {
       <div className="card-body">
         <h5 className="card-title"><i className="fa-brands fa-gripfire" style={{ color: '#EC7A6F' }}></i></h5>
         <p className="card-subtitle mb-2" style={{ color: 'grey', fontWeight: 'bolder' }}>AI Code Assistant</p>
-        <p className="card-text">AI Code assistant that assists you while coding complex projects.</p>
+        <p className="card-text" style={{ color: '#036EFD', fontWeight:"500" }}>AI Code assistant that assists you while coding complex projects.</p>
       </div>
     </div>
 
@@ -459,7 +462,7 @@ function Home() {
       <div className="card-body">
         <h5 className="card-title"><i className="fa-solid fa-copy" style={{ color: '#EC7A6F' }}></i></h5>
         <p className="card-subtitle mb-2" style={{ color: 'grey', fontWeight: 'bolder' }}>Copy Code</p>
-        <p className="card-text">Copy your code directly to your clipboard.</p>
+        <p className="card-text" style={{ color: '#036EFD', fontWeight:"500" }}>Copy your code directly to your clipboard.</p>
       </div>
     </div>
 
@@ -467,7 +470,7 @@ function Home() {
       <div className="card-body">
         <h5 className="card-title"><i className="fa-solid fa-lightbulb" style={{ color: '#EC7A6F' }}></i></h5>
         <p className="card-subtitle mb-2" style={{ color: 'grey', fontWeight: 'bolder' }}>AI Code Explain</p>
-        <p className="card-text">Helps you understand difficult code.</p>
+        <p className="card-text" style={{ color: '#036EFD', fontWeight:"500" }}>Helps you understand difficult code.</p>
       </div>
     </div>
   </div>
@@ -479,16 +482,19 @@ function Home() {
 
 
    {/*  */}
+   <h2 style={HeadingStyle}>Try for free now!</h2>
            
-            <img src='./images/1.jpeg' className="img-fluid" style={{ borderRadius: "20px" }} />
+   <img src='./images/grad2.jpg' className="img-fluid" style={{ borderRadius: "20px", boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)" }} />
 
+<br/>
+<br/>
           {/* <Download /> */}
 
           <div>
           </div>
       
      
-        <h2 style={HeadingStyle}>Try for free now!</h2>
+  
    
     
         <button type="button" class="btn btn-light" style={{backgroundColor:"white", borderRadius:"20px", width:"14rem", fontWeight:"bold"}}>Download Now</button>

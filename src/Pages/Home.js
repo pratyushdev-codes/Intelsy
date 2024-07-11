@@ -6,6 +6,7 @@ import ReactPlayer from 'react-player';
 import { v4 as uuidv4 } from 'uuid'; 
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom'; 
+import Features from '../Features';
 
 
 function Home() {
@@ -348,6 +349,7 @@ function Home() {
                 </button>
               </center>
             </div>
+   <Features/>
             <br />
             <img src='./images/1.jpeg' className="img-fluid" style={{ borderRadius: "20px" }} />
           </div>

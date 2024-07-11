@@ -541,7 +541,7 @@ onClick={() => generateExplain(code)}// Call generateExplain function on click
   style={{ borderRadius: "20px", borderColor: "white", backgroundColor: "#090300", color: "#036EFD" }}
   onClick={downloadCode}
 >
-  <i className="fa-solid fa-download" style={{ color: "#EC7A6F" }}></i> &nbsp;Download
+  <i className="fa-solid fa-cloud-arrow-down" style={{ color: "#EC7A6F" }}></i> &nbsp;Download
 </button>
 
             </div>

@@ -286,10 +286,28 @@ function Home() {
       <div className="video-container">
         <div className="video-text">
           <h1 className="center-text gradient-text" style={{ fontFamily: "PT sans",color: "rgba(242, 243, 243, 0.9)", fontSize: "60px", fontWeight: "bold" }}>
-            Blazing Fast Development and Integrations!
+          <i class="fa-solid fa-sparkles"></i> Blazing Fast Development and Integrations!
           </h1>
           <h3 className="center-text" style={{ fontFamily: "PT sans", fontSize: "26px", color: "rgba(242, 243, 243, 0.5)", fontWeight: "bolder" }}>
-            Shift to faster code development.
+            
+          <button
+  type="button"
+  className="btn btn-light"
+  style={{
+    borderRadius: "20px",
+    background: "rgba(255, 255, 255, 0.2)", // Semi-transparent white
+    backdropFilter: "blur(10px)", // Blur effect
+    WebkitBackdropFilter: "blur(10px)", // For Safari support
+  
+
+    color: "#6C727B", // Text color
+  }}
+>  <img src='./images/star.png' className="mx-1"style={{width:"22px", height:"22px", color:"blue"}}/> 
+ 
+  Shift to faster code development.&nbsp;
+
+</button>
+
           </h3>
         </div>
         <div className="video-wrapper">
@@ -484,7 +502,14 @@ function Home() {
    {/*  */}
    <h2 style={HeadingStyle}>Try for free now!</h2>
            
-   <img src='./images/grad2.jpg' className="img-fluid" style={{ borderRadius: "20px", boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)" }} />
+   <img 
+  src='./images/grad2.jpg' 
+  style={{ 
+    boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)" , borderRadius:"20px"
+  }} 
+/>
+
+
 
 <br/>
 <br/>

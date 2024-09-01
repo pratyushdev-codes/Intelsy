@@ -24,11 +24,11 @@ const AccessibilityBar = () => {
   };
 
   return (
-    <div id="capture" style={{ zIndex: "100", marginTop: "1rem", display: "flex", justifyContent: "center" }}>
-      <nav className="navbar navbar-expand-lg" style={{ borderRadius: "30px", height: "7vh", boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)", backgroundColor: "rgba(255, 255, 255, 0.1)" }}>
+    <div id="capture" style={{ zIndex: "100", marginTop: "1rem", display: "flex", justifyContent: "center", zIndex:"100" }}>
+      <nav className="navbar navbar-expand-lg" style={{ borderRadius: "30px", height: "7vh",  zIndex:"100" ,boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)", backgroundColor: "rgba(255, 255, 255, 0.1)" }}>
         <div className="container-fluid">
           <a className="navbar-brand" style={{ color: "#036EFD", fontSize: "20px", fontWeight: "bold" }}>
-            {/* <i className="fa-brands fa-gripfire"></i> &nbsp;  */}
+            <i className="fa-brands fa-gripfire"></i> &nbsp; 
             <span style={{ background: 'linear-gradient(-100deg, #036EFD, #EC7A6F, #EC7A6F )', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
               Accessibility Bar
             </span>

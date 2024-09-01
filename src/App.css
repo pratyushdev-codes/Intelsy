@@ -114,6 +114,7 @@ footer a:hover {
 }
 
 .rightAside {
+  display: none;
   background:#212121;
   padding: 16px;
   color: #fff;
@@ -122,8 +123,13 @@ footer a:hover {
   top: 0; /* Adjust top positioning if needed */
   right: 0; /* Positioning the div to the right */
   height: 100vh; /* Take up remaining vertical space */
- 
   border-top-left-radius: 20px; /* Adjust border-radius for the left side */
+}
+@media (min-width: 768px) {
+  .rightAside{
+    display: block;
+
+  }
 }
 
 /* 
@@ -168,9 +174,9 @@ footer a:hover {
   }
 }
 
-.bottomCenter:hover {
+/* .bottomCenter:hover {
   transform: translateY(0);
-}
+} */
 
 
 .aside {

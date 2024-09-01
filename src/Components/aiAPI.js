@@ -79,7 +79,7 @@ function AiAPI() {
           required
           value={question}
           onChange={(e) => setQuestion(e.target.value)}
-          placeholder="> Ask anything. "
+          placeholder="Ask Intelsy AI "
           className="textarea"
         ></textarea>
 

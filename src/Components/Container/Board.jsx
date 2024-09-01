@@ -1,20 +1,22 @@
 import React from 'react';
 import io from 'socket.io-client';
-
- import '../Container/Boardstyle.css';
+import '../Container/Boardstyle.css';
 
 class Board extends React.Component {
-
     timeout;
     socket = io.connect("http://localhost:3000");
-
     ctx;
     isDrawing = false;
 
     constructor(props) {
         super(props);
+    }
 
-        this.socket.on("canvas-data", function(data){
+    componentDidMount() {
+        this.drawOnCanvas();
+
+        this.socket.on("canvas-data", (data) => {
+            if (!this.ctx) return; // Ensure the canvas context is available
 
             var root = this;
             var interval = setInterval(function(){
@@ -26,25 +28,24 @@ class Board extends React.Component {
                 var ctx = canvas.getContext('2d');
                 image.onload = function() {
                     ctx.drawImage(image, 0, 0);
-
                     root.isDrawing = false;
                 };
                 image.src = data;
-            }, 200)
-        })
-    }
-
-    componentDidMount() {
-        this.drawOnCanvas();
+            }, 200);
+        });
     }
 
     componentWillReceiveProps(newProps) {
-        this.ctx.strokeStyle = newProps.color;
-        this.ctx.lineWidth = newProps.size;
+        if (this.ctx) {
+            this.ctx.strokeStyle = newProps.color;
+            this.ctx.lineWidth = newProps.size;
+        }
     }
 
     drawOnCanvas() {
         var canvas = document.querySelector('#board');
+        if (!canvas) return; // Ensure the canvas element is present in the DOM
+
         this.ctx = canvas.getContext('2d');
         var ctx = this.ctx;
 
@@ -53,11 +54,10 @@ class Board extends React.Component {
         canvas.width = parseInt(sketch_style.getPropertyValue('width'));
         canvas.height = parseInt(sketch_style.getPropertyValue('height'));
 
-        var mouse = {x: 0, y: 0};
-        var last_mouse = {x: 0, y: 0};
+        var mouse = { x: 0, y: 0 };
+        var last_mouse = { x: 0, y: 0 };
 
-        /* Mouse Capturing Work */
-        canvas.addEventListener('mousemove', function(e) {
+        canvas.addEventListener('mousemove', function (e) {
             last_mouse.x = mouse.x;
             last_mouse.y = mouse.y;
 
@@ -65,44 +65,42 @@ class Board extends React.Component {
             mouse.y = e.pageY - this.offsetTop;
         }, false);
 
-
-        /* Drawing on Paint App */
         ctx.lineWidth = this.props.size;
         ctx.lineJoin = 'round';
         ctx.lineCap = 'round';
         ctx.strokeStyle = this.props.color;
 
-        canvas.addEventListener('mousedown', function(e) {
+        canvas.addEventListener('mousedown', function (e) {
             canvas.addEventListener('mousemove', onPaint, false);
         }, false);
 
-        canvas.addEventListener('mouseup', function() {
+        canvas.addEventListener('mouseup', function () {
             canvas.removeEventListener('mousemove', onPaint, false);
         }, false);
 
         var root = this;
-        var onPaint = function() {
+        var onPaint = function () {
             ctx.beginPath();
             ctx.moveTo(last_mouse.x, last_mouse.y);
             ctx.lineTo(mouse.x, mouse.y);
             ctx.closePath();
             ctx.stroke();
 
-            if(root.timeout !== undefined) clearTimeout(root.timeout);
-            root.timeout = setTimeout(function(){
+            if (root.timeout !== undefined) clearTimeout(root.timeout);
+            root.timeout = setTimeout(function () {
                 var base64ImageData = canvas.toDataURL("image/png");
                 root.socket.emit("canvas-data", base64ImageData);
-            }, 1000)
+            }, 1000);
         };
     }
 
     render() {
         return (
-            <div class="sketch" id="sketch">
+            <div className="sketch" id="sketch" >
                 <canvas className="board" id="board"></canvas>
             </div>
         )
     }
 }
 
-export default Board
+export default Board;

@@ -16,11 +16,11 @@ function Navbar() {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">   
               <li className="nav-item">
-                <a className="nav-link active mx-2" href="#"  style={{ fontFamily: "PT sans", color: "#036EFD", fontSize: "27px", fontWeight:"bold"}}>Intelsy</a>
+                <a className="nav-link active mx-2" href="#"  style={{ fontFamily: "PT sans", color: "#036EFD", fontSize: "30px", fontWeight:"bolder",  background: 'linear-gradient(-100deg, #036EFD, #EC7A6F, #EC7A6F )', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }} >Intelsy</a>
               </li>
               
              
-              
+
              
 
               

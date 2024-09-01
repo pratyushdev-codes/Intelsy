@@ -12,6 +12,7 @@ import axios from 'axios';
 import ReactMarkdown from 'react-markdown'; // Import ReactMarkdown for rendering markdown content
 
 
+
 // Loading image URL
 const loadingImage = '../images/loading.gif'; // Replace with your actual loading image URL
 const loadingImageassist='../images/loading.gif'
@@ -319,6 +320,7 @@ const generateAssist = async (code) => {
           }}>Copy Room Id</button>
 
           <button type="button" className='btn leaveBtn' style={{ backgroundColor: "#036EFD", borderRadius: "20px", color: "white" }}>Leave Room</button>
+          
         </div>
         <div className='editorWrap'>
           <div className='topBar'>
@@ -332,6 +334,8 @@ const generateAssist = async (code) => {
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
+            
+            
           }}>
             <div className='codeOutput' style={{
               padding: "10px",
@@ -541,7 +545,7 @@ onClick={() => generateExplain(code)}// Call generateExplain function on click
   style={{ borderRadius: "20px", borderColor: "white", backgroundColor: "#090300", color: "#036EFD" }}
   onClick={downloadCode}
 >
-  <i className="fa-solid fa-cloud-arrow-down" style={{ color: "#EC7A6F" }}></i> &nbsp;Download
+  <i className="fa-solid fa-download" style={{ color: "#EC7A6F" }}></i> &nbsp;Download
 </button>
 
             </div>

@@ -145,18 +145,32 @@ footer a:hover {
 }
 
 /* compiler div */
+
 .bottomCenter {
+  display: none;
   background: #1B1C1E;
   color: #fff;
-  grid-column: 1 / 2;
-  grid-row: auto;
   position: fixed;
   width: 62.4%;
   bottom: 0;
   left: 20.5%;
-  transform: translateY(70%);
+  transform: translateY(100%);
+  transition: transform 0.3s ease-in-out;
+  z-index: 999;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 
+@media (min-width: 768px) {
+  .bottomCenter {
+    display: block;
+    transform: translateY(70%);
+  }
+}
+
+.bottomCenter:hover {
+  transform: translateY(0);
+}
 
 
 .aside {

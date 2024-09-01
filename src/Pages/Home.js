@@ -294,17 +294,17 @@ function Home() {
   type="button"
   className="btn btn-light"
   style={{
-    borderRadius: "20px",
+    borderRadius: "30px",
     background: "rgba(255, 255, 255, 0.2)", // Semi-transparent white
     backdropFilter: "blur(10px)", // Blur effect
     WebkitBackdropFilter: "blur(10px)", // For Safari support
   
 
-    color: "#6C727B", // Text color
+    color: "white", // Text color
   }}
 >  <img src='./images/star.png' className="mx-1"style={{width:"22px", height:"22px", color:"blue"}}/> 
  
-  Shift to faster code development.&nbsp;
+  Shift to faster code  development.&nbsp;
 
 </button>
 
@@ -332,13 +332,13 @@ function Home() {
        <br/>
         <br />
         <center>
-          <div style={{ backgroundColor: "#1B1C1E", backgroundImage: "url('/images/grad1.png')",borderRadius: "40px", width: "100%", height: "30rem" }}>
+          <div style={{ backgroundColor: "#1B1C1E", backgroundImage: "url('/images/grad1.png')",borderRadius: "20px", width: "100%", height: "30rem" }}>
             <br />
             <h1 style={{ fontFamily: "PT sans", color: "#036EFD", fontSize: "50px", fontWeight: "bold" }} onClick={joinRoom}>
               Join a room
             </h1>
             <h3 style={{ fontFamily: "PT sans", color: "white", fontSize: "20px", fontWeight: "bold" }}>
-              Paste Invitation ROOM ID
+              Paste Invitation Room ID
             </h3>
             <br />
             <div className="inputGroup">
@@ -502,8 +502,7 @@ function Home() {
    {/*  */}
    <h2 style={HeadingStyle}>Try for free now!</h2>
            
-   <img 
-  src='./images/grad2.jpg' 
+   <img  className="img-fluid" src='./images/grad2.jpg' 
   style={{ 
     boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)" , borderRadius:"20px"
   }} 
@@ -522,24 +521,14 @@ function Home() {
   
    
     
-        <button type="button" class="btn btn-light" style={{backgroundColor:"white", borderRadius:"20px", width:"14rem", fontWeight:"bold"}}>Download Now</button>
+        <button type="button"  class="btn btn-light" style={{backgroundColor:"white", borderRadius:"20px", width:"14rem", fontWeight:"bold"}}>Download Now</button>
      
 
       
+       
         <div className="video-wrapper">
-        <video src="./images/3.mp4" loop autoPlay muted  ></video>
-          {/* <ReactPlayer
-            url='./images/3.mp4'
-            playing={true}
-            loop={true}
-            controls={false}
-            width="100%"
-            height="100%"
-            style={{ borderRadius: '20px' }}
-          /> */}
-        </div>
-
-
+        <video src="./images/3.mp4" loop autoPlay muted className="h-[300px] " ></video>
+</div>
     </div>
         </center>
       </div>

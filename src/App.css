@@ -106,7 +106,7 @@ footer a:hover {
   flex-direction: column;
   display: flex;
   width: 100%;
-  height: 100vh;/* Take up remaining vertical space */
+  /* height: 100vh;Take up remaining vertical space */
   border-bottom-right-radius: 0px;
   border-top-right-radius: 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
@@ -115,7 +115,7 @@ footer a:hover {
 
 .rightAside {
   display: none;
-  background:#212121;
+  background:#171717;
   padding: 16px;
   color: #fff;
   width: 17%;

@@ -236,6 +236,19 @@ const generateAssist = async (code) => {
     setExplainloading(false);
   };
 
+  //Function to copy room ID
+async function copyRoomId(){
+  try {
+    
+
+    await navigator.clipboard.writeText(roomId);
+    toast.success("Room ID Copied to Clipboard.")
+  } catch (error) {
+    toast.error(console.log(error)+"Could not copy Room Id")
+    
+  }
+}
+
   if (!location.state) {
     return <Navigate to="/" />;
   }
@@ -311,13 +324,13 @@ const generateAssist = async (code) => {
               </div>
             </div>
           </div>
-          <button type="button" className='btn copyBtn' style={{
+          <button type="button" className='btn copyBtn' onClick={copyRoomId} style={{
             background: "rgb(157,86,224)",
             background: "radial-gradient(circle, rgba(157,86,224,1) 0%, rgba(253,130,85,1) 100%)",
             borderRadius: "20px",
             color: "white",
             boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)"
-          }}>Copy Room Id</button>
+          }}>Copy Room ID</button>
 
           <button type="button" className='btn leaveBtn' style={{ backgroundColor: "#036EFD", borderRadius: "20px", color: "white" }}>Leave Room</button>
           

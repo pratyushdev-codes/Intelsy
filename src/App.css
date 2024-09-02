@@ -112,6 +112,10 @@ footer a:hover {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 
 }
+.modal-backdrop {
+  z-index: auto !important; /* Set this value to whatever you need */
+
+}
 
 .rightAside {
   display: none;

@@ -67,8 +67,8 @@ const AccessibilityBar = () => {
                   ...
                 </div>
                 <div className="modal-footer">
-                  <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Press Esc to close</button>
-                  <button type="button" className="btn btn-primary">Save changes</button>
+                  {/* <button type="button" className="btn btn-secondary" data-bs-dismiss="modal"  style={{borderRadius:"20px"}}>Close</button> */}
+                  <button type="button" className="btn btn-primary" data-bs-dismiss="modal" style={{borderRadius:"20px"}}>Close</button>
                 </div>
               </div>
             </div>

@@ -110,6 +110,7 @@ footer a:hover {
   border-bottom-right-radius: 0px;
   border-top-right-radius: 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  height: inherit;
 
 }
 .modal-backdrop {
@@ -178,9 +179,6 @@ footer a:hover {
   }
 }
 
-.bottomCenter:hover {
-  transform: translateY(0);
-}
 
 
 .aside {

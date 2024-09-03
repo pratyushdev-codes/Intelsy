@@ -53,10 +53,11 @@ function EditorPage() {
             toast.success(`${username} joined the Playground`);
           }
           setClients(clients);
+
           socketRef.current.emit(ACTIONS.SYNC_CODE, {
-            code: code,
+            code: codeRef.current,
             socketId,
-          });
+        });
         });
 
         socketRef.current.on(ACTIONS.DISCONNECTED, ({ socketId, username }) => {
@@ -222,7 +223,7 @@ const generateAssist = async (code) => {
         }
       );
       setExplainAnswer(JSON.stringify(explainresponse.data.candidates[0].content.parts[0].text));
-      toast.success("💭 Here's an explanation for your code!")
+      toast.success(" Here's an explanation for your code!")
     }catch(error){
       console.error("Error fetching explain from API:", error.message);
       toast.error("Intelsy AI couldn't generate response")
@@ -251,6 +252,13 @@ async function copyRoomId(){
 
   if (!location.state) {
     return <Navigate to="/" />;
+  }
+
+  //Function to leave the room
+
+  async function leaveRoom(){
+   reactNavigator("/")
+
   }
 
   return (
@@ -332,7 +340,7 @@ async function copyRoomId(){
             boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)"
           }}>Copy Room ID</button>
 
-          <button type="button" className='btn leaveBtn' style={{ backgroundColor: "#036EFD", borderRadius: "20px", color: "white" }}>Leave Room</button>
+          <button type="button" className='btn leaveBtn'  onClick={leaveRoom} style={{ backgroundColor: "#036EFD", borderRadius: "20px", color: "white" }}>Leave Room</button>
           
         </div>
         <div className='editorWrap'>
@@ -585,7 +593,9 @@ onClick={() => generateExplain(code)}// Call generateExplain function on click
             </div>
           </div>
 
-          <Editor socketRef={socketRef} roomId={roomId} code={code} setCode={setCode} ref={editorRef} />
+          <Editor socketRef={socketRef} roomId={roomId} code={code} setCode={setCode} ref={editorRef}  onCodeChange={(code) => {
+                        codeRef.current = code;
+                    }} />
         </div>
       </div>
     </>

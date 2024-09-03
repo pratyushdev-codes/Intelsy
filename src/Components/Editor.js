@@ -33,7 +33,7 @@ import 'codemirror/addon/hint/sql-hint';
 
 
 
-const Editor = ({ socketRef, roomId, setCode }) => {
+const Editor = ({ socketRef, roomId, setCode , onCodeChange}) => {
   const editorRef = useRef(null);
 
   useEffect(() => {
@@ -56,6 +56,7 @@ const Editor = ({ socketRef, roomId, setCode }) => {
         const { origin } = changes;
         const newCode = instance.getValue();
         setCode(newCode); // Update the state in EditorPage component
+        onCodeChange(newCode);
         if (origin !== 'setValue' && socketRef.current) {
           socketRef.current.emit(ACTIONS.CODE_CHANGE, {
             roomId,

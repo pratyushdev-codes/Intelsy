@@ -53,6 +53,51 @@ const AccessibilityBar = () => {
                   scale: "1.5",
                 }}></i></a>
               </li>
+
+              {/* User image li ta */}
+              <li className="nav-item dropdown mx-2">
+  <a
+    className="nav-link dropdown-toggle"
+    href="#"
+    id="navbarDropdown"
+    role="button"
+    data-bs-toggle="dropdown"
+    aria-expanded="false"
+  >
+    <img
+      src="../images/gradient.png"
+      style={{ borderRadius: "50%", width: "25px", height: "25px" }}
+      alt="Dropdown"
+    />
+  </a>
+  <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+   
+    <li>
+      <a
+        className="dropdown-item      my-2"
+        href="https://wa.me/?text=Hey%2C%20join%20me%20for%20a%20coding%20session%20on%20Intelsy%20IDE%20intelsy.vercel.app"
+        target="_blank"
+        rel="noopener noreferrer"
+   
+      >
+        Share via WhatsApp <i class="fa-brands fa-whatsapp"></i>
+      </a>
+    </li>
+    {/* Twitter  */}
+    <li>
+      <a
+        className="dropdown-item my-2"
+        href="https://twitter.com/intent/tweet?text=Hey%2C%20join%20me%20for%20a%20coding%20session%20on%20Intelsy%20IDE%20https%3A%2F%2Fintelsy.vercel.app"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Share via Twitter <i class="fa-brands fa-x-twitter"></i>
+      </a>
+    </li>
+    <li><a className="dropdown-item" href="#">Logout</a></li>
+
+  </ul>
+</li>
             </ul>
           </div>
 

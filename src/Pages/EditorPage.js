@@ -301,12 +301,12 @@ async function copyRoomId(){
             </h3>
             <button
           type=""
-          className="btn mx-2 my-2"
+          className="btn  my-2"
    
-          style={{ backgroundColor:"#212121" , borderRadius:"20px", width:"100px", color:"white"}}
+          style={{ backgroundColor:"#2F3237" ,borderRadius:"20px", width:"-webkit-fill-available", color:"white",        padding: "0.6rem 1rem",    textAlign: "left" ,   alignItems: "center" }}
         >
-          <img src="../images/active.jpg" style={{borderRadius:"50%" , height:"18px" , width:"18px"}}/>  &nbsp; Active
-       
+          <img src="../images/active.jpg" style={{borderRadius:"50%" , height:"18px" ,    marginRight: "0.5rem", width:"18px"}}/> Status:  Active
+          {/* <i className="fa-solid fa-signal mx-2"></i> */}
 
         </button>
         <br/>

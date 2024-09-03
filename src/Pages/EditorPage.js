@@ -299,7 +299,19 @@ async function copyRoomId(){
                 Transform your coding experience.
               </span>
             </h3>
+            <button
+          type=""
+          className="btn mx-2 my-2"
+   
+          style={{ backgroundColor:"#212121" , borderRadius:"20px", width:"100px", color:"white"}}
+        >
+          <img src="../images/active.jpg" style={{borderRadius:"50%" , height:"18px" , width:"18px"}}/>  &nbsp; Active
+       
+
+        </button>
+        <br/>
             <AiAPI />
+            
           </div>
         </div>
 

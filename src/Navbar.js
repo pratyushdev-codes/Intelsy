@@ -27,7 +27,7 @@ function Navbar() {
             </ul>
             <div className="d-flex flex-column flex-lg-row">
             
-            <button className="btn btn-glow mx-2" style={{ borderRadius:"20px", backgroundColor:"#EFF3F6", color:"#808080", fontWeight:"bold"}}>Download Now</button>
+            <button className="btn btn-glow mx-2"  onClick={() => window.location.href = "https://linktr.ee/pratyush.birole"}  style={{ borderRadius:"20px", backgroundColor:"#EFF3F6", color:"#808080", fontWeight:"bold"}}>Developer Details</button>
 
             
             <a href="https://github.com/pratyushdev-codes" target="_blank" rel="noopener noreferrer" className="btn btn-primary mx-2" style={{ borderRadius: "20px", backgroundColor: "#036EFD", fontWeight: "bold" }}>Contact Us</a>

@@ -337,8 +337,8 @@ function Home() {
             <h1 style={{ fontFamily: "PT sans", color: "#036EFD", fontSize: "50px", fontWeight: "bold" }} onClick={joinRoom}>
               Join a room
             </h1>
-            <h3 style={{ fontFamily: "PT sans", color: "white", fontSize: "20px", fontWeight: "bold" }}>
-              Paste Invitation Room ID
+            <h3 style={{ fontFamily: "PT sans", color: "#bcb3b3", fontSize: "20px", fontWeight: "bold" }}>
+              Enter Room ID and Username
             </h3>
             <br />
             <div className="inputGroup">
@@ -363,11 +363,11 @@ function Home() {
                 />
                 <br />
                 <br />
-                <a onClick={createNewRoom} href="">
-                  <h3 style={{ fontFamily: "PT sans", color: "grey", fontSize: "20px", fontWeight: "bold" }}>
-                    Don't have an invite code? Create new Room
-                  </h3>
-                </a>
+                <a onClick={createNewRoom} href="" style={{ textDecoration: "none" }}>
+  <h3 style={{ fontFamily: "PT sans", color: "grey", fontSize: "20px", fontWeight: "bold" }}>
+    Don't have an invite code? Create new Room
+  </h3>
+</a>
               </center>
               <br />
               <center>
@@ -391,7 +391,7 @@ function Home() {
       <div className="card-body">
         <h5 className="card-title"><i className="fa-solid fa-server" style={{ color: '#EC7A6F' }}></i></h5>
         <p className="card-subtitle mb-2" style={{ color: 'grey', fontWeight: 'bolder' }}>Remote Code Execution Engine</p>
-        <p className="card-text" style={{ color: '#036EFD', fontWeight:"500" }}>Execute your code remotely using RCE Engine powered by AWS.</p>
+        <p className="card-text" style={{ color: '#036EFD', fontWeight:"500" }}>Execute your code with RCE Engine, powered by AWS for unparalleled performance and reliability.</p>
       </div>
     </div>
 
@@ -399,7 +399,7 @@ function Home() {
       <div className="card-body">
         <h5 className="card-title"><i className="fa-solid fa-terminal" style={{ color: '#EC7A6F' }}></i></h5>
         <p className="card-subtitle mb-2" style={{ color: 'grey', fontWeight: 'bolder' }}>Terminal</p>
-        <p className="card-text" style={{ color: '#036EFD', fontWeight:"500" }}>Run and know the output of the program.</p>
+        <p className="card-text" style={{ color: '#036EFD', fontWeight:"500" }}>Execute your code and instantly view the program's output in real-time.</p>
       </div>
     </div>
 
@@ -407,7 +407,7 @@ function Home() {
       <div className="card-body">
         <h5 className="card-title"><i className="fa-solid fa-code" style={{ color: '#EC7A6F' }}></i></h5>
         <p className="card-subtitle mb-2" style={{ color: 'grey', fontWeight: 'bolder' }}>Code Editor</p>
-        <p className="card-text" style={{ color: '#036EFD', fontWeight:"500" }}>Interactive code editor and playground with themes.</p>
+        <p className="card-text" style={{ color: '#036EFD', fontWeight:"500" }}>A dynamic and interactive coding environment with customized themes for a personalized experience.</p>
       </div>
     </div>
   </div>
@@ -418,7 +418,7 @@ function Home() {
       <div className="card-body">
         <h5 className="card-title"><i className="fa-solid fa-users" style={{ color: '#EC7A6F' }}></i></h5>
         <p className="card-subtitle mb-2" style={{ color: 'grey', fontWeight: 'bolder' }}>Collaborate</p>
-        <p className="card-text" style={{ color: '#036EFD', fontWeight:"500" }}>Collaborate with your team, friends, peers, or engineering teams for project code with auto sync functionality.</p>
+        <p className="card-text" style={{ color: '#036EFD', fontWeight:"500" }}>Collaborate with your team, friends, peers, or engineering teams on project code with real-time auto-sync functionality .</p>
       </div>
     </div>
 
@@ -426,7 +426,7 @@ function Home() {
       <div className="card-body">
         <h5 className="card-title"><i className="fa-solid fa-chalkboard-user" style={{ color: '#EC7A6F' }}></i></h5>
         <p className="card-subtitle mb-2" style={{ color: 'grey', fontWeight: 'bolder' }}>Whiteboard</p>
-        <p className="card-text" style={{ color: '#036EFD', fontWeight:"500" }}>Collaborative Canvas whiteboard for tech planning and strategy with auto sync functionality.</p>
+        <p className="card-text" style={{ color: '#036EFD', fontWeight:"500" }}>Collaborative Canvas whiteboard for tech planning and strategy with auto sync functionality to keep your team aligned and productive.</p>
       </div>
     </div>
 
@@ -445,7 +445,7 @@ function Home() {
       <div className="card-body">
         <h5 className="card-title"><i className="fa-brands fa-slack" style={{ color: '#EC7A6F' }}></i></h5>
         <p className="card-subtitle mb-2" style={{ color: 'grey', fontWeight: 'bolder' }}>AI Chatbot</p>
-        <p className="card-text" style={{ color: '#036EFD', fontWeight:"500" }}>AI Chatbot to help you out during bugs, meetings, and code reviews.</p>
+        <p className="card-text" style={{ color: '#036EFD', fontWeight:"500" }}>Your intelligent AI chatbot for troubleshooting to help you out during bugs, meetings, and code reviews.</p>
       </div>
     </div>
 
@@ -453,7 +453,7 @@ function Home() {
       <div className="card-body">
         <h5 className="card-title"><i className="fa-solid fa-camera-retro" style={{ color: '#EC7A6F' }}></i></h5>
         <p className="card-subtitle mb-2" style={{ color: 'grey', fontWeight: 'bolder' }}>Screenshot</p>
-        <p className="card-text" style={{ color: '#036EFD', fontWeight:"500" }}>Instantly click a snap of your code.</p>
+        <p className="card-text" style={{ color: '#036EFD', fontWeight:"500" }}>Capture instant snapshots of your code with just a click.</p>
       </div>
     </div>
 
@@ -461,7 +461,7 @@ function Home() {
       <div className="card-body">
         <h5 className="card-title"><i className="fa-solid fa-handshake-angle" style={{ color: '#EC7A6F' }}></i></h5>
         <p className="card-subtitle mb-2" style={{ color: 'grey', fontWeight: 'bolder' }}>AI Code Assistant</p>
-        <p className="card-text" style={{ color: '#036EFD', fontWeight:"500" }}>AI Code assistant that assists you while coding complex projects.</p>
+        <p className="card-text" style={{ color: '#036EFD', fontWeight:"500" }}> Your smart AI companion for navigating and simplifying complex coding projects..</p>
       </div>
     </div>
   </div>
@@ -470,9 +470,9 @@ function Home() {
   <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '20px', marginBottom: '20px' }}>
     <div className="card" style={{ width: '18rem', backgroundColor: '#1B1C1F', borderRadius: '20px', color: '#036EFD', marginBottom: '20px' }}>
       <div className="card-body">
-        <h5 className="card-title"><i className="fa-brands fa-gripfire" style={{ color: '#EC7A6F' }}></i></h5>
-        <p className="card-subtitle mb-2" style={{ color: 'grey', fontWeight: 'bolder' }}>AI Code Assistant</p>
-        <p className="card-text" style={{ color: '#036EFD', fontWeight:"500" }}>AI Code assistant that assists you while coding complex projects.</p>
+        <h5 className="card-title"><i className="fa-solid fa-microchip" style={{ color: '#EC7A6F' }}></i></h5>
+        <p className="card-subtitle mb-2" style={{ color: 'grey', fontWeight: 'bolder' }}>Native Secure Compiler Server</p>
+        <p className="card-text" style={{ color: '#036EFD', fontWeight:"500" }}>Execute your code with confidence on our secure engine, ensuring privacy and protection at every step.</p>
       </div>
     </div>
 
@@ -480,7 +480,7 @@ function Home() {
       <div className="card-body">
         <h5 className="card-title"><i className="fa-solid fa-copy" style={{ color: '#EC7A6F' }}></i></h5>
         <p className="card-subtitle mb-2" style={{ color: 'grey', fontWeight: 'bolder' }}>Copy Code</p>
-        <p className="card-text" style={{ color: '#036EFD', fontWeight:"500" }}>Copy your code directly to your clipboard.</p>
+        <p className="card-text" style={{ color: '#036EFD', fontWeight:"500" }}>Copy your code directly to your clipboard with a single click for effortless integration.</p>
       </div>
     </div>
 
@@ -488,7 +488,7 @@ function Home() {
       <div className="card-body">
         <h5 className="card-title"><i className="fa-solid fa-lightbulb" style={{ color: '#EC7A6F' }}></i></h5>
         <p className="card-subtitle mb-2" style={{ color: 'grey', fontWeight: 'bolder' }}>AI Code Explain</p>
-        <p className="card-text" style={{ color: '#036EFD', fontWeight:"500" }}>Helps you understand difficult code.</p>
+        <p className="card-text" style={{ color: '#036EFD', fontWeight:"500" }}>Simplify complex code with ease and gain a clearer understanding through intelligent explanations.</p>
       </div>
     </div>
   </div>
@@ -500,37 +500,97 @@ function Home() {
 
 
    {/*  */}
-   <h2 style={HeadingStyle}>Try for free now!</h2>
-           
-   <img  className="img-fluid" src='./images/grad2.jpg' 
-  style={{ 
-    boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)" , borderRadius:"20px"
-  }} 
-/>
+   {/* <div style={{ position: "relative", display:"flex" }}>
+  <img 
+    className="img-fluid" 
+    src="./images/world-map.png" 
+    style={{ 
+      boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)", 
+      borderRadius: "20px", 
+      opacity: "0.3", 
+      transform: "scale(0.8)" // Changed 'scale' to 'transform'
+    }} 
+  />
+  <h2 
+    style={{ 
+      position: "absolute", 
+      top: "50%", 
+      left: "50%", 
+      transform: "translate(-50%, -50%)", 
+      
 
 
+      textAlign: "center",
+      margin: 0 ,// Ensure no extra margin around the text
+      fontSize: '5rem',
+      fontWeight: 'bold',
+      color: 'rgb(142 148 158)',
+    }}
+  >
+    Try for free now!
+  </h2>
+</div> */}
+
+<br/>
+<br/>
+<br/>
+<br/>
+<br/><br/>
+
+<div className="responsive-text" style={{
+    backgroundImage: "url('/images/world-map.png')", 
+    backgroundSize: "contain", // Ensures the entire image fits within the div
+    backgroundRepeat: "no-repeat", // Prevents repeating the image
+    backgroundPosition: "center", // Centers the image within the div
+
+    width: "100%", 
+    height: "100%", 
+    scale: "1.4",
+    opacity: "0.3",
+    display: "flex", 
+    justifyContent: "center", 
+    alignItems: "center", 
+    textAlign: "center",
+   
+}}>
+    <h2 style={{
+        fontSize: '5vw', // Default responsive font size
+        fontWeight: 'bold',
+        color: 'white',
+        margin: 0,
+        lineHeight: 1.2 // Adjust line height for better readability
+    }}>
+        Try for Free now!
+       
+    </h2>
+ 
+</div>
 
 <br/>
 <br/>
           {/* <Download /> */}
-
+        
           <div>
+
           </div>
       
-     
+       
   
    
     
-        <button type="button"  class="btn btn-light" style={{backgroundColor:"white", borderRadius:"20px", width:"14rem", fontWeight:"bold"}}>Download Now</button>
+        {/* <button type="button"  class="btn btn-light" style={{backgroundColor:"white", borderRadius:"20px", width:"14rem", fontWeight:"bold"}}>Download Now</button> */}
      
 
       
        
-        <div className="video-wrapper">
+        {/* <div className="video-wrapper">
         <video src="./images/3.mp4" loop autoPlay muted className="h-[300px] " ></video>
-</div>
+</div> */}
     </div>
+  <br/>
+
         </center>
+        
       </div>
     </div>
   );

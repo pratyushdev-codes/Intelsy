@@ -1,9 +1,14 @@
 import React, { useState } from 'react';
 import html2canvas from 'html2canvas';
 import Container from './Container/Container';
+import { Navigate , useNavigate} from 'react-router-dom';
+
+
+
 
 const AccessibilityBar = () => {
   const [isEditorOpen, setIsEditorOpen] = useState(false);
+  const reactNavigator = useNavigate();
 
   const openEditor = () => {
     setIsEditorOpen(true);
@@ -13,6 +18,11 @@ const AccessibilityBar = () => {
     setIsEditorOpen(false);
   };
 
+
+  async function  logoutUser(){
+    reactNavigator("/")
+ 
+   }
   const snapShot = () => {
     html2canvas(document.body).then(canvas => {
       const tempLink = document.createElement('a');
@@ -71,7 +81,7 @@ const AccessibilityBar = () => {
     />
   </a>
   <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-   
+  <li><a className="dropdown-item" style={{fontWeight:"bolder", color:"#036EFD"}}>Current Status : Active </a></li>
     <li>
       <a
         className="dropdown-item      my-2"
@@ -94,7 +104,7 @@ const AccessibilityBar = () => {
         Share via Twitter <i class="fa-brands fa-x-twitter"></i>
       </a>
     </li>
-    <li><a className="dropdown-item" href="#">Logout</a></li>
+    <li><a className="dropdown-item" onClick={logoutUser}>Logout</a></li>
 
   </ul>
 </li>

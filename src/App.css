@@ -136,6 +136,17 @@ footer a:hover {
 
   }
 }
+@media (max-width: 768px) {
+  .responsive-text {
+    font-size: 4vw;
+  }
+}
+
+@media (max-width: 480px) {
+  .responsive-text {
+    font-size: 3vw;
+  }
+}
 
 /* 
 .rightasideInner{

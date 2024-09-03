@@ -96,7 +96,9 @@ function AiAPI() {
       <div className="w-full md:w-2/3 mx-auto text-left bg-gray-50 my-1" style={{ backgroundColor: "#0E1117", maxHeight: "50%", width: "90%", borderRadius: "20px", overflowY: "auto" }}>
         <ReactMarkdown className="p-3">{answer}</ReactMarkdown>
       </div>
+      
     </div>
+    
   );
 }
 

@@ -119,7 +119,7 @@ const AccessibilityBar = () => {
                  
                 </div>
                 <div className="modal-body " style={{color:"#036EFD"}}>
-                  Your code is securely being executed on Intelsy's Native Remote Code Execution.
+                <i className="fa-solid fa-shield-halved mx-2"></i> Your code is securely being executed on Intelsy's Native Remote Code Execution.
                 </div>
                 <div className="modal-footer">
                   {/* <button type="button" className="btn btn-secondary" data-bs-dismiss="modal"  style={{borderRadius:"20px"}}>Close</button> */}

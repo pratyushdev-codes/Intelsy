@@ -374,7 +374,8 @@ function Home() {
                 <button
                   type="button"
                   className="btn btn-primary"
-                  style={{ borderRadius: "20px", width: "250px" }}
+                  
+                  style={{ borderRadius: "20px", width: "250px" ,  background: "linear-gradient(90deg,  rgb(208 218 231), #036EFD)", }}
                   onClick={joinRoom}
                 >
                   Join Room

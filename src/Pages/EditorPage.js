@@ -200,7 +200,7 @@ const generateAssist = async (code) => {
       }
     );
     setAssistAnswer(JSON.stringify(assistresponse.data.candidates[0].content.parts[0].text));
-    toast.success("✨ Your code assistant is here with helpful tips!")
+    toast.success(" Your code assistant is here with helpful tips!")
   } catch (error) {
     console.error("Error fetching assist from API:", error.message);
     toast.error("Intelsy AI couldn't generate response")
@@ -303,7 +303,7 @@ async function copyRoomId(){
           type=""
           className="btn  my-2"
    
-          style={{ backgroundColor:"#2F3237" ,borderRadius:"20px", width:"-webkit-fill-available", color:"white",        padding: "0.6rem 1rem",    textAlign: "left" ,   alignItems: "center" }}
+          style={{ backgroundColor:"rgb(46 47 50)" ,borderRadius:"20px", width:"-webkit-fill-available", color:"white",        padding: "0.6rem 1rem",    textAlign: "left" ,   alignItems: "center" }}
         >
           <img src="../images/active.jpg" style={{borderRadius:"50%" , height:"18px" ,    marginRight: "0.5rem", width:"18px"}}/> Status:  Active
           {/* <i className="fa-solid fa-signal mx-2"></i> */}

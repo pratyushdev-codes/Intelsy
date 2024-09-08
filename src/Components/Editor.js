@@ -19,9 +19,7 @@ import 'codemirror/addon/edit/closetag';
 import ACTIONS from '../Action';
 import AccessibilityBar from './AccessibilityBar';
 
-
-//Autocomplete Addons --> codemirror
-
+// Autocomplete Addons --> codemirror
 import 'codemirror/addon/hint/show-hint.css';
 import 'codemirror/addon/hint/show-hint';
 import 'codemirror/addon/hint/css-hint';
@@ -30,8 +28,6 @@ import 'codemirror/addon/hint/javascript-hint';
 import 'codemirror/addon/hint/html-hint';
 import 'codemirror/addon/hint/xml-hint';
 import 'codemirror/addon/hint/sql-hint';
-
-
 
 const Editor = ({ socketRef, roomId, setCode , onCodeChange}) => {
   const editorRef = useRef(null);
@@ -51,6 +47,21 @@ const Editor = ({ socketRef, roomId, setCode , onCodeChange}) => {
           extraKeys: { 'Ctrl-Space': 'autocomplete' }
         }
       );
+
+      // Set prewritten comment as the initial value
+      editorRef.current.setValue(
+        `// Intelsy Compiler Support: Java, C++, Python
+// Discover more features in the Accessibility Bar.
+// Enhance your coding experience with Intelsy AI Chatbot, AI Assist, and Explain.
+
+
+public class Main {
+      public static void main(String[] Args) {
+              // Start coding here  | Java
+      }
+}`
+      );
+      
 
       editorRef.current.on('change', (instance, changes) => {
         const { origin } = changes;

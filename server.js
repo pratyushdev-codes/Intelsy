@@ -9,9 +9,9 @@ const server = http.createServer(app);
 const io = new Server(server);
 
 app.use(express.static('build'));
-app.use((req, res, next) => {
-    res.sendFile(__dirname +  '/dist/Intelsy-main/index.html');
-});
+app.get('*', (req, res) => {
+    res.sendFile('index.html', {root: 'public'});
+  });
 
 const userSocketMap = {};
 function getAllConnectedClients(roomId) {
@@ -56,7 +56,6 @@ io.on('connection', (socket) => {
     socket.on(ACTIONS.SYNC_CODE, ({ socketId, code }) => {
         io.to(socketId).emit(ACTIONS.CODE_CHANGE, { code });
     });
-
     socket.on('disconnecting', () => {
         const rooms = [...socket.rooms];
         rooms.forEach((roomId) => {

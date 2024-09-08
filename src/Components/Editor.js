@@ -57,7 +57,7 @@ const Editor = ({ socketRef, roomId, setCode , onCodeChange}) => {
 
 public class Main {
       public static void main(String[] Args) {
-              // Start coding here  | Java
+              // Start coding here 
       }
 }`
       );

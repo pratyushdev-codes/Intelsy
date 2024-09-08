@@ -298,11 +298,12 @@ function Home() {
     background: "rgba(255, 255, 255, 0.2)", // Semi-transparent white
     backdropFilter: "blur(10px)", // Blur effect
     WebkitBackdropFilter: "blur(10px)", // For Safari support
+
   
 
     color: "white", // Text color
   }}
->  <img src='./images/star.png' className="mx-1"style={{width:"22px", height:"22px", color:"blue"}}/> 
+>  <img src='./images/NewStars.jpeg' className="mx-1"style={{width:"22px", height:"22px", color:"blue"}}/> 
  
   Shift to faster code  development.&nbsp;
 
@@ -334,7 +335,9 @@ function Home() {
         <center>
           <div style={{ backgroundColor: "#1B1C1E", backgroundImage: "url('/images/grad1.png')",borderRadius: "20px", width: "100%", height: "30rem" }}>
             <br />
-            <h1 style={{ fontFamily: "PT sans", color: "#036EFD", fontSize: "50px", fontWeight: "bold" }} onClick={joinRoom}>
+            <h1 style={{ fontFamily: "PT sans", color: "#036EFD", fontSize: "50px", fontWeight: "bold" ,  background: "linear-gradient(78deg, white, #036EFD)",
+    WebkitBackgroundClip: "text",
+    WebkitTextFillColor: "transparent"}} onClick={joinRoom}>
               Join a room
             </h1>
             <h3 style={{ fontFamily: "PT sans", color: "#bcb3b3", fontSize: "20px", fontWeight: "bold" }}>
@@ -375,7 +378,7 @@ function Home() {
                   type="button"
                   className="btn btn-primary"
                   
-                  style={{ borderRadius: "20px", width: "250px" ,  background: "linear-gradient(90deg,  rgb(208 218 231), #036EFD)", }}
+                  style={{ borderRadius: "20px", width: "250px" ,  boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)" }}
                   onClick={joinRoom}
                 >
                   Join Room

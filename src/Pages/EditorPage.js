@@ -303,7 +303,7 @@ async function copyRoomId(){
           type=""
           className="btn  my-2"
    
-          style={{ backgroundColor:"rgb(46 47 50)" ,borderRadius:"20px", width:"-webkit-fill-available", color:"white",        padding: "0.6rem 1rem",    textAlign: "left" ,   alignItems: "center" }}
+          style={{ backgroundColor:"rgb(46 47 50)" ,borderRadius:"20px", width:"-webkit-fill-available", color:"white",  marginLeft:"0.7rem", marginRight:"1rem",      padding: "0.6rem 1rem",    textAlign: "left" ,   alignItems: "center" }}
         >
           <img src="../images/active.jpg" style={{borderRadius:"50%" , height:"18px" ,    marginRight: "0.5rem", width:"18px"}}/> Status:  Active
           {/* <i className="fa-solid fa-signal mx-2"></i> */}
@@ -318,14 +318,14 @@ async function copyRoomId(){
         <div className='aside' style={{ boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.7), 0 6px 20px 0 rgba(0, 0, 0, 0.19)" }}>
           <div className='asideInner'>
             <div className='logo'>
-              <img
+              {/* <img
                 className='logoImage'
                 src="../images/logo.png"
                 alt="Logo"
-              />
+              /> */}
               <h3 style={{ color: 'grey' }}>
                 <span style={{ color: 'white', fontWeight: 'bold' }}>
-                  Your Playground is ready
+                  Your Playground is ready<i className="fa-solid fa-terminal my-3 mx-3" style={{ color: '#036EFD' }}></i>
                 </span>
                 <br />
                 <span style={{ fontSize: '20px' }}>Start developing!</span>

@@ -325,7 +325,7 @@ async function copyRoomId(){
               /> */}
               <h3 style={{ color: 'grey' }}>
                 <span style={{ color: 'white', fontWeight: 'bold' }}>
-                  Your Playground is ready<i className="fa-solid fa-terminal my-3 mx-3" style={{ color: '#036EFD' }}></i>
+                  Your Playground is ready<i className="fa-solid fa-terminal my-3 mx-3" style={{ background: 'linear-gradient(112deg, rgb(3, 110, 253), rgb(236, 122, 111)) text', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent'  }}></i>
                 </span>
                 <br />
                 <span style={{ fontSize: '20px' }}>Start developing!</span>
@@ -350,9 +350,9 @@ async function copyRoomId(){
             borderRadius: "20px",
             color: "white",
             boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)"
-          }}>Copy Room ID</button>
+          }}><i class="fa-regular fa-paste"></i> &nbsp; Copy Room ID</button>
 
-          <button type="button" className='btn leaveBtn'  onClick={leaveRoom} style={{ backgroundColor: "#036EFD", borderRadius: "20px", color: "white" }}>Leave Room</button>
+          <button type="button" className='btn leaveBtn'  onClick={leaveRoom} style={{ backgroundColor: "#036EFD", borderRadius: "20px", color: "white" }}> <i class="fa-solid fa-arrow-right-from-bracket"></i> &nbsp;&nbsp;&nbsp;Leave Room</button>
           
         </div>
         <div className='editorWrap'>

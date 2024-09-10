@@ -75,12 +75,13 @@ function AiAPI() {
         onSubmit={generateAnswer}
         className="w-full md:w-2/3 mx-auto text-center bg-gray-50 py-2"
       >
-        <textarea
+        <textarea 
           required
           value={question}
           onChange={(e) => setQuestion(e.target.value)}
           placeholder="Ask Intelsy AI "
-          className="textarea"
+          className="textarea my-2"
+          style={{backgroundColor:"#212529" , borderColor:"black"}}
         ></textarea>
 
         <button

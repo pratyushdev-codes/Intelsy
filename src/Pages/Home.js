@@ -403,7 +403,7 @@ function Home() {
       <div className="card-body">
         <h5 className="card-title"><i className="fa-solid fa-terminal" style={{ color: '#EC7A6F' }}></i></h5>
         <p className="card-subtitle mb-2" style={{ color: 'grey', fontWeight: 'bolder' }}>Terminal</p>
-        <p className="card-text" style={{ color: '#036EFD', fontWeight:"500" }}>Execute your code and instantly view the program's output in real-time.</p>
+        <p className="card-text" style={{ color: '#036EFD', fontWeight:"500" }}>Execute your code and instantly view your program's output in real-time.</p>
       </div>
     </div>
 

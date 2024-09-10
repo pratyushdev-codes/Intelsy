@@ -16,7 +16,7 @@ function Navbar() {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">   
               <li className="nav-item">
-                <a className="nav-link active mx-2" href="#"  style={{ fontFamily: "PT sans", color: "#036EFD", fontSize: "30px", fontWeight:"bolder",  background: 'linear-gradient(-100deg, #036EFD, #EC7A6F, #EC7A6F )', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }} > <img src="./images/logo6.png" style={{ height: "50px", width: "82px" ,borderRadius:"4px" }} alt="Logo" />Intelsy</a>
+                <a className="nav-link active mx-2"   style={{ fontFamily: "PT sans", color: "#036EFD", fontSize: "30px", fontWeight:"bolder",  background: 'linear-gradient(-100deg, #036EFD, #EC7A6F, #EC7A6F )', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }} > <img src="./images/Intelsylogo.png" style={{ height: "45px", width: "53px"  }} alt="Logo" /> &nbsp;Intelsy</a>
               </li>
               
              

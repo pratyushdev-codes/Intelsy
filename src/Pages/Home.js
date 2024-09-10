@@ -303,7 +303,7 @@ function Home() {
 
     color: "white", // Text color
   }}
->  <img src='./images/NewStars.jpeg' className="mx-1"style={{width:"22px", height:"22px", color:"blue"}}/> 
+>  <img src='./images/star.png' className="mx-1"style={{width:"22px", height:"22px", color:"blue"}}/> 
  
   Shift to faster code  development.&nbsp;
 
@@ -541,33 +541,23 @@ function Home() {
 <br/>
 <br/><br/>
 
-<div className="responsive-text" style={{
-    backgroundImage: "url('/images/world-map.png')", 
-    backgroundSize: "contain", // Ensures the entire image fits within the div
-    backgroundRepeat: "no-repeat", // Prevents repeating the image
-    backgroundPosition: "center", // Centers the image within the div
-
-    width: "100%", 
-    height: "100%", 
-    scale: "1.4",
-    opacity: "0.3",
-    display: "flex", 
-    justifyContent: "center", 
-    alignItems: "center", 
-    textAlign: "center",
-   
-}}>
-    <h2 style={{
-        fontSize: '5vw', // Default responsive font size
-        fontWeight: 'bold',
-        color: 'white',
-        margin: 0,
-        lineHeight: 1.2 // Adjust line height for better readability
-    }}>
-        Try for Free now!
-       
+<div 
+      className="d-flex justify-content-center align-items-center text-center position-relative"
+      style={{
+        backgroundImage: "url('/images/world-map.png')",
+        backgroundSize: "contain",
+        backgroundRepeat: "no-repeat",
+        backgroundPosition: "center",
+        width: "100%",
+        height: "100vh",
+        opacity: 0.2
+      }}
+    >
+    <div className="position-absolute top-50 start-50 translate-middle">
+    <h2 className="display-2 fw-bold  m-0" style={{ fontSize: '6rem' , color:"#FFFFFF"}}>
+      Try Now!
     </h2>
- 
+  </div>
 </div>
 
 <br/>

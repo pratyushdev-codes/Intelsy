@@ -50,7 +50,7 @@ const Editor = ({ socketRef, roomId, setCode , onCodeChange}) => {
 
       // Set prewritten comment as the initial value
       editorRef.current.setValue(
-        `// Intelsy Compiler Support: Java, C++, Python
+        `// Intelsy Compiler Support: Java, C++, Python.
 // Discover more features in the Accessibility Bar.
 // Enhance your coding experience with Intelsy AI Chatbot, AI Assist, and Explain.
 

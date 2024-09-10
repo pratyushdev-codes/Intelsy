@@ -305,7 +305,7 @@ async function copyRoomId(){
    
           style={{ backgroundColor:"rgb(46 47 50)" ,borderRadius:"20px", width:"-webkit-fill-available", color:"white",  marginLeft:"0.7rem", marginRight:"1rem",      padding: "0.6rem 1rem",    textAlign: "left" ,   alignItems: "center" }}
         >
-          <img src="../images/active.jpg" style={{borderRadius:"50%" , height:"18px" ,    marginRight: "0.5rem", width:"18px"}}/> Status:  Active
+          <img src="../images/active.jpg" style={{borderRadius:"50%" , height:"18px" ,   animation: 'rotate 1s linear infinite'  , marginRight: "0.5rem", width:"18px"}}/> Status:  Active
           {/* <i className="fa-solid fa-signal mx-2"></i> */}
 
         </button>

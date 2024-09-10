@@ -537,9 +537,7 @@ function Home() {
 
 <br/>
 <br/>
-<br/>
-<br/>
-<br/><br/>
+
 
 <div 
       className="d-flex justify-content-center align-items-center text-center position-relative"

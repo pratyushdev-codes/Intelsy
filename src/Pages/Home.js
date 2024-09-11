@@ -436,9 +436,9 @@ function Home() {
 
     <div className="card" style={{ width: '18rem', backgroundColor: '#1B1C1F', borderRadius: '20px', color: '#036EFD', marginBottom: '20px' }}>
       <div className="card-body">
-        <h5 className="card-title"><i className="fa-solid fa-cloud-arrow-down" style={{ color: '#EC7A6F' }}></i></h5>
-        <p className="card-subtitle mb-2" style={{ color: 'grey', fontWeight: 'bolder' }}>Download Code</p>
-        <p className="card-text" style={{ color: '#036EFD', fontWeight:"500" }}>Download your language-specific code.</p>
+        <h5 className="card-title"><i className="fa-solid fa-handshake-angle" style={{ color: '#EC7A6F' }}></i></h5>
+        <p className="card-subtitle mb-2" style={{ color: 'grey', fontWeight: 'bolder' }}>AI Code Assistant</p>
+        <p className="card-text" style={{ color: '#036EFD', fontWeight:"500" }}> Your smart AI companion for navigating and simplifying complex coding projects..</p>
       </div>
     </div>
   </div>
@@ -461,15 +461,15 @@ function Home() {
       </div>
     </div>
 
-    <div className="card" style={{ width: '18rem', backgroundColor: '#1B1C1F', borderRadius: '20px', color: '#036EFD', marginBottom: '20px' }}>
+
+  <div className="card" style={{ width: '18rem', backgroundColor: '#1B1C1F', borderRadius: '20px', color: '#036EFD', marginBottom: '20px' }}>
       <div className="card-body">
-        <h5 className="card-title"><i className="fa-solid fa-handshake-angle" style={{ color: '#EC7A6F' }}></i></h5>
-        <p className="card-subtitle mb-2" style={{ color: 'grey', fontWeight: 'bolder' }}>AI Code Assistant</p>
-        <p className="card-text" style={{ color: '#036EFD', fontWeight:"500" }}> Your smart AI companion for navigating and simplifying complex coding projects..</p>
+        <h5 className="card-title"><i className="fa-solid fa-cloud-arrow-down" style={{ color: '#EC7A6F' }}></i></h5>
+        <p className="card-subtitle mb-2" style={{ color: 'grey', fontWeight: 'bolder' }}>Download Code</p>
+        <p className="card-text" style={{ color: '#036EFD', fontWeight:"500" }}>Download your language-specific code.</p>
       </div>
     </div>
   </div>
-
   {/* Fourth row of cards */}
   <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '20px', marginBottom: '20px' }}>
     <div className="card" style={{ width: '18rem', backgroundColor: '#1B1C1F', borderRadius: '20px', color: '#036EFD', marginBottom: '20px' }}>

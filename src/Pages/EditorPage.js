@@ -269,10 +269,10 @@ async function copyRoomId(){
       <div className="modal" style={{ zIndex: "10000" , borderRadius:"30px"}} id="explainModal" tabIndex="100" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div className="modal-dialog">
               <div className="modal-content">
-                <div className="modal-header" style={{color:"white", backgroundColor:"#1B1C1F"}}>
-                  <h1 className="modal-title fs-5" id="exampleModalLabel" style={{color:"white"}}>   <i className="fa-solid fa-lightbulb" style={{ color: '#EC7A6F' }}></i>&nbsp;Intelsy AI Explain</h1>
+                <div className="modal-header" style={{color:"#036EFD", backgroundColor:"#1B1C1F"}}>
+                  <h1 className="modal-title fs-5" id="exampleModalLabel" style={{color:"#036EFD"}}>   <i className="fa-solid fa-lightbulb" style={{ color: '#EC7A6F' }}></i>&nbsp; &nbsp;Intelsy AI Explain</h1>
                 </div>
-                <div className="modal-body " style={{color:"#036EFD", backgroundColor:"#1B1C1F"}}>
+                <div className="modal-body " style={{color:"white", backgroundColor:"#1B1C1F"}}>
                 <ReactMarkdown className="p-3">{explainAnswer}</ReactMarkdown>
                 </div>
                 <div className="modal-footer" style={{backgroundColor:"#1B1C1F"}}>
@@ -288,11 +288,11 @@ async function copyRoomId(){
 <div className="modal" style={{ zIndex: "10000" , borderRadius:"30px"}} id="assistModal" tabIndex="100" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div className="modal-dialog">
               <div className="modal-content">
-                <div className="modal-header" style={{color:"white", backgroundColor:"#1B1C1F"}}>
-                  <h1 className="modal-title fs-5" id="exampleModalLabel" style={{color:"white"}}>   <i className="fa-solid fa-lightbulb" style={{ color: '#EC7A6F' }}></i>&nbsp;Intelsy Code Assist</h1>
+                <div className="modal-header" style={{color:"#036EFD", backgroundColor:"#1B1C1F"}}>
+                  <h1 className="modal-title fs-5" id="exampleModalLabel" style={{color:"#036EFD"}}>    <i className="fa-solid fa-circle-half-stroke" style={{ color: '#EC7A6F' }}></i>&nbsp; &nbsp;Intelsy Code Assist</h1>
                 </div>
-                <div className="modal-body " style={{color:"#036EFD", backgroundColor:"#1B1C1F"}}>
-                <ReactMarkdown className="p-3">{explainAnswer}</ReactMarkdown>
+                <div className="modal-body " style={{color:"white", backgroundColor:"#1B1C1F"}}>
+                <ReactMarkdown className="p-3">{assistAnswer}</ReactMarkdown>
                 </div>
                 <div className="modal-footer" style={{backgroundColor:"#1B1C1F"}}>
                   {/* <button type="button" className="btn btn-secondary" data-bs-dismiss="modal"  style={{borderRadius:"20px"}}>Close</button> */}
@@ -495,7 +495,7 @@ async function copyRoomId(){
               
   <button
     type="button"
-    className="btn btn-secondary mx-1 dropdown-toggle"
+    className="btn btn-secondary mx-1 "
     style={{
       borderRadius: "20px",
       borderColor: "white",
@@ -505,7 +505,7 @@ async function copyRoomId(){
    data-bs-toggle="modal" data-bs-target="#assistModal"
     onClick={() => generateAssist(code)}
   >
-    <i className="fa-solid fa-circle-half-stroke" style={{ color: "#EC7A6F" }}></i> &nbsp;
+    <i className="fa-solid fa-circle-half-stroke mx-1" style={{ color: "#EC7A6F" }}></i>
     <span className="mx-1" style={{ color: "#036EFD" }}>
       Assist
     </span>

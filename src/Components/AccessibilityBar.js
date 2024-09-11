@@ -108,6 +108,10 @@ const AccessibilityBar = () => {
             </div>
           </div>
 
+
+
+
+
       </nav>
       {isEditorOpen && <Container onClose={closeEditor} />}
     </div>

@@ -264,6 +264,22 @@ async function copyRoomId(){
   return (
     <>
       <div className='mainWrap'>
+      <div className="modal" style={{ zIndex: "10000" }} id="explainModal" tabIndex="100" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div className="modal-dialog">
+              <div className="modal-content">
+                <div className="modal-header" style={{color:"white", backgroundColor:"#1B1C1F"}}>
+                  <h1 className="modal-title fs-5" id="exampleModalLabel" style={{color:"white"}}>   <i className="fa-solid fa-lightbulb" style={{ color: '#EC7A6F' }}></i>&nbsp;Intelsy AI Explain</h1>
+                </div>
+                <div className="modal-body " style={{color:"#036EFD", backgroundColor:"#1B1C1F"}}>
+                <ReactMarkdown className="p-3">{explainAnswer}</ReactMarkdown>
+                </div>
+                <div className="modal-footer" style={{backgroundColor:"#1B1C1F"}}>
+                  {/* <button type="button" className="btn btn-secondary" data-bs-dismiss="modal"  style={{borderRadius:"20px"}}>Close</button> */}
+                  <button type="button" className="btn btn-primary" data-bs-dismiss="modal" style={{borderRadius:"20px"}}>Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
         <div className='rightAside' style={{ zIndex: "+1" }}>
           <div className='rightasideInner'>
             <h3 style={{ color: 'grey' }}>
@@ -517,22 +533,7 @@ async function copyRoomId(){
 
 
 {/* Explain modal */}
- <div className="modal" style={{ zIndex: "10000" }} id="explainModal" tabIndex="100" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div className="modal-dialog">
-              <div className="modal-content">
-                <div className="modal-header" style={{color:"white", backgroundColor:"#1B1C1F"}}>
-                  <h1 className="modal-title fs-5" id="exampleModalLabel" style={{color:"white"}}>   <i className="fa-solid fa-lightbulb" style={{ color: '#EC7A6F' }}></i>&nbsp;Intelsy AI Explain</h1>
-                </div>
-                <div className="modal-body " style={{color:"#036EFD", backgroundColor:"#1B1C1F"}}>
-                <ReactMarkdown className="p-3">{explainAnswer}</ReactMarkdown>
-                </div>
-                <div className="modal-footer" style={{backgroundColor:"#1B1C1F"}}>
-                  {/* <button type="button" className="btn btn-secondary" data-bs-dismiss="modal"  style={{borderRadius:"20px"}}>Close</button> */}
-                  <button type="button" className="btn btn-primary" data-bs-dismiss="modal" style={{borderRadius:"20px"}}>Close</button>
-                </div>
-              </div>
-            </div>
-          </div>
+
               {/* Explain Dropdown */}
               <div>
               {!explainloading && (

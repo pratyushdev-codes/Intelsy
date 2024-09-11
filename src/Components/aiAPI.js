@@ -3,17 +3,18 @@ import axios from "axios";
 import ReactMarkdown from "react-markdown";
 import toast from "react-hot-toast";
 
+
 function AiAPI() {
   const [question, setQuestion] = useState("");
   const [answer, setAnswer] = useState("");
   const [loading, setLoading] = useState(false);
 
   async function generateAnswer(e) {
-    e.preventDefault();
+    e.preventDefault();            
     setLoading(true);
     try {
       const response = await axios.post(
-        "https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=AIzaSyAc7yWVfIu85Q68ryHsnIjR6CwzrJt25cw",
+        `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${process.env.REACT_APP_INTELSYAIKEY}`,
         {
           contents: [{ parts: [{ text:question }] }],
         }

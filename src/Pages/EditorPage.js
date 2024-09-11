@@ -13,6 +13,7 @@ import ReactMarkdown from 'react-markdown'; // Import ReactMarkdown for renderin
 
 
 
+
 // Loading image URL
 const loadingImage = '../images/loading.gif'; // Replace with your actual loading image URL
 const loadingImageassist='../images/loading.gif'
@@ -102,7 +103,7 @@ function EditorPage() {
   
     try {
       const response = await axios.post(
-        "https://gcdx1arns0.execute-api.us-east-1.amazonaws.com/production",
+         `${process.env.REACT_APP_AWS_API_URL}`,
         {
           code: code,
           language: language,
@@ -194,7 +195,7 @@ const generateAssist = async (code) => {
   setAssistloading(true);
   try {
     const assistresponse = await axios.post(
-      "https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=AIzaSyAc7yWVfIu85Q68ryHsnIjR6CwzrJt25cw",
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${process.env.REACT_APP_INTELSYAIKEY}`,
       {
         contents: [{ parts: [{ text: "Please assist me in this code, is there any error in the provided code and if there is a error how should I resolve it?, keep your response short and to the point only"+JSON.stringify(code) }] }]
       }
@@ -217,7 +218,7 @@ const generateAssist = async (code) => {
 
     try{
       const explainresponse = await axios.post(
-        "https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=AIzaSyAc7yWVfIu85Q68ryHsnIjR6CwzrJt25cw",
+        `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${process.env.REACT_APP_INTELSYAIKEY}`,
         {
           contents: [{ parts: [{ text: "Explain me the code that I have provided you"+JSON.stringify(code) }] }]
         }

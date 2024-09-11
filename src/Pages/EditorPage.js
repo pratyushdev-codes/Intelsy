@@ -514,8 +514,10 @@ async function copyRoomId(){
     </li>
   </ul>
 </div>
+
+
 {/* Explain modal */}
-<div className="modal" style={{ zIndex: "10000" }} id="exampleModal" tabIndex="-100" aria-labelledby="exampleModalLabel" aria-hidden="true">
+ <div className="modal" style={{ zIndex: "10000" }} id="explainModal" tabIndex="100" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div className="modal-dialog">
               <div className="modal-content">
                 <div className="modal-header" style={{color:"white", backgroundColor:"#1B1C1F"}}>
@@ -543,7 +545,7 @@ async function copyRoomId(){
                     backgroundColor: "#090300",
                     color: "#036EFD",
                   }}
-                  data-bs-toggle="modal" data-bs-target="#exampleModal"
+                  data-bs-toggle="modal" data-bs-target="#explainModal"
            
                   onClick={() => generateExplain(code)}// Call generateExplain function on click
                 >

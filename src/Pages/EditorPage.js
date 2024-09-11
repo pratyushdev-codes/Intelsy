@@ -184,7 +184,7 @@ const downloadCode = () => {
   link.click();
   URL.revokeObjectURL(link.href);
 
-  toast.success(`✅ Code downloaded as ${filename}`);
+  toast.success(`Code downloaded as ${filename}`);
 };
 
 
@@ -264,7 +264,9 @@ async function copyRoomId(){
   return (
     <>
       <div className='mainWrap'>
-      <div className="modal" style={{ zIndex: "10000" }} id="explainModal" tabIndex="100" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+        {/* Explain Modal */}
+      <div className="modal" style={{ zIndex: "10000" , borderRadius:"30px"}} id="explainModal" tabIndex="100" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div className="modal-dialog">
               <div className="modal-content">
                 <div className="modal-header" style={{color:"white", backgroundColor:"#1B1C1F"}}>
@@ -280,6 +282,26 @@ async function copyRoomId(){
               </div>
             </div>
           </div>
+
+{/* Assist Modal */}
+
+<div className="modal" style={{ zIndex: "10000" , borderRadius:"30px"}} id="assistModal" tabIndex="100" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div className="modal-dialog">
+              <div className="modal-content">
+                <div className="modal-header" style={{color:"white", backgroundColor:"#1B1C1F"}}>
+                  <h1 className="modal-title fs-5" id="exampleModalLabel" style={{color:"white"}}>   <i className="fa-solid fa-lightbulb" style={{ color: '#EC7A6F' }}></i>&nbsp;Intelsy Code Assist</h1>
+                </div>
+                <div className="modal-body " style={{color:"#036EFD", backgroundColor:"#1B1C1F"}}>
+                <ReactMarkdown className="p-3">{explainAnswer}</ReactMarkdown>
+                </div>
+                <div className="modal-footer" style={{backgroundColor:"#1B1C1F"}}>
+                  {/* <button type="button" className="btn btn-secondary" data-bs-dismiss="modal"  style={{borderRadius:"20px"}}>Close</button> */}
+                  <button type="button" className="btn btn-primary" data-bs-dismiss="modal" style={{borderRadius:"20px"}}>Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
         <div className='rightAside' style={{ zIndex: "+1" }}>
           <div className='rightasideInner'>
             <h3 style={{ color: 'grey' }}>
@@ -480,9 +502,7 @@ async function copyRoomId(){
       backgroundColor: "#090300",
       color: "#036EFD",
     }}
-    id="assistDropdown"
-    data-bs-toggle="dropdown"
-    aria-expanded="false"
+   data-bs-toggle="modal" data-bs-target="#assistModal"
     onClick={() => generateAssist(code)}
   >
     <i className="fa-solid fa-circle-half-stroke" style={{ color: "#EC7A6F" }}></i> &nbsp;
@@ -513,9 +533,6 @@ async function copyRoomId(){
     </span>
   </button>
     )} 
-
-
-
     
   <ul
     className="dropdown-menu"
@@ -532,7 +549,7 @@ async function copyRoomId(){
 </div>
 
 
-{/* Explain modal */}
+
 
               {/* Explain Dropdown */}
               <div>

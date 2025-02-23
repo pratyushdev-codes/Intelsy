@@ -41,8 +41,8 @@
 
 **Getting Started**
 
-1. Visit the Intelsy website: [https://lnkd.in/dGrSJCPq](https://lnkd.in/dGrSJCPq)
-2. Explore the Intelsy GitHub repository: [https://lnkd.in/dbugMXW3](https://lnkd.in/dbugMXW3)
+1. Visit the Intelsy website: https://intelsy.onrender.com
+2. Explore the Intelsy GitHub repository: https://github.com/pratyushdev-codes/Intelsy
 
 **Software Architecutre**
 <img width="1470" alt="Screenshot 2025-01-28 at 1 23 49 AM" src="https://github.com/user-attachments/assets/ff5ece49-692e-480a-a9d9-fdb1183983b7" />

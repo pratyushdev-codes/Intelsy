@@ -14,7 +14,7 @@ function AiAPI() {
     setLoading(true);
     try {
       const response = await axios.post(
-        `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${process.env.REACT_APP_INTELSYAIKEY}`,
+        `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${process.env.REACT_APP_INTELSYAIKEY}`,
         {
           contents: [{ parts: [{ text:question }] }],
         }

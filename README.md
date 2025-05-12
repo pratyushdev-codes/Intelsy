@@ -1,3 +1,8 @@
+
+
+https://github.com/user-attachments/assets/2766d70b-de2f-4c7f-ab59-bb75ab3fa040
+
+
 # Intelsy AI IDE
 
 **A next-generation, cloud-based IDE that empowers developers with unparalleled performance, real-time collaboration, and AI assistance.**

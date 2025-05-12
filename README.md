@@ -1,8 +1,3 @@
-
-
-https://github.com/user-attachments/assets/2766d70b-de2f-4c7f-ab59-bb75ab3fa040
-
-
 # Intelsy AI IDE
 
 **A next-generation, cloud-based IDE that empowers developers with unparalleled performance, real-time collaboration, and AI assistance.**
@@ -25,6 +20,10 @@ https://github.com/user-attachments/assets/2766d70b-de2f-4c7f-ab59-bb75ab3fa040
     * Copy Code: Easily copy code snippets.
     * Download Code: Export code with language-specific extensions.
     * Live Notifications: Get personalized updates for events occurring within the development environment.
+
+
+https://github.com/user-attachments/assets/0d804b51-fdca-4a8f-8104-e7780acac3c6
+
 
 **Tech Stack**
 
